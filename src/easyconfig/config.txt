@@ -1,0 +1,9 @@
+- system
+    max_thread: 10
+    ram_size: 16GB
+    gpu_name: RTX4070S
+    cpu_name: RYZEN-7700
+- person
+    name: qsl
+    palce: jn
+    

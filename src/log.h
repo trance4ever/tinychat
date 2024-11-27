@@ -7,7 +7,7 @@ namespace trance {
         
         private:
 
-    }
+    };
 }
 
 #endif
