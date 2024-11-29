@@ -3,8 +3,7 @@ using namespace easyconfig;
 
 
 int main() {
-    easyconfig::parse p = easyconfig::parse("config.txt");
-    std::vector<std::vector<std::pair<std::string, std::string>>> nodes = p.getNode();
+    __GETNODE__("config.txt", nodes);
     for(auto lists : nodes) {
         for(auto pair : lists) {
             std::cout << pair.first << " " << pair.second << " ";

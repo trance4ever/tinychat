@@ -27,8 +27,10 @@ namespace easyconfig {
                 ans[index].push_back({prefix + "::" + tmp, val});
             }
         }
-        fs.close();
         return ans;
     }
 
+    parse::~parse() {
+        fs.close();
+    }
 }
