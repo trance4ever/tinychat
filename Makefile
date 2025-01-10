@@ -31,6 +31,9 @@ default_target: all
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -116,6 +119,213 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+#=============================================================================
+# Target rules for targets named tinychat
+
+# Build rule for target.
+tinychat: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tinychat
+.PHONY : tinychat
+
+# fast build rule for target.
+tinychat/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/build
+.PHONY : tinychat/fast
+
+#=============================================================================
+# Target rules for targets named test_log
+
+# Build rule for target.
+test_log: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_log
+.PHONY : test_log
+
+# fast build rule for target.
+test_log/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
+.PHONY : test_log/fast
+
+#=============================================================================
+# Target rules for targets named test_parse
+
+# Build rule for target.
+test_parse: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_parse
+.PHONY : test_parse
+
+# fast build rule for target.
+test_parse/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/build
+.PHONY : test_parse/fast
+
+src/easyconfig/config.o: src/easyconfig/config.cc.o
+.PHONY : src/easyconfig/config.o
+
+# target to build an object file
+src/easyconfig/config.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/easyconfig/config.cc.o
+.PHONY : src/easyconfig/config.cc.o
+
+src/easyconfig/config.i: src/easyconfig/config.cc.i
+.PHONY : src/easyconfig/config.i
+
+# target to preprocess a source file
+src/easyconfig/config.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/easyconfig/config.cc.i
+.PHONY : src/easyconfig/config.cc.i
+
+src/easyconfig/config.s: src/easyconfig/config.cc.s
+.PHONY : src/easyconfig/config.s
+
+# target to generate assembly for a file
+src/easyconfig/config.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/easyconfig/config.cc.s
+.PHONY : src/easyconfig/config.cc.s
+
+src/easyconfig/parse.o: src/easyconfig/parse.cc.o
+.PHONY : src/easyconfig/parse.o
+
+# target to build an object file
+src/easyconfig/parse.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.o
+.PHONY : src/easyconfig/parse.cc.o
+
+src/easyconfig/parse.i: src/easyconfig/parse.cc.i
+.PHONY : src/easyconfig/parse.i
+
+# target to preprocess a source file
+src/easyconfig/parse.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.i
+.PHONY : src/easyconfig/parse.cc.i
+
+src/easyconfig/parse.s: src/easyconfig/parse.cc.s
+.PHONY : src/easyconfig/parse.s
+
+# target to generate assembly for a file
+src/easyconfig/parse.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.s
+.PHONY : src/easyconfig/parse.cc.s
+
+src/init.o: src/init.cc.o
+.PHONY : src/init.o
+
+# target to build an object file
+src/init.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/init.cc.o
+.PHONY : src/init.cc.o
+
+src/init.i: src/init.cc.i
+.PHONY : src/init.i
+
+# target to preprocess a source file
+src/init.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/init.cc.i
+.PHONY : src/init.cc.i
+
+src/init.s: src/init.cc.s
+.PHONY : src/init.s
+
+# target to generate assembly for a file
+src/init.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/init.cc.s
+.PHONY : src/init.cc.s
+
+src/log.o: src/log.cc.o
+.PHONY : src/log.o
+
+# target to build an object file
+src/log.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/log.cc.o
+.PHONY : src/log.cc.o
+
+src/log.i: src/log.cc.i
+.PHONY : src/log.i
+
+# target to preprocess a source file
+src/log.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/log.cc.i
+.PHONY : src/log.cc.i
+
+src/log.s: src/log.cc.s
+.PHONY : src/log.s
+
+# target to generate assembly for a file
+src/log.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/log.cc.s
+.PHONY : src/log.cc.s
+
+src/util.o: src/util.cc.o
+.PHONY : src/util.o
+
+# target to build an object file
+src/util.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.o
+.PHONY : src/util.cc.o
+
+src/util.i: src/util.cc.i
+.PHONY : src/util.i
+
+# target to preprocess a source file
+src/util.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.i
+.PHONY : src/util.cc.i
+
+src/util.s: src/util.cc.s
+.PHONY : src/util.s
+
+# target to generate assembly for a file
+src/util.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
+.PHONY : src/util.cc.s
+
+test/test_log.o: test/test_log.cc.o
+.PHONY : test/test_log.o
+
+# target to build an object file
+test/test_log.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.o
+.PHONY : test/test_log.cc.o
+
+test/test_log.i: test/test_log.cc.i
+.PHONY : test/test_log.i
+
+# target to preprocess a source file
+test/test_log.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.i
+.PHONY : test/test_log.cc.i
+
+test/test_log.s: test/test_log.cc.s
+.PHONY : test/test_log.s
+
+# target to generate assembly for a file
+test/test_log.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.s
+.PHONY : test/test_log.cc.s
+
+test/test_parse.o: test/test_parse.cc.o
+.PHONY : test/test_parse.o
+
+# target to build an object file
+test/test_parse.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/test/test_parse.cc.o
+.PHONY : test/test_parse.cc.o
+
+test/test_parse.i: test/test_parse.cc.i
+.PHONY : test/test_parse.i
+
+# target to preprocess a source file
+test/test_parse.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/test/test_parse.cc.i
+.PHONY : test/test_parse.cc.i
+
+test/test_parse.s: test/test_parse.cc.s
+.PHONY : test/test_parse.s
+
+# target to generate assembly for a file
+test/test_parse.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/test/test_parse.cc.s
+.PHONY : test/test_parse.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -124,6 +334,30 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test_log"
+	@echo "... test_parse"
+	@echo "... tinychat"
+	@echo "... src/easyconfig/config.o"
+	@echo "... src/easyconfig/config.i"
+	@echo "... src/easyconfig/config.s"
+	@echo "... src/easyconfig/parse.o"
+	@echo "... src/easyconfig/parse.i"
+	@echo "... src/easyconfig/parse.s"
+	@echo "... src/init.o"
+	@echo "... src/init.i"
+	@echo "... src/init.s"
+	@echo "... src/log.o"
+	@echo "... src/log.i"
+	@echo "... src/log.s"
+	@echo "... src/util.o"
+	@echo "... src/util.i"
+	@echo "... src/util.s"
+	@echo "... test/test_log.o"
+	@echo "... test/test_log.i"
+	@echo "... test/test_log.s"
+	@echo "... test/test_parse.o"
+	@echo "... test/test_parse.i"
+	@echo "... test/test_parse.s"
 .PHONY : help
 
 

@@ -1,2 +1,5 @@
+/home/trance/tinychat/CMakeFiles/tinychat.dir
+/home/trance/tinychat/CMakeFiles/test_log.dir
+/home/trance/tinychat/CMakeFiles/test_parse.dir
 /home/trance/tinychat/CMakeFiles/edit_cache.dir
 /home/trance/tinychat/CMakeFiles/rebuild_cache.dir

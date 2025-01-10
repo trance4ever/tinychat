@@ -35,22 +35,27 @@ namespace trance {
     //日志器
     class Logger {
     public:
+        // 默认为INFO级别
         Logger(LogLevel level = INFO);
 
         typedef std::shared_ptr<Logger> ptr;
-
+        // 输出日志到所有输出地
         void pushLog(LogEvent l, std::string str);
-
+        // 得到日志器
         static std::shared_ptr<Logger> getGlobalLogger();
-
+        // 初始化操作
         void init();
+        // 设置日志器级别
+        void setLogLevel(LogLevel l);
     private:
+        // 日志器级别，输出级别不小于该级别的日志
         LogLevel m_level;
     };
 
     //事件类
     class LogEvent {
     public:
+        // 事件构造器，自动获取当前时间与进程与线程号
         LogEvent(LogLevel l, std::string file_name, int file_line,
             int pid = getPid(), int thread_id = getThreadId(), std::string dateTime = getDateTime()) : 
                 m_level(l),
@@ -59,12 +64,16 @@ namespace trance {
                 m_pid(pid),
                 m_thread_id(thread_id),
                 m_dateTime(dateTime) { }
-
+        // 将日志时间转为字符串
         std::string toString();
-
-        std::string stringFromLogLevel();
+        // 将日志级别转化为字符串
+        std::string stringFromLogLevel(LogLevel level);
+        // 从字符串得到日志级别
+        LogLevel logLevelFromString(std::string level);
 
         void pushLog(LogEvent l, std::string str);
+        // 得到事件级别
+        LogLevel getLevel() const { return m_level;}
     private:	
 		LogLevel m_level; //日志级别
         std::string m_file_name; //文件名

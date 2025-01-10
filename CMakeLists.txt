@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.28.3)
+project(tinychat)
+
+set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -O0 -ggdb -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined")
+
+include_directories(.)
+include_directories(/usr/local/include)
+
+link_directories(/usr/local/lib)
+
+set(LIB_SRC 
+	src/init.cc
+    src/log.cc
+    src/util.cc
+    src/easyconfig/config.cc
+    src/easyconfig/parse.cc
+)
+
+add_library(tinychat SHARED ${LIB_SRC})
+
+set(LIB_LIB
+    tinychat
+	pthread
+)
+
+add_executable(test_log test/test_log.cc)
+add_dependencies(test_log tinychat)
+target_link_libraries(test_log ${LIB_LIB})
+
+add_executable(test_parse test/test_parse.cc)
+add_dependencies(test_parse tinychat)
+target_link_libraries(test_parse ${LIB_LIB})
+
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+

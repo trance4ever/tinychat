@@ -1,4 +1,4 @@
-#include "log.h"
+#include "../src/log.h"
 using namespace trance;
 
 int main() {
