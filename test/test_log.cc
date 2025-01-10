@@ -2,6 +2,6 @@
 using namespace trance;
 
 int main() {
-    __INFO_LOG__("测试能不能用")
+    INFO_LOG("测试能不能用")
     return 0;
 }

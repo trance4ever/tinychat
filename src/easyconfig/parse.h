@@ -3,15 +3,18 @@
 #include<string>
 #include<vector>
 #include<iostream>
+#include<memory>
 #include<fstream>
 
 namespace easyconfig {
     class parse{
     public:
+        typedef std::shared_ptr<parse> ptr;
         parse(std::string str);
         ~parse();
         //解析路径的文件
         std::vector<std::vector<std::pair<std::string, std::string>>> getNode();
+        
     private:
         std::string path;
         std::ifstream fs;

@@ -13,6 +13,22 @@ namespace trance {
 
     }
 
+    void Logger::pushLog(LogEvent l, const char* format, ...) {
+        if(l.getLevel() >= m_level) {
+            va_list al;
+            va_start(al, format);
+            char* buf = nullptr;
+            std::stringstream ss;
+            int len = vasprintf(&buf, format, al);
+            if(len != -1) {
+                ss << std::string(buf, len);
+                free(buf);
+            }
+            va_end(al);
+            std::cout << l.toString() << "\t" << ss.str() << std::endl; 
+        }
+    }
+
     void Logger::pushLog(LogEvent l, std::string str) {
         if(l.getLevel() >= m_level) {
             std::cout << l.toString() << "\t" << str << std::endl; 
@@ -60,8 +76,8 @@ namespace trance {
             << "[" << m_dateTime << "]" << " " 
             << "[" << m_pid << ":"
             << m_thread_id << "]" << " "
-            << m_file_name << ":" 
-            << m_file_line;
+            << "[" << m_file_name << ":" 
+            << m_file_line << "]";
         return ss.str();
     }
 }

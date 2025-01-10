@@ -7,8 +7,8 @@
 #include<memory>
 #include<functional>
 #include<algorithm>
-#include "./easyconfig/parse.h"
 #include "./easyconfig/config.h"
+#include "./easyconfig/parse.h"
 
 namespace trance {
     class Initializer {

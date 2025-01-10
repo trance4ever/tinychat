@@ -4,23 +4,39 @@
 #include<iostream>
 #include<memory>
 #include<vector>
+#include<stdarg.h>
 #include<string>
 
 
 namespace trance {
-    #define __UNKOWN_LOG__(str) \
+    #define FMT_UNKOWN_LOG(fmt, ...) \
+        Logger::getGlobalLogger()->pushLog(LogEvent(UNKOWN, __FILE__, __LINE__), fmt, __VA_ARGS__); \
+
+    #define FMT_INFO_LOG(fmt, ...) \
+        Logger::getGlobalLogger()->pushLog(LogEvent(INFO, __FILE__, __LINE__), fmt, __VA_ARGS__); \
+
+    #define FMT_WARN_LOG(fmt, ...) \
+        Logger::getGlobalLogger()->pushLog(LogEvent(WARN, __FILE__, __LINE__), fmt, __VA_ARGS__); \
+
+    #define FMT_ERROR_LOG(fmt, ...) \
+        Logger::getGlobalLogger()->pushLog(LogEvent(ERROR, __FILE__, __LINE__), fmt, __VA_ARGS__); \
+
+    #define FMT_FATAL_LOG(fmt, ...) \
+        Logger::getGlobalLogger()->pushLog(LogEvent(FATAL, __FILE__, __LINE__), fmt, __VA_ARGS__); \
+
+    #define UNKOWN_LOG(str) \
         Logger::getGlobalLogger()->pushLog(LogEvent(UNKOWN, __FILE__, __LINE__), str); \
 
-    #define __INFO_LOG__(str) \
+    #define INFO_LOG(str) \
         Logger::getGlobalLogger()->pushLog(LogEvent(INFO, __FILE__, __LINE__), str); \
 
-    #define __WAEN_LOG__(str) \
+    #define WARN_LOG(str) \
         Logger::getGlobalLogger()->pushLog(LogEvent(WARN, __FILE__, __LINE__), str); \
 
-    #define __ERROR_LOG__(str) \
+    #define ERROR_LOG(str) \
         Logger::getGlobalLogger()->pushLog(LogEvent(ERROR, __FILE__, __LINE__), str); \
 
-    #define __FATAL_LOG__(str) \
+    #define FATAL_LOG(str) \
         Logger::getGlobalLogger()->pushLog(LogEvent(FATAL, __FILE__, __LINE__), str); \
 
     //日志级别
@@ -39,6 +55,8 @@ namespace trance {
         Logger(LogLevel level = INFO);
 
         typedef std::shared_ptr<Logger> ptr;
+        // 输出格式化日志到所有输出地
+        void pushLog(LogEvent l, const char* format, ...);
         // 输出日志到所有输出地
         void pushLog(LogEvent l, std::string str);
         // 得到日志器
@@ -47,6 +65,8 @@ namespace trance {
         void init();
         // 设置日志器级别
         void setLogLevel(LogLevel l);
+        // 测试
+        LogLevel getlevel() const { return m_level;}
     private:
         // 日志器级别，输出级别不小于该级别的日志
         LogLevel m_level;
@@ -67,11 +87,11 @@ namespace trance {
         // 将日志时间转为字符串
         std::string toString();
         // 将日志级别转化为字符串
-        std::string stringFromLogLevel(LogLevel level);
+        static std::string stringFromLogLevel(LogLevel level);
         // 从字符串得到日志级别
-        LogLevel logLevelFromString(std::string level);
-
-        void pushLog(LogEvent l, std::string str);
+        static LogLevel logLevelFromString(std::string level);
+        // 推送日志
+        void pushLog(LogEvent l, const char* format, ...);
         // 得到事件级别
         LogLevel getLevel() const { return m_level;}
     private:	

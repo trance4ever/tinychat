@@ -69,6 +69,7 @@ CMAKE_BINARY_DIR = /home/trance/tinychat
 all: CMakeFiles/tinychat.dir/all
 all: CMakeFiles/test_log.dir/all
 all: CMakeFiles/test_parse.dir/all
+all: CMakeFiles/test_init.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -79,6 +80,7 @@ preinstall:
 clean: CMakeFiles/tinychat.dir/clean
 clean: CMakeFiles/test_log.dir/clean
 clean: CMakeFiles/test_parse.dir/clean
+clean: CMakeFiles/test_init.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -88,7 +90,7 @@ clean: CMakeFiles/test_parse.dir/clean
 CMakeFiles/tinychat.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=5,6,7,8,9,10 "Built target tinychat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target tinychat"
 .PHONY : CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
@@ -114,7 +116,7 @@ CMakeFiles/tinychat.dir/clean:
 CMakeFiles/test_log.dir/all: CMakeFiles/tinychat.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_log"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4 "Built target test_log"
 .PHONY : CMakeFiles/test_log.dir/all
 
 # Build rule for subdir invocation for target.
@@ -140,7 +142,7 @@ CMakeFiles/test_log.dir/clean:
 CMakeFiles/test_parse.dir/all: CMakeFiles/tinychat.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4 "Built target test_parse"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=5,6 "Built target test_parse"
 .PHONY : CMakeFiles/test_parse.dir/all
 
 # Build rule for subdir invocation for target.
@@ -158,6 +160,32 @@ test_parse: CMakeFiles/test_parse.dir/rule
 CMakeFiles/test_parse.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/clean
 .PHONY : CMakeFiles/test_parse.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_init.dir
+
+# All Build rule for target.
+CMakeFiles/test_init.dir/all: CMakeFiles/tinychat.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_init"
+.PHONY : CMakeFiles/test_init.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_init.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 8
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_init.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
+.PHONY : CMakeFiles/test_init.dir/rule
+
+# Convenience name for target.
+test_init: CMakeFiles/test_init.dir/rule
+.PHONY : test_init
+
+# clean rule for target.
+CMakeFiles/test_init.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/clean
+.PHONY : CMakeFiles/test_init.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

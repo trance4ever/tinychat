@@ -158,6 +158,19 @@ test_parse/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/build
 .PHONY : test_parse/fast
 
+#=============================================================================
+# Target rules for targets named test_init
+
+# Build rule for target.
+test_init: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_init
+.PHONY : test_init
+
+# fast build rule for target.
+test_init/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/build
+.PHONY : test_init/fast
+
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
 
@@ -278,6 +291,30 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
+test/test_init.o: test/test_init.cc.o
+.PHONY : test/test_init.o
+
+# target to build an object file
+test/test_init.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/test/test_init.cc.o
+.PHONY : test/test_init.cc.o
+
+test/test_init.i: test/test_init.cc.i
+.PHONY : test/test_init.i
+
+# target to preprocess a source file
+test/test_init.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/test/test_init.cc.i
+.PHONY : test/test_init.cc.i
+
+test/test_init.s: test/test_init.cc.s
+.PHONY : test/test_init.s
+
+# target to generate assembly for a file
+test/test_init.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/test/test_init.cc.s
+.PHONY : test/test_init.cc.s
+
 test/test_log.o: test/test_log.cc.o
 .PHONY : test/test_log.o
 
@@ -334,6 +371,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test_init"
 	@echo "... test_log"
 	@echo "... test_parse"
 	@echo "... tinychat"
@@ -352,6 +390,9 @@ help:
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
+	@echo "... test/test_init.o"
+	@echo "... test/test_init.i"
+	@echo "... test/test_init.s"
 	@echo "... test/test_log.o"
 	@echo "... test/test_log.i"
 	@echo "... test/test_log.s"

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.28.3)
 project(tinychat)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -O0 -ggdb -std=c++11 -Wall -Wno-deprecated -Werror -Wno-unused-function -Wno-builtin-macro-redefined")
+set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -O0 -ggdb -std=c++11 -Wall -Wno-deprecated -Wno-unused-function -Wno-builtin-macro-redefined")
 
 include_directories(.)
 include_directories(/usr/local/include)
@@ -31,6 +31,10 @@ target_link_libraries(test_log ${LIB_LIB})
 add_executable(test_parse test/test_parse.cc)
 add_dependencies(test_parse tinychat)
 target_link_libraries(test_parse ${LIB_LIB})
+
+add_executable(test_init test/test_init.cc)
+add_dependencies(test_init tinychat)
+target_link_libraries(test_init ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
