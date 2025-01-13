@@ -1,2 +1,3 @@
 - Logger
     m_level: INFO
+    m_fileLogAppend: /home/trance/tinychat/log/

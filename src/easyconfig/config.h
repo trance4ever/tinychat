@@ -32,9 +32,9 @@ namespace trance {
             return LogEvent::logLevelFromString(val);
         }
     };
-    class config : public std::enable_shared_from_this<config> {
+    class Config : public std::enable_shared_from_this<Config> {
     public:
-        typedef std::shared_ptr<config> ptr;
+        typedef std::shared_ptr<Config> ptr;
         // 获取配置信息
         template<class T>
         T getConfig(std::string name) const {
@@ -52,7 +52,7 @@ namespace trance {
         // 得到配置类容器
         std::map<std::string, std::string> getMap() { return m_configs;}
         // 得到全局配置实体
-        static config::ptr getGlobalConfig();
+        static Config::ptr getGlobalConfig();
     private:
         // 记录配置信息
         std::map<std::string, std::string> m_configs;

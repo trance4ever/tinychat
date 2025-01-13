@@ -5,7 +5,7 @@ namespace trance {
     static Initializer initialization;
 
     Initializer::Initializer() {
-        config::ptr g_config_ptr = config::getGlobalConfig();
+        Config::ptr g_config_ptr = Config::getGlobalConfig();
         __GETNODE__("../src/easyconfig/config.txt", nodes)
         std::map<std::string, std::string> configs = g_config_ptr->getMap();
         for(auto list : nodes) {
@@ -15,5 +15,10 @@ namespace trance {
         }
         // 设置日志器级别
         Logger::getGlobalLogger()->setLogLevel(g_config_ptr->getConfig<LogLevel>("Logger::m_level"));
+        // 添加std日志输出地
+        Logger::getGlobalLogger()->addLoggerAppend(std::make_shared<StdLoggerAppend>());
+        // 添加文件日志输出地
+        std::string path = g_config_ptr->getConfig<std::string>("Logger::m_fileLogAppend");
+        Logger::getGlobalLogger()->addLoggerAppend(std::make_shared<FileLoggerAppend>(path));
     }
 }

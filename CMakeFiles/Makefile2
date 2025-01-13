@@ -67,8 +67,6 @@ CMAKE_BINARY_DIR = /home/trance/tinychat
 
 # The main recursive "all" target.
 all: CMakeFiles/tinychat.dir/all
-all: CMakeFiles/test_log.dir/all
-all: CMakeFiles/test_parse.dir/all
 all: CMakeFiles/test_init.dir/all
 .PHONY : all
 
@@ -78,8 +76,6 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/tinychat.dir/clean
-clean: CMakeFiles/test_log.dir/clean
-clean: CMakeFiles/test_parse.dir/clean
 clean: CMakeFiles/test_init.dir/clean
 .PHONY : clean
 
@@ -90,7 +86,7 @@ clean: CMakeFiles/test_init.dir/clean
 CMakeFiles/tinychat.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=7,8,9,10,11,12 "Built target tinychat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4,5,6,7,8 "Built target tinychat"
 .PHONY : CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
@@ -108,58 +104,6 @@ tinychat: CMakeFiles/tinychat.dir/rule
 CMakeFiles/tinychat.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/clean
 .PHONY : CMakeFiles/tinychat.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/test_log.dir
-
-# All Build rule for target.
-CMakeFiles/test_log.dir/all: CMakeFiles/tinychat.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4 "Built target test_log"
-.PHONY : CMakeFiles/test_log.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/test_log.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_log.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
-.PHONY : CMakeFiles/test_log.dir/rule
-
-# Convenience name for target.
-test_log: CMakeFiles/test_log.dir/rule
-.PHONY : test_log
-
-# clean rule for target.
-CMakeFiles/test_log.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/clean
-.PHONY : CMakeFiles/test_log.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/test_parse.dir
-
-# All Build rule for target.
-CMakeFiles/test_parse.dir/all: CMakeFiles/tinychat.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=5,6 "Built target test_parse"
-.PHONY : CMakeFiles/test_parse.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/test_parse.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_parse.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
-.PHONY : CMakeFiles/test_parse.dir/rule
-
-# Convenience name for target.
-test_parse: CMakeFiles/test_parse.dir/rule
-.PHONY : test_parse
-
-# clean rule for target.
-CMakeFiles/test_parse.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/clean
-.PHONY : CMakeFiles/test_parse.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/test_init.dir

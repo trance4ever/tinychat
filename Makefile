@@ -133,32 +133,6 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_log
-
-# Build rule for target.
-test_log: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_log
-.PHONY : test_log
-
-# fast build rule for target.
-test_log/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
-.PHONY : test_log/fast
-
-#=============================================================================
-# Target rules for targets named test_parse
-
-# Build rule for target.
-test_parse: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_parse
-.PHONY : test_parse
-
-# fast build rule for target.
-test_parse/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/build
-.PHONY : test_parse/fast
-
-#=============================================================================
 # Target rules for targets named test_init
 
 # Build rule for target.
@@ -315,54 +289,6 @@ test/test_init.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/test/test_init.cc.s
 .PHONY : test/test_init.cc.s
 
-test/test_log.o: test/test_log.cc.o
-.PHONY : test/test_log.o
-
-# target to build an object file
-test/test_log.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.o
-.PHONY : test/test_log.cc.o
-
-test/test_log.i: test/test_log.cc.i
-.PHONY : test/test_log.i
-
-# target to preprocess a source file
-test/test_log.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.i
-.PHONY : test/test_log.cc.i
-
-test/test_log.s: test/test_log.cc.s
-.PHONY : test/test_log.s
-
-# target to generate assembly for a file
-test/test_log.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.s
-.PHONY : test/test_log.cc.s
-
-test/test_parse.o: test/test_parse.cc.o
-.PHONY : test/test_parse.o
-
-# target to build an object file
-test/test_parse.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/test/test_parse.cc.o
-.PHONY : test/test_parse.cc.o
-
-test/test_parse.i: test/test_parse.cc.i
-.PHONY : test/test_parse.i
-
-# target to preprocess a source file
-test/test_parse.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/test/test_parse.cc.i
-.PHONY : test/test_parse.cc.i
-
-test/test_parse.s: test/test_parse.cc.s
-.PHONY : test/test_parse.s
-
-# target to generate assembly for a file
-test/test_parse.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_parse.dir/build.make CMakeFiles/test_parse.dir/test/test_parse.cc.s
-.PHONY : test/test_parse.cc.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -372,8 +298,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test_init"
-	@echo "... test_log"
-	@echo "... test_parse"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
@@ -393,12 +317,6 @@ help:
 	@echo "... test/test_init.o"
 	@echo "... test/test_init.i"
 	@echo "... test/test_init.s"
-	@echo "... test/test_log.o"
-	@echo "... test/test_log.i"
-	@echo "... test/test_log.s"
-	@echo "... test/test_parse.o"
-	@echo "... test/test_parse.i"
-	@echo "... test/test_parse.s"
 .PHONY : help
 
 

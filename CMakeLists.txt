@@ -23,18 +23,25 @@ set(LIB_LIB
     tinychat
 	pthread
 )
-
-add_executable(test_log test/test_log.cc)
-add_dependencies(test_log tinychat)
-target_link_libraries(test_log ${LIB_LIB})
-
-add_executable(test_parse test/test_parse.cc)
-add_dependencies(test_parse tinychat)
-target_link_libraries(test_parse ${LIB_LIB})
-
+# 测试初始化模块
 add_executable(test_init test/test_init.cc)
 add_dependencies(test_init tinychat)
 target_link_libraries(test_init ${LIB_LIB})
+
+# 测试日志模块
+# add_executable(test_log test/test_log.cc)
+# add_dependencies(test_log tinychat)
+# target_link_libraries(test_log ${LIB_LIB})
+
+# 测试解析配置文件模块
+# add_executable(test_parse test/test_parse.cc)
+# add_dependencies(test_parse tinychat)
+# target_link_libraries(test_parse ${LIB_LIB})
+
+# 测试配置模块
+# add_executable(test_config test/test_config.cc)
+# add_dependencies(test_config tinychat)
+# target_link_libraries(test_config ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

@@ -1,12 +1,14 @@
 #ifndef __TINYCHAT_LOG_H__
 #define __TINYCHAT_LOG_H__
-#include "util.h"
 #include<iostream>
 #include<memory>
 #include<vector>
 #include<stdarg.h>
 #include<string>
+#include<fstream>
+#include "util.h"
 
+#define MAX_LOG_FILE_SIZE 1024 * 1024 * 10
 
 namespace trance {
     #define FMT_UNKOWN_LOG(fmt, ...) \
@@ -39,7 +41,7 @@ namespace trance {
     #define FATAL_LOG(str) \
         Logger::getGlobalLogger()->pushLog(LogEvent(FATAL, __FILE__, __LINE__), str); \
 
-    //日志级别
+    // 日志级别
     enum LogLevel {
         UNKOWN,
         INFO,
@@ -48,7 +50,7 @@ namespace trance {
         FATAL
     };
     class LogEvent;
-    //日志器
+    // 日志器
     class Logger {
     public:
         // 默认为INFO级别
@@ -58,7 +60,7 @@ namespace trance {
         // 输出格式化日志到所有输出地
         void pushLog(LogEvent l, const char* format, ...);
         // 输出日志到所有输出地
-        void pushLog(LogEvent l, std::string str);
+        void pushLog(LogEvent l, std::string& str);
         // 得到日志器
         static std::shared_ptr<Logger> getGlobalLogger();
         // 初始化操作
@@ -67,12 +69,45 @@ namespace trance {
         void setLogLevel(LogLevel l);
         // 测试
         LogLevel getlevel() const { return m_level;}
+        // 日志输出地
+        class LoggerAppend {
+        public:
+            // 输出日志
+            virtual void push(std::string& str) = 0;
+        };
+        // 添加日志输出地方
+        void addLoggerAppend(std::shared_ptr<LoggerAppend> append);
+        // 删除日志输出地方
+        void delLoggerAppend(std::shared_ptr<LoggerAppend> append);
     private:
         // 日志器级别，输出级别不小于该级别的日志
         LogLevel m_level;
+        // 日志输出地
+        std::vector<std::shared_ptr<LoggerAppend>> m_appends;
+        
     };
-
-    //事件类
+    // std日志输出地
+    class StdLoggerAppend : public Logger::LoggerAppend {
+    public:
+        void push(std::string& str) override;
+    };
+    // 文件日志输出地
+    class FileLoggerAppend : public Logger::LoggerAppend {
+    public:
+        FileLoggerAppend(std::string str) : m_filepath(str) { }
+        // 输出日志到文件
+        void push(std::string& str) override;
+        // 获得一个合适的文件名
+        std::string getFileName();
+        // 获得初始化文件名
+        std::string getInitFileName();
+    private:
+        std::string m_filepath;
+        std::string m_preFileName;
+        std::ofstream m_ofs;
+        std::ifstream m_ifs;
+    };
+    // 事件类
     class LogEvent {
     public:
         // 事件构造器，自动获取当前时间与进程与线程号
