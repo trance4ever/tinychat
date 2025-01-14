@@ -15,6 +15,7 @@ set(LIB_SRC
     src/util.cc
     src/easyconfig/config.cc
     src/easyconfig/parse.cc
+    src/thread.cc
 )
 
 add_library(tinychat SHARED ${LIB_SRC})
@@ -24,9 +25,9 @@ set(LIB_LIB
 	pthread
 )
 # 测试初始化模块
-add_executable(test_init test/test_init.cc)
-add_dependencies(test_init tinychat)
-target_link_libraries(test_init ${LIB_LIB})
+# add_executable(test_init test/test_init.cc)
+# add_dependencies(test_init tinychat)
+# target_link_libraries(test_init ${LIB_LIB})
 
 # 测试日志模块
 # add_executable(test_log test/test_log.cc)
@@ -42,6 +43,11 @@ target_link_libraries(test_init ${LIB_LIB})
 # add_executable(test_config test/test_config.cc)
 # add_dependencies(test_config tinychat)
 # target_link_libraries(test_config ${LIB_LIB})
+
+# 测试线程模块
+add_executable(test_thread test/test_thread.cc)
+add_dependencies(test_thread tinychat)
+target_link_libraries(test_thread ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

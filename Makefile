@@ -133,17 +133,17 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_init
+# Target rules for targets named test_thread
 
 # Build rule for target.
-test_init: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_init
-.PHONY : test_init
+test_thread: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_thread
+.PHONY : test_thread
 
 # fast build rule for target.
-test_init/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/build
-.PHONY : test_init/fast
+test_thread/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/build
+.PHONY : test_thread/fast
 
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
@@ -241,6 +241,30 @@ src/log.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/log.cc.s
 .PHONY : src/log.cc.s
 
+src/thread.o: src/thread.cc.o
+.PHONY : src/thread.o
+
+# target to build an object file
+src/thread.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/thread.cc.o
+.PHONY : src/thread.cc.o
+
+src/thread.i: src/thread.cc.i
+.PHONY : src/thread.i
+
+# target to preprocess a source file
+src/thread.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/thread.cc.i
+.PHONY : src/thread.cc.i
+
+src/thread.s: src/thread.cc.s
+.PHONY : src/thread.s
+
+# target to generate assembly for a file
+src/thread.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/thread.cc.s
+.PHONY : src/thread.cc.s
+
 src/util.o: src/util.cc.o
 .PHONY : src/util.o
 
@@ -265,29 +289,29 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
-test/test_init.o: test/test_init.cc.o
-.PHONY : test/test_init.o
+test/test_thread.o: test/test_thread.cc.o
+.PHONY : test/test_thread.o
 
 # target to build an object file
-test/test_init.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/test/test_init.cc.o
-.PHONY : test/test_init.cc.o
+test/test_thread.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cc.o
+.PHONY : test/test_thread.cc.o
 
-test/test_init.i: test/test_init.cc.i
-.PHONY : test/test_init.i
+test/test_thread.i: test/test_thread.cc.i
+.PHONY : test/test_thread.i
 
 # target to preprocess a source file
-test/test_init.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/test/test_init.cc.i
-.PHONY : test/test_init.cc.i
+test/test_thread.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cc.i
+.PHONY : test/test_thread.cc.i
 
-test/test_init.s: test/test_init.cc.s
-.PHONY : test/test_init.s
+test/test_thread.s: test/test_thread.cc.s
+.PHONY : test/test_thread.s
 
 # target to generate assembly for a file
-test/test_init.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_init.dir/build.make CMakeFiles/test_init.dir/test/test_init.cc.s
-.PHONY : test/test_init.cc.s
+test/test_thread.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cc.s
+.PHONY : test/test_thread.cc.s
 
 # Help Target
 help:
@@ -297,7 +321,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_init"
+	@echo "... test_thread"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
@@ -311,12 +335,15 @@ help:
 	@echo "... src/log.o"
 	@echo "... src/log.i"
 	@echo "... src/log.s"
+	@echo "... src/thread.o"
+	@echo "... src/thread.i"
+	@echo "... src/thread.s"
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... test/test_init.o"
-	@echo "... test/test_init.i"
-	@echo "... test/test_init.s"
+	@echo "... test/test_thread.o"
+	@echo "... test/test_thread.i"
+	@echo "... test/test_thread.s"
 .PHONY : help
 
 

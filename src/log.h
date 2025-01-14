@@ -112,7 +112,7 @@ namespace trance {
     public:
         // 事件构造器，自动获取当前时间与进程与线程号
         LogEvent(LogLevel l, std::string file_name, int file_line,
-            int pid = getPid(), int thread_id = getThreadId(), std::string dateTime = getDateTime()) : 
+            pid_t pid = getPid(), pid_t thread_id = getThreadId(), std::string dateTime = getDateTime()) : 
                 m_level(l),
                 m_file_name(file_name),
                 m_file_line(std::to_string(file_line)),
@@ -133,8 +133,8 @@ namespace trance {
 		LogLevel m_level; //日志级别
         std::string m_file_name; //文件名
 		std::string m_file_line; //行号
-		int m_pid; //进程号
-		int m_thread_id; //线程号
+		pid_t m_pid; //进程号
+		pid_t m_thread_id; //线程号
         std::string m_dateTime; //时间		
     };
 }

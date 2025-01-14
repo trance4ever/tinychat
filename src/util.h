@@ -6,12 +6,13 @@
 #include<chrono>
 #include<ctime>
 #include<sstream>
+#include<sys/syscall.h>
 
 namespace trance {
     // 得到进程号
     pid_t getPid();
     // 得到线程号
-    pthread_t getThreadId();
+    pid_t getThreadId();
     // 得到日期时间
     std::string getDateTime();
     // 得到日期

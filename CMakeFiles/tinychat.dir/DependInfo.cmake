@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/trance/tinychat/src/easyconfig/parse.cc" "CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.o.d"
   "/home/trance/tinychat/src/init.cc" "CMakeFiles/tinychat.dir/src/init.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/init.cc.o.d"
   "/home/trance/tinychat/src/log.cc" "CMakeFiles/tinychat.dir/src/log.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/log.cc.o.d"
+  "/home/trance/tinychat/src/thread.cc" "CMakeFiles/tinychat.dir/src/thread.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/thread.cc.o.d"
   "/home/trance/tinychat/src/util.cc" "CMakeFiles/tinychat.dir/src/util.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/util.cc.o.d"
   )
 

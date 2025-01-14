@@ -4,8 +4,6 @@ namespace trance {
 
     static int g_pid = 0;
 
-	static thread_local int g_thread_id = 0;
-
     pid_t getPid() {
         if(g_pid == 0) {
             g_pid = getpid();
@@ -13,11 +11,8 @@ namespace trance {
         return g_pid;
     }
     
-    pthread_t getThreadId() {
-        if(g_thread_id == 0) {
-            g_thread_id = gettid();
-        }
-        return g_thread_id;
+    pid_t getThreadId() {
+        return syscall(SYS_gettid);
     }
 
     std::string getDateTime() {
