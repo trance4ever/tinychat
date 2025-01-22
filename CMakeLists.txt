@@ -30,9 +30,9 @@ set(LIB_LIB
 # target_link_libraries(test_init ${LIB_LIB})
 
 # 测试日志模块
-# add_executable(test_log test/test_log.cc)
-# add_dependencies(test_log tinychat)
-# target_link_libraries(test_log ${LIB_LIB})
+add_executable(test_log test/test_log.cc)
+add_dependencies(test_log tinychat)
+target_link_libraries(test_log ${LIB_LIB})
 
 # 测试解析配置文件模块
 # add_executable(test_parse test/test_parse.cc)
@@ -45,9 +45,9 @@ set(LIB_LIB
 # target_link_libraries(test_config ${LIB_LIB})
 
 # 测试线程模块
-add_executable(test_thread test/test_thread.cc)
-add_dependencies(test_thread tinychat)
-target_link_libraries(test_thread ${LIB_LIB})
+# add_executable(test_thread test/test_thread.cc)
+# add_dependencies(test_thread tinychat)
+# target_link_libraries(test_thread ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

@@ -7,6 +7,7 @@
 #include<string>
 #include<fstream>
 #include "util.h"
+#include "thread.h"
 
 #define MAX_LOG_FILE_SIZE 1024 * 1024 * 10
 
@@ -40,6 +41,7 @@ namespace trance {
 
     #define FATAL_LOG(str) \
         Logger::getGlobalLogger()->pushLog(LogEvent(FATAL, __FILE__, __LINE__), str); \
+
 
     // 日志级别
     enum LogLevel {
@@ -84,7 +86,8 @@ namespace trance {
         LogLevel m_level;
         // 日志输出地
         std::vector<std::shared_ptr<LoggerAppend>> m_appends;
-        
+        // 锁资源
+        Spinlock m_lock;
     };
     // std日志输出地
     class StdLoggerAppend : public Logger::LoggerAppend {

@@ -14,10 +14,12 @@ namespace trance {
     }
 
     void Logger::addLoggerAppend(std::shared_ptr<LoggerAppend> append) {
+        ScopedLock<Spinlock> lock(m_lock);
         m_appends.push_back(append);
     }
     
     void Logger::delLoggerAppend(std::shared_ptr<LoggerAppend> append) {
+        ScopedLock<Spinlock> lock(m_lock);
         auto it = m_appends.begin();
         for(; it != m_appends.end(); ++it) {
             if(*it == append) {
@@ -113,6 +115,7 @@ namespace trance {
             }
             va_end(al);
             std::string str = ss.str();
+            ScopedLock<Spinlock> lock(m_lock);
             for(auto append : m_appends) {
                 append->push(str);
             }
@@ -122,6 +125,7 @@ namespace trance {
     void Logger::pushLog(LogEvent l, std::string& str) {
         if(l.getLevel() >= m_level) {
             std::string str = l.toString().append("\t");
+            ScopedLock<Spinlock> lock(m_lock);
             for(auto append : m_appends) {
                 append->push(str);
             }
@@ -129,6 +133,7 @@ namespace trance {
     }
 
     void Logger::setLogLevel(LogLevel l) {
+        ScopedLock<Spinlock> lock(m_lock);
         this->m_level = l;
     }
 

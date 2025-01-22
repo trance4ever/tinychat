@@ -1,4 +1,5 @@
 #include "thread.h"
+#include "log.h"
 
 namespace trance {
     static thread_local Thread* t_thread = nullptr;
@@ -26,9 +27,7 @@ namespace trance {
         cb.swap(thread->m_cb);
         thread->m_sem.notify();
         thread->m_id = getThreadId();
-        std::cout << "thread: " << thread->m_id << " before callback" << std::endl;
         cb();
-        std::cout << "thread: " << thread->m_id << " after callback" << std::endl;
         return 0;
     }
 

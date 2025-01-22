@@ -133,17 +133,17 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_thread
+# Target rules for targets named test_log
 
 # Build rule for target.
-test_thread: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_thread
-.PHONY : test_thread
+test_log: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_log
+.PHONY : test_log
 
 # fast build rule for target.
-test_thread/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/build
-.PHONY : test_thread/fast
+test_log/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
+.PHONY : test_log/fast
 
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
@@ -289,29 +289,29 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
-test/test_thread.o: test/test_thread.cc.o
-.PHONY : test/test_thread.o
+test/test_log.o: test/test_log.cc.o
+.PHONY : test/test_log.o
 
 # target to build an object file
-test/test_thread.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cc.o
-.PHONY : test/test_thread.cc.o
+test/test_log.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.o
+.PHONY : test/test_log.cc.o
 
-test/test_thread.i: test/test_thread.cc.i
-.PHONY : test/test_thread.i
+test/test_log.i: test/test_log.cc.i
+.PHONY : test/test_log.i
 
 # target to preprocess a source file
-test/test_thread.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cc.i
-.PHONY : test/test_thread.cc.i
+test/test_log.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.i
+.PHONY : test/test_log.cc.i
 
-test/test_thread.s: test/test_thread.cc.s
-.PHONY : test/test_thread.s
+test/test_log.s: test/test_log.cc.s
+.PHONY : test/test_log.s
 
 # target to generate assembly for a file
-test/test_thread.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_thread.dir/build.make CMakeFiles/test_thread.dir/test/test_thread.cc.s
-.PHONY : test/test_thread.cc.s
+test/test_log.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.s
+.PHONY : test/test_log.cc.s
 
 # Help Target
 help:
@@ -321,7 +321,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_thread"
+	@echo "... test_log"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
@@ -341,9 +341,9 @@ help:
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... test/test_thread.o"
-	@echo "... test/test_thread.i"
-	@echo "... test/test_thread.s"
+	@echo "... test/test_log.o"
+	@echo "... test/test_log.i"
+	@echo "... test/test_log.s"
 .PHONY : help
 
 
