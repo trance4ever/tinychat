@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = /home/trance/tinychat
 
 # The main recursive "all" target.
 all: CMakeFiles/tinychat.dir/all
-all: CMakeFiles/test_log.dir/all
+all: CMakeFiles/test_reactor.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,7 +76,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/tinychat.dir/clean
-clean: CMakeFiles/test_log.dir/clean
+clean: CMakeFiles/test_reactor.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -86,12 +86,12 @@ clean: CMakeFiles/test_log.dir/clean
 CMakeFiles/tinychat.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4,5,6,7,8,9 "Built target tinychat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11 "Built target tinychat"
 .PHONY : CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tinychat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tinychat.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/tinychat.dir/rule
@@ -106,30 +106,30 @@ CMakeFiles/tinychat.dir/clean:
 .PHONY : CMakeFiles/tinychat.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_log.dir
+# Target rules for target CMakeFiles/test_reactor.dir
 
 # All Build rule for target.
-CMakeFiles/test_log.dir/all: CMakeFiles/tinychat.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_log"
-.PHONY : CMakeFiles/test_log.dir/all
+CMakeFiles/test_reactor.dir/all: CMakeFiles/tinychat.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_reactor"
+.PHONY : CMakeFiles/test_reactor.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test_log.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_log.dir/all
+CMakeFiles/test_reactor.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_reactor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
-.PHONY : CMakeFiles/test_log.dir/rule
+.PHONY : CMakeFiles/test_reactor.dir/rule
 
 # Convenience name for target.
-test_log: CMakeFiles/test_log.dir/rule
-.PHONY : test_log
+test_reactor: CMakeFiles/test_reactor.dir/rule
+.PHONY : test_reactor
 
 # clean rule for target.
-CMakeFiles/test_log.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/clean
-.PHONY : CMakeFiles/test_log.dir/clean
+CMakeFiles/test_reactor.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/clean
+.PHONY : CMakeFiles/test_reactor.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

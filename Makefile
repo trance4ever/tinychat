@@ -133,17 +133,17 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_log
+# Target rules for targets named test_reactor
 
 # Build rule for target.
-test_log: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_log
-.PHONY : test_log
+test_reactor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_reactor
+.PHONY : test_reactor
 
 # fast build rule for target.
-test_log/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/build
-.PHONY : test_log/fast
+test_reactor/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/build
+.PHONY : test_reactor/fast
 
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
@@ -193,6 +193,30 @@ src/easyconfig/parse.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.s
 .PHONY : src/easyconfig/parse.cc.s
 
+src/fd_event.o: src/fd_event.cc.o
+.PHONY : src/fd_event.o
+
+# target to build an object file
+src/fd_event.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/fd_event.cc.o
+.PHONY : src/fd_event.cc.o
+
+src/fd_event.i: src/fd_event.cc.i
+.PHONY : src/fd_event.i
+
+# target to preprocess a source file
+src/fd_event.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/fd_event.cc.i
+.PHONY : src/fd_event.cc.i
+
+src/fd_event.s: src/fd_event.cc.s
+.PHONY : src/fd_event.s
+
+# target to generate assembly for a file
+src/fd_event.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/fd_event.cc.s
+.PHONY : src/fd_event.cc.s
+
 src/init.o: src/init.cc.o
 .PHONY : src/init.o
 
@@ -240,6 +264,30 @@ src/log.s: src/log.cc.s
 src/log.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/log.cc.s
 .PHONY : src/log.cc.s
+
+src/reactor.o: src/reactor.cc.o
+.PHONY : src/reactor.o
+
+# target to build an object file
+src/reactor.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/reactor.cc.o
+.PHONY : src/reactor.cc.o
+
+src/reactor.i: src/reactor.cc.i
+.PHONY : src/reactor.i
+
+# target to preprocess a source file
+src/reactor.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/reactor.cc.i
+.PHONY : src/reactor.cc.i
+
+src/reactor.s: src/reactor.cc.s
+.PHONY : src/reactor.s
+
+# target to generate assembly for a file
+src/reactor.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/reactor.cc.s
+.PHONY : src/reactor.cc.s
 
 src/thread.o: src/thread.cc.o
 .PHONY : src/thread.o
@@ -289,29 +337,29 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
-test/test_log.o: test/test_log.cc.o
-.PHONY : test/test_log.o
+test/test_reactor.o: test/test_reactor.cc.o
+.PHONY : test/test_reactor.o
 
 # target to build an object file
-test/test_log.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.o
-.PHONY : test/test_log.cc.o
+test/test_reactor.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/test/test_reactor.cc.o
+.PHONY : test/test_reactor.cc.o
 
-test/test_log.i: test/test_log.cc.i
-.PHONY : test/test_log.i
+test/test_reactor.i: test/test_reactor.cc.i
+.PHONY : test/test_reactor.i
 
 # target to preprocess a source file
-test/test_log.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.i
-.PHONY : test/test_log.cc.i
+test/test_reactor.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/test/test_reactor.cc.i
+.PHONY : test/test_reactor.cc.i
 
-test/test_log.s: test/test_log.cc.s
-.PHONY : test/test_log.s
+test/test_reactor.s: test/test_reactor.cc.s
+.PHONY : test/test_reactor.s
 
 # target to generate assembly for a file
-test/test_log.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_log.dir/build.make CMakeFiles/test_log.dir/test/test_log.cc.s
-.PHONY : test/test_log.cc.s
+test/test_reactor.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/test/test_reactor.cc.s
+.PHONY : test/test_reactor.cc.s
 
 # Help Target
 help:
@@ -321,7 +369,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_log"
+	@echo "... test_reactor"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
@@ -329,21 +377,27 @@ help:
 	@echo "... src/easyconfig/parse.o"
 	@echo "... src/easyconfig/parse.i"
 	@echo "... src/easyconfig/parse.s"
+	@echo "... src/fd_event.o"
+	@echo "... src/fd_event.i"
+	@echo "... src/fd_event.s"
 	@echo "... src/init.o"
 	@echo "... src/init.i"
 	@echo "... src/init.s"
 	@echo "... src/log.o"
 	@echo "... src/log.i"
 	@echo "... src/log.s"
+	@echo "... src/reactor.o"
+	@echo "... src/reactor.i"
+	@echo "... src/reactor.s"
 	@echo "... src/thread.o"
 	@echo "... src/thread.i"
 	@echo "... src/thread.s"
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... test/test_log.o"
-	@echo "... test/test_log.i"
-	@echo "... test/test_log.s"
+	@echo "... test/test_reactor.o"
+	@echo "... test/test_reactor.i"
+	@echo "... test/test_reactor.s"
 .PHONY : help
 
 
