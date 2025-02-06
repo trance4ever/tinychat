@@ -8,6 +8,7 @@ namespace trance {
     FdEvent::FdEvent(int fd) : m_fd(fd) {
         memset(&m_event, 0, sizeof(m_event));
         m_event.events |= EPOLLET;
+        setNonBlock();
     }
 
     FdEvent::FdEvent() {
@@ -52,4 +53,16 @@ namespace trance {
         }
     }
 
+    void FdEvent::setNonBlock() {
+        int flag = fcntl(m_fd, F_GETFL, 0);
+        if(flag & O_NONBLOCK) {
+            return;
+        }
+        fcntl(m_fd, F_SETFL, flag | O_NONBLOCK);
+    }
+
+    void FdEvent::setFd(int fd) {
+        m_fd = fd;
+        setNonBlock();
+    }
 }

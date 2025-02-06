@@ -18,13 +18,13 @@ int main() {
         exit(EXIT_FAILURE);
     }
     auto f1 = []() {
-        std::cout << "read event trigger" << std::endl;
+        std::cout << "write event trigger" << std::endl;
     };
 
     auto f2 = [=]() {
         char buffer[100];
         read(p[0], buffer, sizeof(buffer));
-        std::cout << "write event trigger" << std::endl;
+        std::cout << "read event trigger" << std::endl;
         std::cout << "info: " << buffer << std::endl;
     };
     auto f3 = [=]() {
@@ -35,10 +35,16 @@ int main() {
         }
     };
     Thread t(f3);
+
     FdEvent fe(p[0]);
     fe.listen(f2, EPOLLIN);
-    Reactor r;
-    r.addEpollEvent(&fe);
-    r.loop();
+
+    FdEvent fe2(p[1]);
+    fe2.listen(f1, EPOLLOUT);
+
+    Reactor::ptr r = std::make_shared<Reactor>();
+    r->addEpollEvent(&fe);
+    r->addEpollEvent(&fe2);
+    r->loop();
     return 0;
 }

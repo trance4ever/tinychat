@@ -17,6 +17,8 @@ namespace trance {
     std::string getDateTime();
     // 得到日期
     std::string getDate();
+    // 得到毫秒数
+    uint64_t getMillis();
 }
 
 #endif

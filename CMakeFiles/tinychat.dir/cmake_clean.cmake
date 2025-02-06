@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tinychat.dir/src/reactor.cc.o.d"
   "CMakeFiles/tinychat.dir/src/thread.cc.o"
   "CMakeFiles/tinychat.dir/src/thread.cc.o.d"
+  "CMakeFiles/tinychat.dir/src/timer.cc.o"
+  "CMakeFiles/tinychat.dir/src/timer.cc.o.d"
   "CMakeFiles/tinychat.dir/src/util.cc.o"
   "CMakeFiles/tinychat.dir/src/util.cc.o.d"
   "lib/libtinychat.pdb"

@@ -2,10 +2,13 @@
 #define __FDEVENT_H__
 #include<functional>
 #include<sys/epoll.h>
+#include<fcntl.h>
+#include<memory>
 
 namespace trance {
     class FdEvent{
     public:
+        typedef std::shared_ptr<FdEvent> ptr;
         // 有参构造
         FdEvent(int fd);
         // 无参构造
@@ -18,10 +21,14 @@ namespace trance {
         std::function<void()> handle(int type);
         // 获取文件描述符
         int getFd() const { return m_fd;}
+        // 设置文件描述符
+        void setFd(int fd);
         // 取消事件
         void cancleEvent(int type);
         // 获得事件结构体
         epoll_event getEpollEvent() { return m_event;}
+        // 设置非阻塞模式
+        void setNonBlock();
     private:
         // 相关联的文件描述符
         int m_fd = -1;

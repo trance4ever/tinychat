@@ -133,17 +133,17 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_reactor
+# Target rules for targets named test_timer
 
 # Build rule for target.
-test_reactor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_reactor
-.PHONY : test_reactor
+test_timer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_timer
+.PHONY : test_timer
 
 # fast build rule for target.
-test_reactor/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/build
-.PHONY : test_reactor/fast
+test_timer/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/build
+.PHONY : test_timer/fast
 
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
@@ -313,6 +313,30 @@ src/thread.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/thread.cc.s
 .PHONY : src/thread.cc.s
 
+src/timer.o: src/timer.cc.o
+.PHONY : src/timer.o
+
+# target to build an object file
+src/timer.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/timer.cc.o
+.PHONY : src/timer.cc.o
+
+src/timer.i: src/timer.cc.i
+.PHONY : src/timer.i
+
+# target to preprocess a source file
+src/timer.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/timer.cc.i
+.PHONY : src/timer.cc.i
+
+src/timer.s: src/timer.cc.s
+.PHONY : src/timer.s
+
+# target to generate assembly for a file
+src/timer.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/timer.cc.s
+.PHONY : src/timer.cc.s
+
 src/util.o: src/util.cc.o
 .PHONY : src/util.o
 
@@ -337,29 +361,29 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
-test/test_reactor.o: test/test_reactor.cc.o
-.PHONY : test/test_reactor.o
+test/test_timer.o: test/test_timer.cc.o
+.PHONY : test/test_timer.o
 
 # target to build an object file
-test/test_reactor.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/test/test_reactor.cc.o
-.PHONY : test/test_reactor.cc.o
+test/test_timer.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/test/test_timer.cc.o
+.PHONY : test/test_timer.cc.o
 
-test/test_reactor.i: test/test_reactor.cc.i
-.PHONY : test/test_reactor.i
+test/test_timer.i: test/test_timer.cc.i
+.PHONY : test/test_timer.i
 
 # target to preprocess a source file
-test/test_reactor.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/test/test_reactor.cc.i
-.PHONY : test/test_reactor.cc.i
+test/test_timer.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/test/test_timer.cc.i
+.PHONY : test/test_timer.cc.i
 
-test/test_reactor.s: test/test_reactor.cc.s
-.PHONY : test/test_reactor.s
+test/test_timer.s: test/test_timer.cc.s
+.PHONY : test/test_timer.s
 
 # target to generate assembly for a file
-test/test_reactor.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_reactor.dir/build.make CMakeFiles/test_reactor.dir/test/test_reactor.cc.s
-.PHONY : test/test_reactor.cc.s
+test/test_timer.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/test/test_timer.cc.s
+.PHONY : test/test_timer.cc.s
 
 # Help Target
 help:
@@ -369,7 +393,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_reactor"
+	@echo "... test_timer"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
@@ -392,12 +416,15 @@ help:
 	@echo "... src/thread.o"
 	@echo "... src/thread.i"
 	@echo "... src/thread.s"
+	@echo "... src/timer.o"
+	@echo "... src/timer.i"
+	@echo "... src/timer.s"
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... test/test_reactor.o"
-	@echo "... test/test_reactor.i"
-	@echo "... test/test_reactor.s"
+	@echo "... test/test_timer.o"
+	@echo "... test/test_timer.i"
+	@echo "... test/test_timer.s"
 .PHONY : help
 
 

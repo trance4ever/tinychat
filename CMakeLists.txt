@@ -18,6 +18,7 @@ set(LIB_SRC
     src/thread.cc
     src/fd_event.cc
     src/reactor.cc
+    src/timer.cc
 )
 
 add_library(tinychat SHARED ${LIB_SRC})
@@ -52,9 +53,14 @@ set(LIB_LIB
 # target_link_libraries(test_thread ${LIB_LIB})
 
 # 测试反应堆模块
-add_executable(test_reactor test/test_reactor.cc)
-add_dependencies(test_reactor tinychat)
-target_link_libraries(test_reactor ${LIB_LIB})
+# add_executable(test_reactor test/test_reactor.cc)
+# add_dependencies(test_reactor tinychat)
+# target_link_libraries(test_reactor ${LIB_LIB})
+
+# 测试定时器模块
+add_executable(test_timer test/test_timer.cc)
+add_dependencies(test_timer tinychat)
+target_link_libraries(test_timer ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

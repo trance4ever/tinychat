@@ -7,14 +7,21 @@ namespace trance {
     static int g_max_epoll_wait_time = 10000;
     static int g_max_epoll_event = 10;
 
-    Reactor::Reactor() {
+    Reactor::Reactor(bool needTimer) {
         m_epoll_fd = epoll_create(10);
         if(m_epoll_fd < 0) {
             ERROR_LOG("failed to create epoll")
             return;
         }
+        if(needTimer) {
+            m_timer = new Timer();
+        }
     }
-    
+    Reactor::~Reactor() {
+        if(m_timer) {
+            delete m_timer;
+        }
+    }
     void Reactor::addEpollEvent(FdEvent* fe) {
         int op = EPOLL_CTL_ADD, fd = fe->getFd();
         if(m_listen_fds.count(fd)) {
@@ -44,9 +51,15 @@ namespace trance {
 
     void Reactor::loop() {
         while(!m_isStop) {
-            ScopedLock<Spinlock> lock(m_lock);
+            if(m_timer) {
+                std::vector<std::function<void()>> timerTasks = m_timer->getTimeOutTasks();
+                for(auto t : timerTasks) {
+                    m_tasks.push(t);
+                }
+            }
+            // ScopedLock<Spinlock> lock(m_lock);
             std::queue<std::function<void()>> tasks;
-            lock.unlock();
+            // lock.unlock();
             m_tasks.swap(tasks);
             while(!tasks.empty()) {
                 std::function<void()> cb = tasks.front();
@@ -55,8 +68,15 @@ namespace trance {
                     cb();
                 }
             }
+            int wait_time = g_max_epoll_wait_time;
+            if(m_timer) {
+                int period = m_timer->getNextEventTime();
+                if(period > 0) {
+                    wait_time = std::min(wait_time, period);
+                }
+            }
             epoll_event events[g_max_epoll_event];
-            int rt = epoll_wait(m_epoll_fd, events, g_max_epoll_event, g_max_epoll_wait_time);
+            int rt = epoll_wait(m_epoll_fd, events, g_max_epoll_event, wait_time);
             if(rt > 0) {
                 for(int i = 0; i < rt; ++i) {
                     epoll_event e = events[i];
