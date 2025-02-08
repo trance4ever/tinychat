@@ -7,6 +7,7 @@
 #include<functional>
 #include<vector>
 #include "util.h"
+#include "thread.h"
 
 namespace trance {
 
@@ -55,6 +56,8 @@ namespace trance {
         // 得到最近定时任务时间间隔
         uint64_t getNextEventTime();
     private:
+        // 锁资源
+        Spinlock m_lock;
         // 存放定时任务
         std::set<TimerEvent::ptr, TimerEvent::comparator> m_onTimerTasks;
     };

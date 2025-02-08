@@ -30,9 +30,17 @@ namespace trance {
         void delTask(std::function<void()> cb);
         // 得到定时器
         Timer* getTimer() {return m_timer;}
+        // 获取当前线程的Reactor对象
+        static Reactor* getCurReactor();
+        // 设置当前线程的Reactor对象
+        void setCurReactor();
+        // 停止循环
+        void stop() { m_isStop = true;}
+        // 查看是否正在循环
+        bool IsStop() { return m_isStop;}
     private:
         // 锁资源
-        // Spinlock m_lock;
+        Spinlock m_lock;
         // epoll对象文件描述符
         int m_epoll_fd;
         // 延迟任务函数

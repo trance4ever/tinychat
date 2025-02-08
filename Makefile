@@ -133,17 +133,17 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_timer
+# Target rules for targets named test_iothread
 
 # Build rule for target.
-test_timer: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_timer
-.PHONY : test_timer
+test_iothread: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_iothread
+.PHONY : test_iothread
 
 # fast build rule for target.
-test_timer/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/build
-.PHONY : test_timer/fast
+test_iothread/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_iothread.dir/build.make CMakeFiles/test_iothread.dir/build
+.PHONY : test_iothread/fast
 
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
@@ -240,6 +240,30 @@ src/init.s: src/init.cc.s
 src/init.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/init.cc.s
 .PHONY : src/init.cc.s
+
+src/io_thread.o: src/io_thread.cc.o
+.PHONY : src/io_thread.o
+
+# target to build an object file
+src/io_thread.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/io_thread.cc.o
+.PHONY : src/io_thread.cc.o
+
+src/io_thread.i: src/io_thread.cc.i
+.PHONY : src/io_thread.i
+
+# target to preprocess a source file
+src/io_thread.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/io_thread.cc.i
+.PHONY : src/io_thread.cc.i
+
+src/io_thread.s: src/io_thread.cc.s
+.PHONY : src/io_thread.s
+
+# target to generate assembly for a file
+src/io_thread.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/io_thread.cc.s
+.PHONY : src/io_thread.cc.s
 
 src/log.o: src/log.cc.o
 .PHONY : src/log.o
@@ -361,29 +385,29 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
-test/test_timer.o: test/test_timer.cc.o
-.PHONY : test/test_timer.o
+test/test_iothread.o: test/test_iothread.cc.o
+.PHONY : test/test_iothread.o
 
 # target to build an object file
-test/test_timer.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/test/test_timer.cc.o
-.PHONY : test/test_timer.cc.o
+test/test_iothread.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_iothread.dir/build.make CMakeFiles/test_iothread.dir/test/test_iothread.cc.o
+.PHONY : test/test_iothread.cc.o
 
-test/test_timer.i: test/test_timer.cc.i
-.PHONY : test/test_timer.i
+test/test_iothread.i: test/test_iothread.cc.i
+.PHONY : test/test_iothread.i
 
 # target to preprocess a source file
-test/test_timer.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/test/test_timer.cc.i
-.PHONY : test/test_timer.cc.i
+test/test_iothread.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_iothread.dir/build.make CMakeFiles/test_iothread.dir/test/test_iothread.cc.i
+.PHONY : test/test_iothread.cc.i
 
-test/test_timer.s: test/test_timer.cc.s
-.PHONY : test/test_timer.s
+test/test_iothread.s: test/test_iothread.cc.s
+.PHONY : test/test_iothread.s
 
 # target to generate assembly for a file
-test/test_timer.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/test/test_timer.cc.s
-.PHONY : test/test_timer.cc.s
+test/test_iothread.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_iothread.dir/build.make CMakeFiles/test_iothread.dir/test/test_iothread.cc.s
+.PHONY : test/test_iothread.cc.s
 
 # Help Target
 help:
@@ -393,7 +417,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_timer"
+	@echo "... test_iothread"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
@@ -407,6 +431,9 @@ help:
 	@echo "... src/init.o"
 	@echo "... src/init.i"
 	@echo "... src/init.s"
+	@echo "... src/io_thread.o"
+	@echo "... src/io_thread.i"
+	@echo "... src/io_thread.s"
 	@echo "... src/log.o"
 	@echo "... src/log.i"
 	@echo "... src/log.s"
@@ -422,9 +449,9 @@ help:
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... test/test_timer.o"
-	@echo "... test/test_timer.i"
-	@echo "... test/test_timer.s"
+	@echo "... test/test_iothread.o"
+	@echo "... test/test_iothread.i"
+	@echo "... test/test_iothread.s"
 .PHONY : help
 
 

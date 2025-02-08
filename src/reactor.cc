@@ -3,9 +3,22 @@
 #include "log.h"
 
 namespace trance {
-
+    static thread_local Reactor* cur_reactor_ptr = nullptr;
     static int g_max_epoll_wait_time = 10000;
     static int g_max_epoll_event = 10;
+
+    Reactor* Reactor::getCurReactor() {
+        if(cur_reactor_ptr) {
+            return cur_reactor_ptr;
+        }
+        else {
+            ERROR_LOG("have no reactor in this thread")
+        }
+    }
+
+    void Reactor::setCurReactor() {
+        cur_reactor_ptr = this;
+    }
 
     Reactor::Reactor(bool needTimer) {
         m_epoll_fd = epoll_create(10);

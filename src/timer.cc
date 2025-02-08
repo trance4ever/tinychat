@@ -21,6 +21,7 @@ namespace trance {
     }
 
     void Timer::addTimerEvent(TimerEvent::ptr event) {
+        ScopedLock<Spinlock> lock(m_lock);
         m_onTimerTasks.insert(event);
     }
 
@@ -29,6 +30,7 @@ namespace trance {
     }
 
     void Timer::delTimerEvent(TimerEvent::ptr event) {
+        ScopedLock<Spinlock> lock(m_lock);
         auto it = m_onTimerTasks.find(event);
         if(it != m_onTimerTasks.end()) {
             m_onTimerTasks.erase(it);

@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tinychat.dir/src/fd_event.cc.o.d"
   "CMakeFiles/tinychat.dir/src/init.cc.o"
   "CMakeFiles/tinychat.dir/src/init.cc.o.d"
+  "CMakeFiles/tinychat.dir/src/io_thread.cc.o"
+  "CMakeFiles/tinychat.dir/src/io_thread.cc.o.d"
   "CMakeFiles/tinychat.dir/src/log.cc.o"
   "CMakeFiles/tinychat.dir/src/log.cc.o.d"
   "CMakeFiles/tinychat.dir/src/reactor.cc.o"

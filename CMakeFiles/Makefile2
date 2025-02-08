@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = /home/trance/tinychat
 
 # The main recursive "all" target.
 all: CMakeFiles/tinychat.dir/all
-all: CMakeFiles/test_timer.dir/all
+all: CMakeFiles/test_iothread.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,7 +76,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/tinychat.dir/clean
-clean: CMakeFiles/test_timer.dir/clean
+clean: CMakeFiles/test_iothread.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -86,12 +86,12 @@ clean: CMakeFiles/test_timer.dir/clean
 CMakeFiles/tinychat.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12 "Built target tinychat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13 "Built target tinychat"
 .PHONY : CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tinychat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tinychat.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/tinychat.dir/rule
@@ -106,30 +106,30 @@ CMakeFiles/tinychat.dir/clean:
 .PHONY : CMakeFiles/tinychat.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_timer.dir
+# Target rules for target CMakeFiles/test_iothread.dir
 
 # All Build rule for target.
-CMakeFiles/test_timer.dir/all: CMakeFiles/tinychat.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_timer"
-.PHONY : CMakeFiles/test_timer.dir/all
+CMakeFiles/test_iothread.dir/all: CMakeFiles/tinychat.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_iothread.dir/build.make CMakeFiles/test_iothread.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_iothread.dir/build.make CMakeFiles/test_iothread.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_iothread"
+.PHONY : CMakeFiles/test_iothread.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test_timer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 12
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_timer.dir/all
+CMakeFiles/test_iothread.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 13
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_iothread.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
-.PHONY : CMakeFiles/test_timer.dir/rule
+.PHONY : CMakeFiles/test_iothread.dir/rule
 
 # Convenience name for target.
-test_timer: CMakeFiles/test_timer.dir/rule
-.PHONY : test_timer
+test_iothread: CMakeFiles/test_iothread.dir/rule
+.PHONY : test_iothread
 
 # clean rule for target.
-CMakeFiles/test_timer.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/clean
-.PHONY : CMakeFiles/test_timer.dir/clean
+CMakeFiles/test_iothread.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_iothread.dir/build.make CMakeFiles/test_iothread.dir/clean
+.PHONY : CMakeFiles/test_iothread.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
