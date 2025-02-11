@@ -1,4 +1,4 @@
 /home/trance/tinychat/CMakeFiles/tinychat.dir
-/home/trance/tinychat/CMakeFiles/test_iothread.dir
+/home/trance/tinychat/CMakeFiles/test_address.dir
 /home/trance/tinychat/CMakeFiles/edit_cache.dir
 /home/trance/tinychat/CMakeFiles/rebuild_cache.dir

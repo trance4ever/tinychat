@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/trance/tinychat/src/init.cc" "CMakeFiles/tinychat.dir/src/init.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/init.cc.o.d"
   "/home/trance/tinychat/src/io_thread.cc" "CMakeFiles/tinychat.dir/src/io_thread.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/io_thread.cc.o.d"
   "/home/trance/tinychat/src/log.cc" "CMakeFiles/tinychat.dir/src/log.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/log.cc.o.d"
+  "/home/trance/tinychat/src/net/address.cc" "CMakeFiles/tinychat.dir/src/net/address.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/net/address.cc.o.d"
   "/home/trance/tinychat/src/reactor.cc" "CMakeFiles/tinychat.dir/src/reactor.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/reactor.cc.o.d"
   "/home/trance/tinychat/src/thread.cc" "CMakeFiles/tinychat.dir/src/thread.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/thread.cc.o.d"
   "/home/trance/tinychat/src/timer.cc" "CMakeFiles/tinychat.dir/src/timer.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/timer.cc.o.d"

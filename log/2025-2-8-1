@@ -1,9 +1,0 @@
-[INFO] [2025-2-8 10:50:52] [46205:46205] [/home/trance/tinychat/test/test_iothread.cc:21]	test
-[INFO] [2025-2-8 10:51:7] [46211:46211] [/home/trance/tinychat/test/test_iothread.cc:21]	test
-[INFO] [2025-2-8 10:52:55] [46270:46270] [/home/trance/tinychat/test/test_iothread.cc:24]	test
-[INFO] [2025-2-8 10:55:40] [46359:46359] [/home/trance/tinychat/test/test_iothread.cc:26]	test
-[INFO] [2025-2-8 10:57:12] [46405:46405] [/home/trance/tinychat/test/test_iothread.cc:26]	test
-[INFO] [2025-2-8 11:0:11] [46589:46589] [/home/trance/tinychat/test/test_iothread.cc:19]	before start
-[INFO] [2025-2-8 11:1:30] [46639:46639] [/home/trance/tinychat/test/test_iothread.cc:19]	before start
-[INFO] [2025-2-8 11:1:32] [46639:46639] [/home/trance/tinychat/test/test_iothread.cc:24]	after start
-[INFO] [2025-2-8 11:1:43] [46639:46639] [/home/trance/tinychat/test/test_iothread.cc:29]	program stop

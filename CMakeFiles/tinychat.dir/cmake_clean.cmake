@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tinychat.dir/src/io_thread.cc.o.d"
   "CMakeFiles/tinychat.dir/src/log.cc.o"
   "CMakeFiles/tinychat.dir/src/log.cc.o.d"
+  "CMakeFiles/tinychat.dir/src/net/address.cc.o"
+  "CMakeFiles/tinychat.dir/src/net/address.cc.o.d"
   "CMakeFiles/tinychat.dir/src/reactor.cc.o"
   "CMakeFiles/tinychat.dir/src/reactor.cc.o.d"
   "CMakeFiles/tinychat.dir/src/thread.cc.o"

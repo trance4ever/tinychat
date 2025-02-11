@@ -20,6 +20,7 @@ set(LIB_SRC
     src/reactor.cc
     src/timer.cc
     src/io_thread.cc
+    src/net/address.cc
 )
 
 add_library(tinychat SHARED ${LIB_SRC})
@@ -64,9 +65,14 @@ set(LIB_LIB
 # target_link_libraries(test_timer ${LIB_LIB})
 
 # 测试IO线程模块
-add_executable(test_iothread test/test_iothread.cc)
-add_dependencies(test_iothread tinychat)
-target_link_libraries(test_iothread ${LIB_LIB})
+# add_executable(test_iothread test/test_iothread.cc)
+# add_dependencies(test_iothread tinychat)
+# target_link_libraries(test_iothread ${LIB_LIB})
+
+# 测试地址类
+add_executable(test_address test/test_address.cc)
+add_dependencies(test_address tinychat)
+target_link_libraries(test_address ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
