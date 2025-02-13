@@ -133,17 +133,17 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_address
+# Target rules for targets named test_bytearray
 
 # Build rule for target.
-test_address: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_address
-.PHONY : test_address
+test_bytearray: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_bytearray
+.PHONY : test_bytearray
 
 # fast build rule for target.
-test_address/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_address.dir/build.make CMakeFiles/test_address.dir/build
-.PHONY : test_address/fast
+test_bytearray/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/build
+.PHONY : test_bytearray/fast
 
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
@@ -313,6 +313,30 @@ src/net/address.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/address.cc.s
 .PHONY : src/net/address.cc.s
 
+src/net/bytearray.o: src/net/bytearray.cc.o
+.PHONY : src/net/bytearray.o
+
+# target to build an object file
+src/net/bytearray.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/bytearray.cc.o
+.PHONY : src/net/bytearray.cc.o
+
+src/net/bytearray.i: src/net/bytearray.cc.i
+.PHONY : src/net/bytearray.i
+
+# target to preprocess a source file
+src/net/bytearray.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/bytearray.cc.i
+.PHONY : src/net/bytearray.cc.i
+
+src/net/bytearray.s: src/net/bytearray.cc.s
+.PHONY : src/net/bytearray.s
+
+# target to generate assembly for a file
+src/net/bytearray.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/bytearray.cc.s
+.PHONY : src/net/bytearray.cc.s
+
 src/reactor.o: src/reactor.cc.o
 .PHONY : src/reactor.o
 
@@ -409,29 +433,29 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
-test/test_address.o: test/test_address.cc.o
-.PHONY : test/test_address.o
+test/test_bytearray.o: test/test_bytearray.cc.o
+.PHONY : test/test_bytearray.o
 
 # target to build an object file
-test/test_address.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_address.dir/build.make CMakeFiles/test_address.dir/test/test_address.cc.o
-.PHONY : test/test_address.cc.o
+test/test_bytearray.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/test/test_bytearray.cc.o
+.PHONY : test/test_bytearray.cc.o
 
-test/test_address.i: test/test_address.cc.i
-.PHONY : test/test_address.i
+test/test_bytearray.i: test/test_bytearray.cc.i
+.PHONY : test/test_bytearray.i
 
 # target to preprocess a source file
-test/test_address.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_address.dir/build.make CMakeFiles/test_address.dir/test/test_address.cc.i
-.PHONY : test/test_address.cc.i
+test/test_bytearray.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/test/test_bytearray.cc.i
+.PHONY : test/test_bytearray.cc.i
 
-test/test_address.s: test/test_address.cc.s
-.PHONY : test/test_address.s
+test/test_bytearray.s: test/test_bytearray.cc.s
+.PHONY : test/test_bytearray.s
 
 # target to generate assembly for a file
-test/test_address.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_address.dir/build.make CMakeFiles/test_address.dir/test/test_address.cc.s
-.PHONY : test/test_address.cc.s
+test/test_bytearray.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/test/test_bytearray.cc.s
+.PHONY : test/test_bytearray.cc.s
 
 # Help Target
 help:
@@ -441,7 +465,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_address"
+	@echo "... test_bytearray"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
@@ -464,6 +488,9 @@ help:
 	@echo "... src/net/address.o"
 	@echo "... src/net/address.i"
 	@echo "... src/net/address.s"
+	@echo "... src/net/bytearray.o"
+	@echo "... src/net/bytearray.i"
+	@echo "... src/net/bytearray.s"
 	@echo "... src/reactor.o"
 	@echo "... src/reactor.i"
 	@echo "... src/reactor.s"
@@ -476,9 +503,9 @@ help:
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... test/test_address.o"
-	@echo "... test/test_address.i"
-	@echo "... test/test_address.s"
+	@echo "... test/test_bytearray.o"
+	@echo "... test/test_bytearray.i"
+	@echo "... test/test_bytearray.s"
 .PHONY : help
 
 
