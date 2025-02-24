@@ -110,6 +110,7 @@ namespace trance {
         return;
       }
       ::close(m_sock);
+      m_sock = -1;
     }
 
     int Socket::send(const void* data, size_t length, int flags) {

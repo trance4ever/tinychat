@@ -374,6 +374,30 @@ src/net/socket.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/socket.cc.s
 .PHONY : src/net/socket.cc.s
 
+src/net/socket_stream.o: src/net/socket_stream.cc.o
+.PHONY : src/net/socket_stream.o
+
+# target to build an object file
+src/net/socket_stream.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/socket_stream.cc.o
+.PHONY : src/net/socket_stream.cc.o
+
+src/net/socket_stream.i: src/net/socket_stream.cc.i
+.PHONY : src/net/socket_stream.i
+
+# target to preprocess a source file
+src/net/socket_stream.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/socket_stream.cc.i
+.PHONY : src/net/socket_stream.cc.i
+
+src/net/socket_stream.s: src/net/socket_stream.cc.s
+.PHONY : src/net/socket_stream.s
+
+# target to generate assembly for a file
+src/net/socket_stream.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/socket_stream.cc.s
+.PHONY : src/net/socket_stream.cc.s
+
 src/reactor.o: src/reactor.cc.o
 .PHONY : src/reactor.o
 
@@ -556,6 +580,9 @@ help:
 	@echo "... src/net/socket.o"
 	@echo "... src/net/socket.i"
 	@echo "... src/net/socket.s"
+	@echo "... src/net/socket_stream.o"
+	@echo "... src/net/socket_stream.i"
+	@echo "... src/net/socket_stream.s"
 	@echo "... src/reactor.o"
 	@echo "... src/reactor.i"
 	@echo "... src/reactor.s"

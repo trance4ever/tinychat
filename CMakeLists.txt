@@ -23,6 +23,7 @@ set(LIB_SRC
     src/net/address.cc
     src/net/bytearray.cc
     src/net/socket.cc
+    src/net/socket_stream.cc
 )
 
 add_library(tinychat SHARED ${LIB_SRC})

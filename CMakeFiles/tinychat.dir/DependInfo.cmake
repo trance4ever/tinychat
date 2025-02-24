@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/trance/tinychat/src/net/address.cc" "CMakeFiles/tinychat.dir/src/net/address.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/net/address.cc.o.d"
   "/home/trance/tinychat/src/net/bytearray.cc" "CMakeFiles/tinychat.dir/src/net/bytearray.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/net/bytearray.cc.o.d"
   "/home/trance/tinychat/src/net/socket.cc" "CMakeFiles/tinychat.dir/src/net/socket.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/net/socket.cc.o.d"
+  "/home/trance/tinychat/src/net/socket_stream.cc" "CMakeFiles/tinychat.dir/src/net/socket_stream.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/net/socket_stream.cc.o.d"
   "/home/trance/tinychat/src/reactor.cc" "CMakeFiles/tinychat.dir/src/reactor.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/reactor.cc.o.d"
   "/home/trance/tinychat/src/thread.cc" "CMakeFiles/tinychat.dir/src/thread.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/thread.cc.o.d"
   "/home/trance/tinychat/src/timer.cc" "CMakeFiles/tinychat.dir/src/timer.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/timer.cc.o.d"

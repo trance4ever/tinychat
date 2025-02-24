@@ -88,12 +88,12 @@ clean: CMakeFiles/test_socket_client.dir/clean
 CMakeFiles/tinychat.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target tinychat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target tinychat"
 .PHONY : CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tinychat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tinychat.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/tinychat.dir/rule
@@ -119,7 +119,7 @@ CMakeFiles/test_socket.dir/all: CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_socket.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 17
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_socket.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/test_socket.dir/rule
@@ -145,7 +145,7 @@ CMakeFiles/test_socket_client.dir/all: CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_socket_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 17
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_socket_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/test_socket_client.dir/rule
