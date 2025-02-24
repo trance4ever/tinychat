@@ -19,6 +19,8 @@ namespace trance {
     std::string getDate();
     // 得到毫秒数
     uint64_t getMillis();
+    // 睡眠，单位毫秒
+    void sleep(int mills);
 }
 
 #endif

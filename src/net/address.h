@@ -30,6 +30,10 @@ namespace trance {
         virtual void setIp(const std::string& ip) = 0;
         // 查看是否合法
         virtual bool isValid() = 0;
+        // 获得套接字结构体
+        virtual sockaddr* getAddr() = 0;
+        // 获取结构体大小
+        virtual size_t getAddrLen() = 0;
     };
 
     class IPv4Address : public Address {
@@ -69,6 +73,10 @@ namespace trance {
             IPILLEGEL = 1,
             PORTILEGEL = 2
         };
+        // 获得套接字结构体
+        sockaddr* getAddr() override { return (sockaddr*)&m_addr;}
+        // 获取结构体大小
+        size_t getAddrLen() override { return sizeof(m_addr);}
     private:
         // 地址类结构体
         sockaddr_in m_addr;

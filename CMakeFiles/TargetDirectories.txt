@@ -1,4 +1,5 @@
 /home/trance/tinychat/CMakeFiles/tinychat.dir
-/home/trance/tinychat/CMakeFiles/test_bytearray.dir
+/home/trance/tinychat/CMakeFiles/test_socket.dir
+/home/trance/tinychat/CMakeFiles/test_socket_client.dir
 /home/trance/tinychat/CMakeFiles/edit_cache.dir
 /home/trance/tinychat/CMakeFiles/rebuild_cache.dir

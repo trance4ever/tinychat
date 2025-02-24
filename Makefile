@@ -133,17 +133,30 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_bytearray
+# Target rules for targets named test_socket
 
 # Build rule for target.
-test_bytearray: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_bytearray
-.PHONY : test_bytearray
+test_socket: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_socket
+.PHONY : test_socket
 
 # fast build rule for target.
-test_bytearray/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/build
-.PHONY : test_bytearray/fast
+test_socket/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/build
+.PHONY : test_socket/fast
+
+#=============================================================================
+# Target rules for targets named test_socket_client
+
+# Build rule for target.
+test_socket_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_socket_client
+.PHONY : test_socket_client
+
+# fast build rule for target.
+test_socket_client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/build
+.PHONY : test_socket_client/fast
 
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
@@ -337,6 +350,30 @@ src/net/bytearray.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/bytearray.cc.s
 .PHONY : src/net/bytearray.cc.s
 
+src/net/socket.o: src/net/socket.cc.o
+.PHONY : src/net/socket.o
+
+# target to build an object file
+src/net/socket.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/socket.cc.o
+.PHONY : src/net/socket.cc.o
+
+src/net/socket.i: src/net/socket.cc.i
+.PHONY : src/net/socket.i
+
+# target to preprocess a source file
+src/net/socket.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/socket.cc.i
+.PHONY : src/net/socket.cc.i
+
+src/net/socket.s: src/net/socket.cc.s
+.PHONY : src/net/socket.s
+
+# target to generate assembly for a file
+src/net/socket.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/net/socket.cc.s
+.PHONY : src/net/socket.cc.s
+
 src/reactor.o: src/reactor.cc.o
 .PHONY : src/reactor.o
 
@@ -433,29 +470,53 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
-test/test_bytearray.o: test/test_bytearray.cc.o
-.PHONY : test/test_bytearray.o
+test/test_socket.o: test/test_socket.cc.o
+.PHONY : test/test_socket.o
 
 # target to build an object file
-test/test_bytearray.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/test/test_bytearray.cc.o
-.PHONY : test/test_bytearray.cc.o
+test/test_socket.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cc.o
+.PHONY : test/test_socket.cc.o
 
-test/test_bytearray.i: test/test_bytearray.cc.i
-.PHONY : test/test_bytearray.i
+test/test_socket.i: test/test_socket.cc.i
+.PHONY : test/test_socket.i
 
 # target to preprocess a source file
-test/test_bytearray.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/test/test_bytearray.cc.i
-.PHONY : test/test_bytearray.cc.i
+test/test_socket.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cc.i
+.PHONY : test/test_socket.cc.i
 
-test/test_bytearray.s: test/test_bytearray.cc.s
-.PHONY : test/test_bytearray.s
+test/test_socket.s: test/test_socket.cc.s
+.PHONY : test/test_socket.s
 
 # target to generate assembly for a file
-test/test_bytearray.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/test/test_bytearray.cc.s
-.PHONY : test/test_bytearray.cc.s
+test/test_socket.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cc.s
+.PHONY : test/test_socket.cc.s
+
+test/test_socket_client.o: test/test_socket_client.cc.o
+.PHONY : test/test_socket_client.o
+
+# target to build an object file
+test/test_socket_client.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/test/test_socket_client.cc.o
+.PHONY : test/test_socket_client.cc.o
+
+test/test_socket_client.i: test/test_socket_client.cc.i
+.PHONY : test/test_socket_client.i
+
+# target to preprocess a source file
+test/test_socket_client.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/test/test_socket_client.cc.i
+.PHONY : test/test_socket_client.cc.i
+
+test/test_socket_client.s: test/test_socket_client.cc.s
+.PHONY : test/test_socket_client.s
+
+# target to generate assembly for a file
+test/test_socket_client.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/test/test_socket_client.cc.s
+.PHONY : test/test_socket_client.cc.s
 
 # Help Target
 help:
@@ -465,7 +526,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_bytearray"
+	@echo "... test_socket"
+	@echo "... test_socket_client"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
@@ -491,6 +553,9 @@ help:
 	@echo "... src/net/bytearray.o"
 	@echo "... src/net/bytearray.i"
 	@echo "... src/net/bytearray.s"
+	@echo "... src/net/socket.o"
+	@echo "... src/net/socket.i"
+	@echo "... src/net/socket.s"
 	@echo "... src/reactor.o"
 	@echo "... src/reactor.i"
 	@echo "... src/reactor.s"
@@ -503,9 +568,12 @@ help:
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... test/test_bytearray.o"
-	@echo "... test/test_bytearray.i"
-	@echo "... test/test_bytearray.s"
+	@echo "... test/test_socket.o"
+	@echo "... test/test_socket.i"
+	@echo "... test/test_socket.s"
+	@echo "... test/test_socket_client.o"
+	@echo "... test/test_socket_client.i"
+	@echo "... test/test_socket_client.s"
 .PHONY : help
 
 

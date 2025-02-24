@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.28.3)
 project(tinychat)
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -O0 -ggdb -std=c++11 -Wall -Wno-deprecated -Wno-unused-function -Wno-builtin-macro-redefined")
+set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -rdynamic -O0 -ggdb -std=c++14 -Wall -Wno-deprecated -Wno-unused-function -Wno-builtin-macro-redefined")
 
 include_directories(.)
 include_directories(/usr/local/include)
@@ -22,6 +22,7 @@ set(LIB_SRC
     src/io_thread.cc
     src/net/address.cc
     src/net/bytearray.cc
+    src/net/socket.cc
 )
 
 add_library(tinychat SHARED ${LIB_SRC})
@@ -76,9 +77,18 @@ set(LIB_LIB
 # target_link_libraries(test_address ${LIB_LIB})
 
 # 测试字节流模块
-add_executable(test_bytearray test/test_bytearray.cc)
-add_dependencies(test_bytearray tinychat)
-target_link_libraries(test_bytearray ${LIB_LIB})
+# add_executable(test_bytearray test/test_bytearray.cc)
+# add_dependencies(test_bytearray tinychat)
+# target_link_libraries(test_bytearray ${LIB_LIB})
+
+# 测试套接字模块
+add_executable(test_socket test/test_socket.cc)
+add_dependencies(test_socket tinychat)
+target_link_libraries(test_socket ${LIB_LIB})
+
+add_executable(test_socket_client test/test_socket_client.cc)
+add_dependencies(test_socket_client tinychat)
+target_link_libraries(test_socket_client ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

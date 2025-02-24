@@ -6,5 +6,5 @@ CXX_DEFINES = -Dtinychat_EXPORTS
 
 CXX_INCLUDES = -I/home/trance/tinychat/.
 
-CXX_FLAGS =  -rdynamic -O0 -ggdb -std=c++11 -Wall -Wno-deprecated -Wno-unused-function -Wno-builtin-macro-redefined -fPIC
+CXX_FLAGS =  -rdynamic -O0 -ggdb -std=c++14 -Wall -Wno-deprecated -Wno-unused-function -Wno-builtin-macro-redefined -fPIC
 

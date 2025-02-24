@@ -67,7 +67,8 @@ CMAKE_BINARY_DIR = /home/trance/tinychat
 
 # The main recursive "all" target.
 all: CMakeFiles/tinychat.dir/all
-all: CMakeFiles/test_bytearray.dir/all
+all: CMakeFiles/test_socket.dir/all
+all: CMakeFiles/test_socket_client.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,7 +77,8 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/tinychat.dir/clean
-clean: CMakeFiles/test_bytearray.dir/clean
+clean: CMakeFiles/test_socket.dir/clean
+clean: CMakeFiles/test_socket_client.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -86,12 +88,12 @@ clean: CMakeFiles/test_bytearray.dir/clean
 CMakeFiles/tinychat.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target tinychat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18 "Built target tinychat"
 .PHONY : CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tinychat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tinychat.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/tinychat.dir/rule
@@ -106,30 +108,56 @@ CMakeFiles/tinychat.dir/clean:
 .PHONY : CMakeFiles/tinychat.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_bytearray.dir
+# Target rules for target CMakeFiles/test_socket.dir
 
 # All Build rule for target.
-CMakeFiles/test_bytearray.dir/all: CMakeFiles/tinychat.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_bytearray"
-.PHONY : CMakeFiles/test_bytearray.dir/all
+CMakeFiles/test_socket.dir/all: CMakeFiles/tinychat.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_socket"
+.PHONY : CMakeFiles/test_socket.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test_bytearray.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 15
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_bytearray.dir/all
+CMakeFiles/test_socket.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 16
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_socket.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
-.PHONY : CMakeFiles/test_bytearray.dir/rule
+.PHONY : CMakeFiles/test_socket.dir/rule
 
 # Convenience name for target.
-test_bytearray: CMakeFiles/test_bytearray.dir/rule
-.PHONY : test_bytearray
+test_socket: CMakeFiles/test_socket.dir/rule
+.PHONY : test_socket
 
 # clean rule for target.
-CMakeFiles/test_bytearray.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_bytearray.dir/build.make CMakeFiles/test_bytearray.dir/clean
-.PHONY : CMakeFiles/test_bytearray.dir/clean
+CMakeFiles/test_socket.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/clean
+.PHONY : CMakeFiles/test_socket.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_socket_client.dir
+
+# All Build rule for target.
+CMakeFiles/test_socket_client.dir/all: CMakeFiles/tinychat.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4 "Built target test_socket_client"
+.PHONY : CMakeFiles/test_socket_client.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_socket_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 16
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_socket_client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
+.PHONY : CMakeFiles/test_socket_client.dir/rule
+
+# Convenience name for target.
+test_socket_client: CMakeFiles/test_socket_client.dir/rule
+.PHONY : test_socket_client
+
+# clean rule for target.
+CMakeFiles/test_socket_client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/clean
+.PHONY : CMakeFiles/test_socket_client.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

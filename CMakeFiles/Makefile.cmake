@@ -45,5 +45,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/tinychat.dir/DependInfo.cmake"
-  "CMakeFiles/test_bytearray.dir/DependInfo.cmake"
+  "CMakeFiles/test_socket.dir/DependInfo.cmake"
+  "CMakeFiles/test_socket_client.dir/DependInfo.cmake"
   )
