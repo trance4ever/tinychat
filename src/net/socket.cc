@@ -132,7 +132,7 @@ namespace trance {
 
     std::string Socket::printInfo() {
       if(isConnected) {
-        return "local address:" + m_localAddress->toString() + "   " + "remote address:" + m_remoteAddress->toString();
+        return "local:" + m_localAddress->toString() + "|" + "remote:" + m_remoteAddress->toString();
       }
       else {
         INFO_LOG("not connected yet")

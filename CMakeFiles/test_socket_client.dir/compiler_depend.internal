@@ -11,7 +11,10 @@ CMakeFiles/test_socket_client.dir/test/test_socket_client.cc.o
  /home/trance/tinychat/src/init.h
  /home/trance/tinychat/src/log.h
  /home/trance/tinychat/src/net/address.h
+ /home/trance/tinychat/src/net/bytearray.h
  /home/trance/tinychat/src/net/socket.h
+ /home/trance/tinychat/src/net/socket_stream.h
+ /home/trance/tinychat/src/rpc/trance_protocol.h
  /home/trance/tinychat/src/util.h
  /usr/include/alloca.h
  /usr/include/arpa/inet.h

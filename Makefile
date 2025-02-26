@@ -422,6 +422,30 @@ src/reactor.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/reactor.cc.s
 .PHONY : src/reactor.cc.s
 
+src/rpc/trance_protocol.o: src/rpc/trance_protocol.cc.o
+.PHONY : src/rpc/trance_protocol.o
+
+# target to build an object file
+src/rpc/trance_protocol.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/trance_protocol.cc.o
+.PHONY : src/rpc/trance_protocol.cc.o
+
+src/rpc/trance_protocol.i: src/rpc/trance_protocol.cc.i
+.PHONY : src/rpc/trance_protocol.i
+
+# target to preprocess a source file
+src/rpc/trance_protocol.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/trance_protocol.cc.i
+.PHONY : src/rpc/trance_protocol.cc.i
+
+src/rpc/trance_protocol.s: src/rpc/trance_protocol.cc.s
+.PHONY : src/rpc/trance_protocol.s
+
+# target to generate assembly for a file
+src/rpc/trance_protocol.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/trance_protocol.cc.s
+.PHONY : src/rpc/trance_protocol.cc.s
+
 src/thread.o: src/thread.cc.o
 .PHONY : src/thread.o
 
@@ -586,6 +610,9 @@ help:
 	@echo "... src/reactor.o"
 	@echo "... src/reactor.i"
 	@echo "... src/reactor.s"
+	@echo "... src/rpc/trance_protocol.o"
+	@echo "... src/rpc/trance_protocol.i"
+	@echo "... src/rpc/trance_protocol.s"
 	@echo "... src/thread.o"
 	@echo "... src/thread.i"
 	@echo "... src/thread.s"

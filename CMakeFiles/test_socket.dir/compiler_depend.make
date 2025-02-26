@@ -10,7 +10,10 @@ CMakeFiles/test_socket.dir/test/test_socket.cc.o: test/test_socket.cc \
   src/init.h \
   src/log.h \
   src/net/address.h \
+  src/net/bytearray.h \
   src/net/socket.h \
+  src/net/socket_stream.h \
+  src/rpc/trance_protocol.h \
   src/util.h \
   /usr/include/alloca.h \
   /usr/include/arpa/inet.h \
@@ -925,9 +928,7 @@ CMakeFiles/test_socket.dir/test/test_socket.cc.o: test/test_socket.cc \
 
 /usr/local/include/boost/preprocessor/comparison/limits/not_equal_256.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
-
-/usr/local/include/boost/mpl/aux_/largest_int.hpp:
+/usr/local/include/boost/preprocessor/comparison/equal.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
@@ -1079,6 +1080,10 @@ CMakeFiles/test_socket.dir/test/test_socket.cc.o: test/test_socket.cc \
 
 /usr/include/c++/13/sstream:
 
+/usr/local/include/boost/preprocessor/comparison/less_equal.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/floatn.h:
+
 /usr/local/include/boost/preprocessor/facilities/check_empty.hpp:
 
 /usr/include/c++/13/memory:
@@ -1115,6 +1120,40 @@ CMakeFiles/test_socket.dir/test/test_socket.cc.o: test/test_socket.cc \
 
 /usr/include/c++/13/ext/concurrence.h:
 
+/usr/include/c++/13/new:
+
+/usr/local/include/boost/preprocessor/debug/error.hpp:
+
+src/net/address.h:
+
+/usr/include/netinet/tcp.h:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/c++/13/ext/alloc_traits.h:
+
+/usr/local/include/boost/numeric/conversion/detail/is_subranged.hpp:
+
+/usr/include/c++/13/bits/utility.h:
+
+/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
+
+/usr/include/locale.h:
+
+/usr/local/include/boost/mpl/aux_/lambda_support.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/c++/13/exception:
+
+/usr/local/include/boost/iterator/iterator_traits.hpp:
+
+/usr/local/include/boost/preprocessor/list/detail/limits/fold_right_256.hpp:
+
+/usr/include/c++/13/bits/ios_base.h:
+
+/usr/local/include/boost/mpl/apply_wrap.hpp:
+
 /usr/include/c++/13/bits/locale_classes.tcc:
 
 /usr/local/include/boost/config/detail/suffix.hpp:
@@ -1143,6 +1182,10 @@ CMakeFiles/test_socket.dir/test/test_socket.cc.o: test/test_socket.cc \
 
 /usr/include/c++/13/bits/exception.h:
 
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
 /usr/include/time.h:
 
 /usr/include/c++/13/typeinfo:
@@ -1161,10 +1204,6 @@ CMakeFiles/test_socket.dir/test/test_socket.cc.o: test/test_socket.cc \
 
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
-/usr/local/include/boost/preprocessor/seq/limits/fold_left_256.hpp:
-
-/usr/include/c++/13/bits/streambuf_iterator.h:
-
 /usr/include/linux/posix_types.h:
 
 /usr/local/include/boost/type_traits/is_scalar.hpp:
@@ -1172,6 +1211,10 @@ CMakeFiles/test_socket.dir/test/test_socket.cc.o: test/test_socket.cc \
 /usr/local/include/boost/config.hpp:
 
 /usr/local/include/boost/numeric/conversion/udt_builtin_mixture_enum.hpp:
+
+/usr/include/c++/13/bits/stl_pair.h:
+
+/usr/include/x86_64-linux-gnu/bits/socket_type.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
@@ -1205,17 +1248,21 @@ src/init.h:
 
 /usr/include/c++/13/bits/basic_string.h:
 
-/usr/local/include/boost/type_traits/detail/is_function_cxx_11.hpp:
+/usr/include/linux/stddef.h:
 
-/usr/include/c++/13/ext/type_traits.h:
+/usr/include/c++/13/bits/basic_ios.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/time64.h:
+/usr/local/include/boost/preprocessor/seq/limits/fold_left_256.hpp:
 
-/usr/include/c++/13/bits/basic_ios.h:
+/usr/include/c++/13/bits/streambuf_iterator.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+src/net/socket_stream.h:
 
-/usr/local/include/boost/mpl/aux_/na_fwd.hpp:
+/usr/include/alloca.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/usr/local/include/boost/numeric/conversion/detail/meta.hpp:
 
 /usr/local/include/boost/numeric/conversion/converter.hpp:
 
@@ -1229,41 +1276,9 @@ src/init.h:
 
 /usr/local/include/boost/mpl/next.hpp:
 
-/usr/local/include/boost/preprocessor/logical/bool.hpp:
-
-/usr/include/c++/13/bits/concept_check.h:
-
-/usr/include/c++/13/bits/alloc_traits.h:
-
-/usr/include/c++/13/new:
-
-/usr/local/include/boost/preprocessor/debug/error.hpp:
-
-src/net/address.h:
-
-/usr/include/netinet/tcp.h:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/c++/13/ext/alloc_traits.h:
-
-/usr/local/include/boost/numeric/conversion/detail/is_subranged.hpp:
-
-/usr/include/alloca.h:
-
-src/easyconfig/config.h:
-
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/c++/13/bits/exception_ptr.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/local/include/boost/numeric/conversion/detail/meta.hpp:
-
-/usr/include/c++/13/bits/locale_facets.h:
-
-/usr/local/include/boost/mpl/aux_/preprocessed/gcc/less.hpp:
 
 /usr/include/c++/13/bits/allocated_ptr.h:
 
@@ -1273,27 +1288,13 @@ src/easyconfig/config.h:
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
-
-src/util.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/c++/13/bits/basic_ios.tcc:
-
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/c++/13/bits/utility.h:
-
-/usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
-
-/usr/include/locale.h:
-
-/usr/local/include/boost/mpl/aux_/lambda_support.hpp:
+src/rpc/trance_protocol.h:
 
 src/thread.h:
+
+/usr/local/include/boost/preprocessor/comma_if.hpp:
+
+/usr/local/include/boost/mpl/aux_/config/forwarding.hpp:
 
 /usr/include/c++/13/backward/auto_ptr.h:
 
@@ -1347,6 +1348,30 @@ src/net/socket.h:
 
 /usr/include/c++/13/array:
 
+/usr/local/include/boost/preprocessor/logical/bool.hpp:
+
+/usr/include/c++/13/bits/concept_check.h:
+
+/usr/include/c++/13/bits/alloc_traits.h:
+
+/usr/local/include/boost/type_traits/detail/is_function_cxx_11.hpp:
+
+/usr/include/c++/13/ext/type_traits.h:
+
+/usr/include/x86_64-linux-gnu/bits/time64.h:
+
+/usr/include/c++/13/bits/basic_ios.h:
+
+/usr/include/stdc-predef.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/local/include/boost/type_traits/is_abstract.hpp:
+
+/usr/local/include/boost/mpl/aux_/config/lambda.hpp:
+
+/usr/include/c++/13/bits/stl_construct.h:
+
 /usr/include/c++/13/bits/fstream.tcc:
 
 /usr/local/include/boost/mpl/aux_/preprocessed/gcc/arg.hpp:
@@ -1377,15 +1402,15 @@ src/net/socket.h:
 
 /usr/include/x86_64-linux-gnu/sys/socket.h:
 
-/usr/include/stdc-predef.h:
+/usr/include/c++/13/bits/ostream_insert.h:
 
-/usr/include/asm-generic/posix_types.h:
+/usr/include/c++/13/system_error:
 
-/usr/local/include/boost/type_traits/is_abstract.hpp:
+/usr/include/c++/13/compare:
 
-/usr/local/include/boost/mpl/aux_/config/lambda.hpp:
+/usr/include/c++/13/bits/range_access.h:
 
-/usr/include/c++/13/bits/stl_construct.h:
+/usr/include/c++/13/backward/binders.h:
 
 /usr/include/c++/13/iosfwd:
 
@@ -1405,21 +1430,17 @@ src/net/socket.h:
 
 /usr/local/include/boost/type_traits/add_pointer.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/socket.h:
-
 /usr/local/include/boost/config/helper_macros.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/socket.h:
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
-/usr/include/c++/13/bits/ostream_insert.h:
+/usr/include/c++/13/bits/locale_facets.h:
 
-/usr/include/c++/13/system_error:
+/usr/local/include/boost/mpl/aux_/preprocessed/gcc/less.hpp:
 
-/usr/include/c++/13/compare:
-
-/usr/include/c++/13/bits/range_access.h:
-
-/usr/include/c++/13/backward/binders.h:
+src/easyconfig/config.h:
 
 /usr/include/c++/13/utility:
 
@@ -1499,24 +1520,6 @@ src/log.h:
 
 /usr/local/include/boost/next_prior.hpp:
 
-/usr/local/include/boost/preprocessor/comparison/equal.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/errno.h:
-
-/usr/include/x86_64-linux-gnu/bits/socket_type.h:
-
-/usr/include/c++/13/bits/stl_pair.h:
-
-/usr/include/c++/13/exception:
-
-/usr/local/include/boost/iterator/iterator_traits.hpp:
-
-/usr/local/include/boost/preprocessor/list/detail/limits/fold_right_256.hpp:
-
-/usr/include/c++/13/bits/ios_base.h:
-
-/usr/local/include/boost/mpl/apply_wrap.hpp:
-
 /usr/local/include/boost/range/detail/sfinae.hpp:
 
 /usr/include/c++/13/cstddef:
@@ -1552,12 +1555,6 @@ src/log.h:
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
 /usr/local/include/boost/mpl/aux_/value_wknd.hpp:
-
-/usr/local/include/boost/preprocessor/tuple/rem.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
@@ -1633,6 +1630,10 @@ src/easyconfig/parse.h:
 
 /usr/local/include/boost/numeric/conversion/sign_mixture_enum.hpp:
 
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/local/include/boost/mpl/aux_/largest_int.hpp:
+
 /usr/include/math.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
@@ -1646,6 +1647,20 @@ src/easyconfig/parse.h:
 /usr/local/include/boost/mpl/aux_/config/eti.hpp:
 
 /usr/include/c++/13/debug/assertions.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+src/util.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
+
+/usr/local/include/boost/mpl/aux_/na_fwd.hpp:
+
+/usr/local/include/boost/preprocessor/tuple/rem.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
 /usr/local/include/boost/preprocessor/list/adt.hpp:
 
@@ -2069,6 +2084,8 @@ test/test_socket.cc:
 
 /usr/local/include/boost/mpl/eval_if.hpp:
 
+src/net/bytearray.h:
+
 /usr/local/include/boost/mpl/has_xxx.hpp:
 
 /usr/local/include/boost/range/range_fwd.hpp:
@@ -2138,11 +2155,3 @@ test/test_socket.cc:
 /usr/local/include/boost/mpl/times.hpp:
 
 /usr/local/include/boost/preprocessor/cat.hpp:
-
-/usr/local/include/boost/mpl/aux_/config/forwarding.hpp:
-
-/usr/local/include/boost/preprocessor/comma_if.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/floatn.h:
-
-/usr/local/include/boost/preprocessor/comparison/less_equal.hpp:
