@@ -65,4 +65,12 @@ namespace trance {
         m_fd = fd;
         setNonBlock();
     }
+    
+    void FdEvent::setEpollOneShot() {
+        int flag = fcntl(m_fd, F_GETFL, 0);
+        if(flag & EPOLLONESHOT) {
+            return;
+        }
+        fcntl(m_fd, F_SETFL, flag | EPOLLONESHOT);
+    }
 }

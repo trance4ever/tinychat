@@ -1,0 +1,1 @@
+/usr/bin/c++  -rdynamic -O0 -ggdb -std=c++14 -Wall -Wno-deprecated -Wno-unused-function -Wno-builtin-macro-redefined CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o -o bin/test_rpc_server   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib:/home/trance/tinychat/lib lib/libtinychat.so -lpthread 

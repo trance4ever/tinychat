@@ -60,6 +60,8 @@ namespace trance {
         int recvFrom(void* buffer, size_t length, Address::ptr peer, int flags = 0);
         // 输出连接信息
         std::string printInfo();
+        // 得到套接字文件描述符
+        int getSock() const { return m_sock;}
     private:
         // 是否连接
         bool isConnected;

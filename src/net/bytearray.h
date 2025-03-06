@@ -79,7 +79,9 @@ namespace trance {
         float readFloat();
         double readDouble();
         // 获取可读大小
-        size_t getReadable() { return m_readable;}
+        size_t getReadable() const { return m_readable;}
+        // 获取可写大小
+        size_t getWriteable() const { return m_writeable;}
     private:
         // 写指针
         uint32_t m_write_idx;

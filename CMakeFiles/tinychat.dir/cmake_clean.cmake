@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tinychat.dir/src/net/socket_stream.cc.o.d"
   "CMakeFiles/tinychat.dir/src/reactor.cc.o"
   "CMakeFiles/tinychat.dir/src/reactor.cc.o.d"
+  "CMakeFiles/tinychat.dir/src/rpc/rpc_server.cc.o"
+  "CMakeFiles/tinychat.dir/src/rpc/rpc_server.cc.o.d"
   "CMakeFiles/tinychat.dir/src/rpc/trance_protocol.cc.o"
   "CMakeFiles/tinychat.dir/src/rpc/trance_protocol.cc.o.d"
   "CMakeFiles/tinychat.dir/src/thread.cc.o"

@@ -29,6 +29,8 @@ namespace trance {
         epoll_event getEpollEvent() { return m_event;}
         // 设置非阻塞模式
         void setNonBlock();
+        // 设置onshot
+        void setEpollOneShot();
     private:
         // 相关联的文件描述符
         int m_fd = -1;

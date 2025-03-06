@@ -133,19 +133,6 @@ tinychat/fast:
 .PHONY : tinychat/fast
 
 #=============================================================================
-# Target rules for targets named test_socket
-
-# Build rule for target.
-test_socket: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_socket
-.PHONY : test_socket
-
-# fast build rule for target.
-test_socket/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/build
-.PHONY : test_socket/fast
-
-#=============================================================================
 # Target rules for targets named test_socket_client
 
 # Build rule for target.
@@ -157,6 +144,19 @@ test_socket_client: cmake_check_build_system
 test_socket_client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/build
 .PHONY : test_socket_client/fast
+
+#=============================================================================
+# Target rules for targets named test_rpc_server
+
+# Build rule for target.
+test_rpc_server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_rpc_server
+.PHONY : test_rpc_server
+
+# fast build rule for target.
+test_rpc_server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rpc_server.dir/build.make CMakeFiles/test_rpc_server.dir/build
+.PHONY : test_rpc_server/fast
 
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
@@ -422,6 +422,30 @@ src/reactor.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/reactor.cc.s
 .PHONY : src/reactor.cc.s
 
+src/rpc/rpc_server.o: src/rpc/rpc_server.cc.o
+.PHONY : src/rpc/rpc_server.o
+
+# target to build an object file
+src/rpc/rpc_server.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/rpc_server.cc.o
+.PHONY : src/rpc/rpc_server.cc.o
+
+src/rpc/rpc_server.i: src/rpc/rpc_server.cc.i
+.PHONY : src/rpc/rpc_server.i
+
+# target to preprocess a source file
+src/rpc/rpc_server.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/rpc_server.cc.i
+.PHONY : src/rpc/rpc_server.cc.i
+
+src/rpc/rpc_server.s: src/rpc/rpc_server.cc.s
+.PHONY : src/rpc/rpc_server.s
+
+# target to generate assembly for a file
+src/rpc/rpc_server.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/rpc_server.cc.s
+.PHONY : src/rpc/rpc_server.cc.s
+
 src/rpc/trance_protocol.o: src/rpc/trance_protocol.cc.o
 .PHONY : src/rpc/trance_protocol.o
 
@@ -518,29 +542,29 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
-test/test_socket.o: test/test_socket.cc.o
-.PHONY : test/test_socket.o
+test/test_rpc_server.o: test/test_rpc_server.cc.o
+.PHONY : test/test_rpc_server.o
 
 # target to build an object file
-test/test_socket.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cc.o
-.PHONY : test/test_socket.cc.o
+test/test_rpc_server.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rpc_server.dir/build.make CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o
+.PHONY : test/test_rpc_server.cc.o
 
-test/test_socket.i: test/test_socket.cc.i
-.PHONY : test/test_socket.i
+test/test_rpc_server.i: test/test_rpc_server.cc.i
+.PHONY : test/test_rpc_server.i
 
 # target to preprocess a source file
-test/test_socket.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cc.i
-.PHONY : test/test_socket.cc.i
+test/test_rpc_server.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rpc_server.dir/build.make CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.i
+.PHONY : test/test_rpc_server.cc.i
 
-test/test_socket.s: test/test_socket.cc.s
-.PHONY : test/test_socket.s
+test/test_rpc_server.s: test/test_rpc_server.cc.s
+.PHONY : test/test_rpc_server.s
 
 # target to generate assembly for a file
-test/test_socket.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket.dir/build.make CMakeFiles/test_socket.dir/test/test_socket.cc.s
-.PHONY : test/test_socket.cc.s
+test/test_rpc_server.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rpc_server.dir/build.make CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.s
+.PHONY : test/test_rpc_server.cc.s
 
 test/test_socket_client.o: test/test_socket_client.cc.o
 .PHONY : test/test_socket_client.o
@@ -574,7 +598,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_socket"
+	@echo "... test_rpc_server"
 	@echo "... test_socket_client"
 	@echo "... tinychat"
 	@echo "... src/easyconfig/config.o"
@@ -610,6 +634,9 @@ help:
 	@echo "... src/reactor.o"
 	@echo "... src/reactor.i"
 	@echo "... src/reactor.s"
+	@echo "... src/rpc/rpc_server.o"
+	@echo "... src/rpc/rpc_server.i"
+	@echo "... src/rpc/rpc_server.s"
 	@echo "... src/rpc/trance_protocol.o"
 	@echo "... src/rpc/trance_protocol.i"
 	@echo "... src/rpc/trance_protocol.s"
@@ -622,9 +649,9 @@ help:
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
-	@echo "... test/test_socket.o"
-	@echo "... test/test_socket.i"
-	@echo "... test/test_socket.s"
+	@echo "... test/test_rpc_server.o"
+	@echo "... test/test_rpc_server.i"
+	@echo "... test/test_rpc_server.s"
 	@echo "... test/test_socket_client.o"
 	@echo "... test/test_socket_client.i"
 	@echo "... test/test_socket_client.s"

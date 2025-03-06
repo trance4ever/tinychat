@@ -25,6 +25,7 @@ set(LIB_SRC
     src/net/socket.cc
     src/net/socket_stream.cc
     src/rpc/trance_protocol.cc
+    src/rpc/rpc_server.cc
 )
 
 add_library(tinychat SHARED ${LIB_SRC})
@@ -84,13 +85,18 @@ set(LIB_LIB
 # target_link_libraries(test_bytearray ${LIB_LIB})
 
 # 测试套接字模块
-add_executable(test_socket test/test_socket.cc)
-add_dependencies(test_socket tinychat)
-target_link_libraries(test_socket ${LIB_LIB})
+# add_executable(test_socket test/test_socket.cc)
+# add_dependencies(test_socket tinychat)
+# target_link_libraries(test_socket ${LIB_LIB})
 
+# 测试RPC服务器模块
 add_executable(test_socket_client test/test_socket_client.cc)
 add_dependencies(test_socket_client tinychat)
 target_link_libraries(test_socket_client ${LIB_LIB})
+
+add_executable(test_rpc_server test/test_rpc_server.cc)
+add_dependencies(test_rpc_server tinychat)
+target_link_libraries(test_rpc_server ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
