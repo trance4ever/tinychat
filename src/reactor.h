@@ -24,6 +24,8 @@ namespace trance {
         void addEpollEvent(FdEvent* fe);
         // 删除事件
         void delEpollEvent(FdEvent* fe);
+        // 删除事件
+        void delEpollEvent(int fd);
         // 添加任务
         void addTask(std::function<void()> cb);
         // 删除任务

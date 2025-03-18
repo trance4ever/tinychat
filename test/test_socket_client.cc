@@ -24,6 +24,23 @@ int main() {
         ss_client->write(ba, length);
         FMT_INFO_LOG("send request, data length: %d", length)
 
+        int rt = ss_client->read(ba, 2);
+        if(rt == 0) {
+            INFO_LOG("disconnected ...")
+            return 0;
+        }
+        ba->readOnly(&length, 2);
+        byteswap<uint16_t>()(length);
+        rt = ss_client->read(ba, length - 2);
+        if(rt == 0) {
+            INFO_LOG("disconnected ...")
+            return 0;
+        }
+        char buf2[length];
+        ba->read(buf2, length);
+        Response res(buf2);
+        FMT_INFO_LOG("accept response, mesage: %s", res.message.c_str())
+
         // ba->write(data, 13);
         // ba->writeDouble(1.234567);
         // FMT_INFO_LOG("send data: %s, %f", data, 1.234567)

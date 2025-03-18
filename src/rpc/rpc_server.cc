@@ -17,13 +17,9 @@ namespace trance {
 
     RPCServer::RPCServer() {
         m_iothreads.resize(g_iothread_num);
-        m_iothreadbuf.resize(g_iothread_num);
         m_reactor = new Reactor();
         for(int i = 0; i < m_iothreads.size(); ++i) {
             m_iothreads[i] = new IOThread();
-        }
-        for(int i = 0; i < m_iothreadbuf.size(); ++i) {
-            m_iothreadbuf[i] = std::make_shared<ByteArray>();
         }
         init();
     }
@@ -61,7 +57,7 @@ namespace trance {
         FdEvent* clientEvent = new FdEvent(client->getSock());
         SocketStream::ptr session = std::make_shared<SocketStream>(client);
         auto f = [=]() {
-            OnRead(m_iothreadbuf[idx], session);
+            OnRead(std::make_shared<ByteArray>(), std::make_shared<ByteArray>(), session);
         };
 
         clientEvent->listen(f, EPOLLIN);
@@ -70,20 +66,48 @@ namespace trance {
         FMT_INFO_LOG("new connected %s", client->printInfo().c_str())
     }
 
-    void RPCServer::OnRead(ByteArray::ptr ba, SocketStream::ptr session) {
-        session->read(ba, 2);
+    void RPCServer::OnRead(ByteArray::ptr ba, ByteArray::ptr sba, SocketStream::ptr session) {
+        int rt = session->read(ba, 2);
+        if(rt == 0) {
+            FMT_INFO_LOG("client disconnect, info:%s", session->getSocket()->printInfo().c_str())
+            Reactor::getCurReactor()->delEpollEvent(session->getSocket()->getSock());
+            return;
+        }
         uint16_t length;
         ba->readOnly(&length, 2);
         byteswap<uint16_t>()(length);
-        session->read(ba, length - 2);
+        rt = session->read(ba, length - 2);
+        if(rt == 0) {
+            FMT_INFO_LOG("client disconnect, info:%s", session->getSocket()->printInfo().c_str())
+            Reactor::getCurReactor()->delEpollEvent(session->getSocket()->getSock());
+            return;
+        }
         char buf[length];
         ba->read(buf, length);
         Request r(buf);
         FMT_INFO_LOG("get client request, message: %s", r.message.c_str())
+        /*
+            调用rpc函数，计算响应体
+        */
+        Response res(1, 0, NULL, std::string("OK"));
+        length = res.size();
+        char buf2[length];
+        res.serialization(buf2);
+        sba->write(buf2, length);
+        session->write(sba, length);
+        //OnWrite(wba, wsession, res);
+        // auto f = [&]() {
+        //     OnWrite(ba, session, res);
+        // };
+        // Reactor::getCurReactor()->getTimer()->addTimerEvent(std::make_shared<TimerEvent>(f, 0));
     }
 
-    void RPCServer::OnWrite() {
-
+    void RPCServer::OnWrite(std::weak_ptr<ByteArray> wba, std::weak_ptr<SocketStream> wsession, Response& res) {
+        // uint16_t length = res.size();
+        // char buf[length];
+        // res.serialization(buf);
+        // ba->write(buf, length);
+        // session->write(wba, length);
     }
 
 }

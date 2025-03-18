@@ -31,10 +31,24 @@ namespace trance {
         }
     }
     Reactor::~Reactor() {
+        m_isStop = true;
         if(m_timer) {
             delete m_timer;
+            m_timer = nullptr;
+        }
+        m_listen_fds.clear();
+        {
+            ScopedLock<Spinlock> lock(m_lock);
+            while(!m_tasks.empty()) {
+                m_tasks.pop();
+            }
+        }
+        if(m_epoll_fd >= 0) {
+            close(m_epoll_fd);
+            m_epoll_fd = -1;
         }
     }
+    
     void Reactor::addEpollEvent(FdEvent* fe) {
         int op = EPOLL_CTL_ADD, fd = fe->getFd();
         if(m_listen_fds.count(fd)) {
@@ -53,12 +67,24 @@ namespace trance {
         epoll_event tmp = fe->getEpollEvent();
         int rt = epoll_ctl(m_epoll_fd, EPOLL_CTL_DEL, fd, &tmp);
         if(rt == -1) {
-            FMT_ERROR_LOG("failed to add epoll event, fd = %d, errno = %d, error = %s", fe->getFd(), errno, strerror(errno))
+            FMT_ERROR_LOG("failed to del epoll event, fd = %d, errno = %d, error = %s", fe->getFd(), errno, strerror(errno))
+        }
+        m_listen_fds.erase(fd);
+    }
+
+    void Reactor::delEpollEvent(int fd) {
+        int rt = epoll_ctl(m_epoll_fd, EPOLL_CTL_DEL, fd, NULL);
+        if(rt == -1) {
+            FMT_ERROR_LOG("failed to del epoll event, fd = %d, errno = %d, error = %s", fd, errno, strerror(errno))
         }
         m_listen_fds.erase(fd);
     }
 
     void Reactor::addTask(std::function<void()> cb) {
+        if(!cb) {
+            ERROR_LOG("failed to add task: null call back")
+            return;
+        }
         m_tasks.push(cb);
     }
 
@@ -70,15 +96,17 @@ namespace trance {
                     m_tasks.push(t);
                 }
             }
-            // ScopedLock<Spinlock> lock(m_lock);
-            std::queue<std::function<void()>> tasks;
-            // lock.unlock();
-            m_tasks.swap(tasks);
-            while(!tasks.empty()) {
-                std::function<void()> cb = tasks.front();
-                tasks.pop();
-                if(cb) {
-                    cb();
+            if(m_tasks.size()) {
+                // ScopedLock<Spinlock> lock(m_lock);
+                std::queue<std::function<void()>> tasks;
+                // lock.unlock();
+                m_tasks.swap(tasks);
+                while(!tasks.empty()) {
+                    std::function<void()> cb = tasks.front();
+                    tasks.pop();
+                    if(cb) {
+                        cb();
+                    }
                 }
             }
             int wait_time = g_max_epoll_wait_time;
