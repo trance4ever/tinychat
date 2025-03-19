@@ -422,6 +422,30 @@ src/reactor.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/reactor.cc.s
 .PHONY : src/reactor.cc.s
 
+src/rpc/function.o: src/rpc/function.cc.o
+.PHONY : src/rpc/function.o
+
+# target to build an object file
+src/rpc/function.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/function.cc.o
+.PHONY : src/rpc/function.cc.o
+
+src/rpc/function.i: src/rpc/function.cc.i
+.PHONY : src/rpc/function.i
+
+# target to preprocess a source file
+src/rpc/function.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/function.cc.i
+.PHONY : src/rpc/function.cc.i
+
+src/rpc/function.s: src/rpc/function.cc.s
+.PHONY : src/rpc/function.s
+
+# target to generate assembly for a file
+src/rpc/function.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/rpc/function.cc.s
+.PHONY : src/rpc/function.cc.s
+
 src/rpc/rpc_server.o: src/rpc/rpc_server.cc.o
 .PHONY : src/rpc/rpc_server.o
 
@@ -634,6 +658,9 @@ help:
 	@echo "... src/reactor.o"
 	@echo "... src/reactor.i"
 	@echo "... src/reactor.s"
+	@echo "... src/rpc/function.o"
+	@echo "... src/rpc/function.i"
+	@echo "... src/rpc/function.s"
 	@echo "... src/rpc/rpc_server.o"
 	@echo "... src/rpc/rpc_server.i"
 	@echo "... src/rpc/rpc_server.s"

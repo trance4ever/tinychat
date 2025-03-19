@@ -15,8 +15,7 @@ int main() {
     while(1) {
         sleep(1000);
         // 发送请求体
-        uint64_t para = 232834234223;
-        Request r(1, 4, &para, string("hello!"));
+        Request r(1, string("1234"), string("hello!"));
         uint16_t length = r.size();
         char buf[length];
         r.serialization(buf);
@@ -39,7 +38,7 @@ int main() {
         char buf2[length];
         ba->read(buf2, length);
         Response res(buf2);
-        FMT_INFO_LOG("accept response, mesage: %s", res.message.c_str())
+        FMT_INFO_LOG("accept response, mesage: %s, result: %s", res.message.c_str(), res.rsp_data.c_str())
 
         // ba->write(data, 13);
         // ba->writeDouble(1.234567);

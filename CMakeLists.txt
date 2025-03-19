@@ -26,6 +26,7 @@ set(LIB_SRC
     src/net/socket_stream.cc
     src/rpc/trance_protocol.cc
     src/rpc/rpc_server.cc
+    src/rpc/function.cc
 )
 
 add_library(tinychat SHARED ${LIB_SRC})

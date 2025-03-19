@@ -38,11 +38,11 @@ namespace trance {
     }
 
     ByteArray::~ByteArray() {
-        Buffer* tmp = m_root;
-        while(tmp) {
-            m_cur = tmp;
-            delete m_cur;
-            tmp = tmp->next;
+        Buffer* current = m_root;
+        while (current) {
+            Buffer* next = current->next;  // 先保存下一个节点
+            delete current;               // 再删除当前节点
+            current = next;               // 移动到下一个节点
         }
     }
 
@@ -110,6 +110,13 @@ namespace trance {
             }
         }
         m_readable -= size;
+    }
+
+    void ByteArray::reset() {
+        m_write_idx = 0;
+        m_read_idx = 0;
+        m_readable = 0;
+        m_writeable = g_buffer_size;
     }
 
     void ByteArray::readOnly(void* buf, uint32_t size) {

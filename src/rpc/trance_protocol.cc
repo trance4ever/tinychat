@@ -26,9 +26,9 @@ namespace trance {
         idx += sizeof(paras_len);
         if(paras_len) {
             char tmpbuf[paras_len];
-            parameter = tmpbuf;
-            memcpy(parameter, data + idx, paras_len);
+            memcpy(tmpbuf, data + idx, paras_len);
             idx += paras_len;
+            res_data.assign(tmpbuf);
         }
         memcpy(&mess_len, data + idx, sizeof(mess_len));
         idx += sizeof(mess_len);
@@ -41,16 +41,13 @@ namespace trance {
         memcpy(&icon, data + idx, sizeof(icon));
     }
 
-    Request::Request(uint8_t func, uint8_t parasLen, void* para, std::string mess) {
+    Request::Request(uint8_t func, std::string r_data, std::string mess) {
         status = SUCCESS;
         fun_code = func;
-        paras_len = parasLen;
-        parameter = para;
-        uint8_t len = mess.size();
-        if(len) {
-            mess_len = len + 1;
-            message = mess;
-        }
+        paras_len = r_data.size() + 1;
+        res_data = r_data;
+        mess_len = mess.size() + 1;
+        message = mess;
         length = 10 + paras_len + mess_len;
     }
 
@@ -67,8 +64,10 @@ namespace trance {
         idx += sizeof(fun_code);
         memcpy(dest + idx, &paras_len, sizeof(paras_len));
         idx += sizeof(paras_len);
-        memcpy(dest + idx, parameter, paras_len);
-        idx += paras_len;
+        if(paras_len) {
+            memcpy(dest + idx, res_data.c_str(), paras_len);
+            idx += paras_len;
+        }
         memcpy(dest + idx, &mess_len, sizeof(mess_len));
         idx += sizeof(mess_len);
         if(mess_len) {
@@ -104,8 +103,8 @@ namespace trance {
         para_len = t3;
         if(para_len) {
             char tmpbuf[para_len];
-            parameter = tmpbuf;
-            memcpy(parameter, data + idx, para_len);
+            memcpy(tmpbuf, data + idx, para_len);
+            rsp_data.assign(tmpbuf);
             idx += para_len;
         }
         memcpy(&mess_len, data + idx, sizeof(mess_len));
@@ -119,17 +118,13 @@ namespace trance {
         memcpy(&icon, data + idx, sizeof(icon));
     }
 
-    Response::Response(uint8_t type, uint16_t len, 
-            void* para, std::string mess) {
+    Response::Response(uint8_t type, std::string r_data, std::string mess) {
         status = SUCCESS;
         para_type = type;
-        para_len = len;
-        parameter = para;
-        uint16_t ml = mess.size();
-        if(ml) {
-            mess_len = ml + 1;
-            message = mess;
-        }
+        para_len = r_data.size() + 1;
+        rsp_data = r_data;
+        mess_len = mess.size() + 1;
+        message = mess;
         length = 11 + para_len + mess_len;
     }
 
@@ -148,8 +143,10 @@ namespace trance {
         byteswap<uint16_t>()(t3);
         memcpy(dest + idx, &t3, sizeof(t3));
         idx += sizeof(t3);
-        memcpy(dest + idx, parameter, para_len);
-        idx += para_len;
+        if(para_len) {
+            memcpy(dest + idx, rsp_data.c_str(), para_len);
+            idx += para_len;
+        }
         memcpy(dest + idx, &mess_len, sizeof(mess_len));
         idx += sizeof(mess_len);
         if(mess_len) {

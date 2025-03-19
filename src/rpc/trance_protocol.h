@@ -17,8 +17,7 @@ namespace trance {
         // 构造函数，反序列化
         Request() = delete;
         Request(void* data);
-        Request(uint8_t func, uint8_t parasLen, 
-                void* para, std::string message);
+        Request(uint8_t func, std::string r_data, std::string message);
         ~Request();
         // 序列化
         void serialization(void* dest);
@@ -34,7 +33,7 @@ namespace trance {
         // 参数长度
         uint8_t paras_len;
         // 请求函数参数
-        void* parameter;
+        std::string res_data;
         // 信息长度
         uint8_t mess_len {0};
         // 信息
@@ -48,8 +47,7 @@ namespace trance {
         // 构造函数，反序列化
         Response() = delete;
         Response(void* data);
-        Response(uint8_t type, uint16_t len, 
-                void* para, std::string mess);
+        Response(uint8_t type, std::string r_data, std::string mess);
         ~Response();
         // 序列化
         void serialization(void* dest);
@@ -65,7 +63,7 @@ namespace trance {
         // 响应参数长度
         uint16_t para_len;
         // 响应数据
-        void* parameter;
+        std::string rsp_data;
         // 消息长度
         uint8_t mess_len;
         // 信息

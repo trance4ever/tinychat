@@ -17,6 +17,7 @@ CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o: test/test_rpc_server.c
   src/thread.h \
   src/timer.h \
   src/util.h \
+  src/rpc/function.h \
   src/rpc/rpc_server.h \
   src/rpc/trance_protocol.h \
   /usr/include/alloca.h \
@@ -122,6 +123,7 @@ CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o: test/test_rpc_server.c
   /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unique_ptr.h \
+  /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/utility.h \
@@ -177,6 +179,7 @@ CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o: test/test_rpc_server.c
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
+  /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
   /usr/include/c++/13/utility \
   /usr/include/c++/13/vector \
@@ -849,8 +852,6 @@ CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o: test/test_rpc_server.c
 
 /usr/local/include/boost/range/detail/extract_optional_type.hpp:
 
-/usr/local/include/boost/range/detail/common.hpp:
-
 /usr/local/include/boost/range/const_iterator.hpp:
 
 /usr/local/include/boost/range/concepts.hpp:
@@ -886,8 +887,6 @@ CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o: test/test_rpc_server.c
 /usr/local/include/boost/preprocessor/punctuation/comma_if.hpp:
 
 /usr/local/include/boost/preprocessor/punctuation/comma.hpp:
-
-/usr/local/include/boost/preprocessor/logical/not.hpp:
 
 /usr/local/include/boost/preprocessor/logical/limits/bool_256.hpp:
 
@@ -981,7 +980,9 @@ CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o: test/test_rpc_server.c
 
 /usr/local/include/boost/numeric/conversion/detail/meta.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/time.h:
+/usr/local/include/boost/numeric/conversion/detail/is_subranged.hpp:
+
+/usr/local/include/boost/numeric/conversion/detail/converter.hpp:
 
 /usr/local/include/boost/type_traits/is_same.hpp:
 
@@ -1171,8 +1172,6 @@ src/net/address.h:
 
 /usr/include/c++/13/ext/alloc_traits.h:
 
-/usr/local/include/boost/numeric/conversion/detail/is_subranged.hpp:
-
 /usr/include/c++/13/bits/utility.h:
 
 /usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
@@ -1217,11 +1216,11 @@ src/net/address.h:
 
 /usr/include/c++/13/bits/exception.h:
 
+/usr/include/time.h:
+
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
-
-/usr/include/time.h:
 
 /usr/include/c++/13/typeinfo:
 
@@ -1273,17 +1272,7 @@ src/rpc/rpc_server.h:
 
 /usr/include/c++/13/iosfwd:
 
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
-
 test/test_rpc_server.cc:
-
-/usr/include/errno.h:
-
-/usr/local/include/boost/mpl/aux_/include_preprocessed.hpp:
-
-/usr/local/include/boost/mpl/equal_to.hpp:
-
-/usr/include/c++/13/bits/functional_hash.h:
 
 /usr/local/include/boost/preprocessor/comparison/less_equal.hpp:
 
@@ -1294,6 +1283,24 @@ test/test_rpc_server.cc:
 /usr/include/c++/13/memory:
 
 src/timer.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+src/rpc/function.h:
+
+/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
+
+/usr/local/include/boost/preprocessor/logical/not.hpp:
+
+/usr/include/c++/13/unordered_map:
+
+/usr/local/include/boost/range/difference_type.hpp:
+
+/usr/include/c++/13/bits/allocator.h:
+
+/usr/include/c++/13/bits/cxxabi_forced.h:
+
+/usr/local/include/boost/limits.hpp:
 
 /usr/local/include/boost/preprocessor/seq/limits/fold_left_256.hpp:
 
@@ -1350,6 +1357,30 @@ src/io_thread.h:
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/include/x86_64-linux-gnu/bits/socket.h:
+
+src/thread.h:
+
+/usr/include/c++/13/system_error:
+
+/usr/include/c++/13/bits/ostream_insert.h:
+
+/usr/local/include/boost/type_traits/is_float.hpp:
+
+/usr/include/c++/13/bits/stl_set.h:
+
+/usr/local/include/boost/preprocessor/comma_if.hpp:
+
+/usr/local/include/boost/mpl/aux_/config/forwarding.hpp:
+
+/usr/include/c++/13/backward/auto_ptr.h:
+
+src/rpc/trance_protocol.h:
+
+/usr/local/include/boost/preprocessor/arithmetic/detail/is_minimum_number.hpp:
+
+/usr/include/assert.h:
+
+src/easyconfig/parse.h:
 
 src/net/socket.h:
 
@@ -1421,28 +1452,6 @@ src/init.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
 
-src/rpc/trance_protocol.h:
-
-src/thread.h:
-
-/usr/include/c++/13/system_error:
-
-/usr/include/c++/13/bits/ostream_insert.h:
-
-/usr/local/include/boost/type_traits/is_float.hpp:
-
-/usr/include/c++/13/bits/stl_set.h:
-
-/usr/local/include/boost/preprocessor/comma_if.hpp:
-
-/usr/local/include/boost/mpl/aux_/config/forwarding.hpp:
-
-/usr/include/c++/13/backward/auto_ptr.h:
-
-/usr/local/include/boost/preprocessor/arithmetic/detail/is_minimum_number.hpp:
-
-/usr/include/assert.h:
-
 /usr/include/c++/13/bits/basic_ios.h:
 
 /usr/include/stdc-predef.h:
@@ -1496,6 +1505,14 @@ src/thread.h:
 /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
 
 /usr/include/x86_64-linux-gnu/sys/socket.h:
+
+/usr/include/errno.h:
+
+/usr/local/include/boost/mpl/aux_/include_preprocessed.hpp:
+
+/usr/local/include/boost/mpl/equal_to.hpp:
+
+/usr/include/c++/13/bits/functional_hash.h:
 
 /usr/include/c++/13/bits/hashtable.h:
 
@@ -1573,6 +1590,10 @@ src/log.h:
 
 /usr/include/c++/13/bits/shared_ptr.h:
 
+/usr/include/c++/13/cerrno:
+
+/usr/include/c++/13/bits/stringfwd.h:
+
 /usr/local/include/boost/preprocessor/repetition/repeat_from_to.hpp:
 
 /usr/local/include/boost/mpl/numeric_cast.hpp:
@@ -1605,15 +1626,11 @@ src/log.h:
 
 /usr/local/include/boost/mpl/aux_/preprocessed/gcc/and.hpp:
 
+/usr/local/include/boost/mpl/next_prior.hpp:
+
+/usr/local/include/boost/mpl/or.hpp:
+
 /usr/include/c++/13/bits/stl_algobase.h:
-
-/usr/local/include/boost/range/difference_type.hpp:
-
-/usr/include/c++/13/bits/allocator.h:
-
-/usr/include/c++/13/bits/cxxabi_forced.h:
-
-/usr/local/include/boost/limits.hpp:
 
 /usr/local/include/boost/range/rend.hpp:
 
@@ -1638,6 +1655,10 @@ src/log.h:
 /usr/include/c++/13/locale:
 
 /usr/include/c++/13/bits/stl_map.h:
+
+/usr/local/include/boost/range/detail/common.hpp:
+
+/usr/include/c++/13/bits/unordered_map.h:
 
 /usr/include/c++/13/bits/streambuf.tcc:
 
@@ -1689,11 +1710,7 @@ src/log.h:
 
 /usr/include/c++/13/cctype:
 
-src/easyconfig/parse.h:
-
-/usr/include/c++/13/bits/stringfwd.h:
-
-/usr/include/c++/13/cerrno:
+/usr/include/x86_64-linux-gnu/bits/time.h:
 
 /usr/include/x86_64-linux-gnu/asm/unistd_64.h:
 
@@ -1750,6 +1767,12 @@ src/easyconfig/parse.h:
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h:
 
 /usr/include/x86_64-linux-gnu/bits/syscall.h:
+
+/usr/include/libintl.h:
+
+/usr/local/include/boost/config/workaround.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/local/include/boost/type_traits/detail/is_function_cxx_11.hpp:
 
@@ -1810,18 +1833,6 @@ src/util.h:
 /usr/local/include/boost/mpl/int_fwd.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
-
-/usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
-
-/usr/include/libintl.h:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-/usr/local/include/boost/config/workaround.hpp:
-
-/usr/local/include/boost/mpl/or.hpp:
-
-/usr/local/include/boost/mpl/next_prior.hpp:
 
 /usr/local/include/boost/preprocessor/arithmetic/limits/inc_256.hpp:
 
@@ -1906,6 +1917,12 @@ src/util.h:
 src/fd_event.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/local/include/boost/numeric/conversion/detail/int_float_mixture.hpp:
+
+/usr/include/c++/13/bits/erase_if.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
 /usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
@@ -2224,11 +2241,3 @@ src/net/bytearray.h:
 /usr/local/include/boost/numeric/conversion/conversion_traits.hpp:
 
 /usr/local/include/boost/numeric/conversion/detail/conversion_traits.hpp:
-
-/usr/local/include/boost/numeric/conversion/detail/converter.hpp:
-
-/usr/include/c++/13/bits/erase_if.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
-
-/usr/local/include/boost/numeric/conversion/detail/int_float_mixture.hpp:

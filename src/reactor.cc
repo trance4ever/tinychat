@@ -115,6 +115,9 @@ namespace trance {
                 if(period > 0) {
                     wait_time = std::min(wait_time, period);
                 }
+                else {
+                    wait_time = 1;
+                }
             }
             epoll_event events[g_max_epoll_event];
             int rt = epoll_wait(m_epoll_fd, events, g_max_epoll_event, wait_time);

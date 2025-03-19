@@ -7,6 +7,7 @@
 #include "../net/bytearray.h"
 #include "../net/socket_stream.h"
 #include "trance_protocol.h"
+#include "function.h"
 #include "../fd_event.h"
 
 namespace trance {
@@ -25,9 +26,9 @@ namespace trance {
         // 处理连接请求
         void OnAccept();
         // 接收RPC请求，解析并处理请求
-        void OnRead(ByteArray::ptr ba, ByteArray::ptr sba, SocketStream::ptr session);
+        void OnRead(ByteArray::ptr ba, SocketStream::ptr session);
         // 远程调用完毕，返回处理结果
-        void OnWrite(std::weak_ptr<ByteArray> wba, std::weak_ptr<SocketStream> wsession, Response& res);
+        void OnWrite(std::shared_ptr<ByteArray> ba, std::shared_ptr<SocketStream> session, Response res);
     private:
         // IO线程组，处理请求
         std::vector<IOThread*> m_iothreads;

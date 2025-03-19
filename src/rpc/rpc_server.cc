@@ -57,7 +57,7 @@ namespace trance {
         FdEvent* clientEvent = new FdEvent(client->getSock());
         SocketStream::ptr session = std::make_shared<SocketStream>(client);
         auto f = [=]() {
-            OnRead(std::make_shared<ByteArray>(), std::make_shared<ByteArray>(), session);
+            OnRead(std::make_shared<ByteArray>(), session);
         };
 
         clientEvent->listen(f, EPOLLIN);
@@ -66,7 +66,7 @@ namespace trance {
         FMT_INFO_LOG("new connected %s", client->printInfo().c_str())
     }
 
-    void RPCServer::OnRead(ByteArray::ptr ba, ByteArray::ptr sba, SocketStream::ptr session) {
+    void RPCServer::OnRead(ByteArray::ptr ba, SocketStream::ptr session) {
         int rt = session->read(ba, 2);
         if(rt == 0) {
             FMT_INFO_LOG("client disconnect, info:%s", session->getSocket()->printInfo().c_str())
@@ -89,25 +89,25 @@ namespace trance {
         /*
             调用rpc函数，计算响应体
         */
-        Response res(1, 0, NULL, std::string("OK"));
-        length = res.size();
-        char buf2[length];
-        res.serialization(buf2);
-        sba->write(buf2, length);
-        session->write(sba, length);
-        //OnWrite(wba, wsession, res);
-        // auto f = [&]() {
-        //     OnWrite(ba, session, res);
-        // };
-        // Reactor::getCurReactor()->getTimer()->addTimerEvent(std::make_shared<TimerEvent>(f, 0));
+        int result = Myadd(r.res_data);
+        std::string string_result = ToString<int>()(result);
+        Response res(1, string_result, "OK");
+        auto f = [=]() {
+            OnWrite(std::make_shared<ByteArray>(), session, res);
+        };
+        TimerEvent::ptr t = std::make_shared<TimerEvent>(f, 0);
+        Reactor::getCurReactor()->getTimer()->addTimerEvent(t);
+        // FdEvent* fe = new FdEvent(session->getSocket()->getSock());
+        // fe->listen(f, EPOLLOUT);
+        // Reactor::getCurReactor()->addEpollEvent(fe);
     }
 
-    void RPCServer::OnWrite(std::weak_ptr<ByteArray> wba, std::weak_ptr<SocketStream> wsession, Response& res) {
-        // uint16_t length = res.size();
-        // char buf[length];
-        // res.serialization(buf);
-        // ba->write(buf, length);
-        // session->write(wba, length);
+    void RPCServer::OnWrite(std::shared_ptr<ByteArray> ba, std::shared_ptr<SocketStream> session, Response res) {
+        uint16_t length = res.size();
+        char buf[length];
+        res.serialization(buf);
+        ba->write(buf, length);
+        session->write(ba, length);
     }
 
 }

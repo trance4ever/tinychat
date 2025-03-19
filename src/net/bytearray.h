@@ -50,6 +50,8 @@ namespace trance {
         typedef std::shared_ptr<ByteArray> ptr;
         ByteArray();
         ~ByteArray();
+        // 重制指针
+        void reset();
         // 向数据缓冲区写入数据
         void write(const void* data, uint32_t size);
         // 从数据缓冲区读取数据
