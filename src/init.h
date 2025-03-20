@@ -9,6 +9,7 @@
 #include<algorithm>
 #include "./easyconfig/config.h"
 #include "./easyconfig/parse.h"
+#include "./rpc/function.h"
 
 namespace trance {
     class Initializer {

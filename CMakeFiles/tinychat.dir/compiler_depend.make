@@ -1156,6 +1156,7 @@ CMakeFiles/tinychat.dir/src/init.cc.o: src/init.cc \
   src/util.h \
   src/easyconfig/config.h \
   src/easyconfig/parse.h \
+  src/rpc/function.h \
   src/init.h \
   src/log.h \
   /usr/include/alloca.h \
@@ -1186,6 +1187,7 @@ CMakeFiles/tinychat.dir/src/init.cc.o: src/init.cc \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/cxxabi_init_exception.h \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
@@ -1194,6 +1196,8 @@ CMakeFiles/tinychat.dir/src/init.cc.o: src/init.cc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hash_bytes.h \
+  /usr/include/c++/13/bits/hashtable.h \
+  /usr/include/c++/13/bits/hashtable_policy.h \
   /usr/include/c++/13/bits/invoke.h \
   /usr/include/c++/13/bits/ios_base.h \
   /usr/include/c++/13/bits/istream.tcc \
@@ -1248,6 +1252,7 @@ CMakeFiles/tinychat.dir/src/init.cc.o: src/init.cc \
   /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unique_ptr.h \
+  /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bits/vector.tcc \
@@ -1299,6 +1304,7 @@ CMakeFiles/tinychat.dir/src/init.cc.o: src/init.cc \
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
   /usr/include/c++/13/typeinfo \
+  /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/utility \
   /usr/include/c++/13/vector \
   /usr/include/c++/13/version \
@@ -4787,6 +4793,7 @@ CMakeFiles/tinychat.dir/src/rpc/rpc_server.cc.o: src/rpc/rpc_server.cc \
   src/log.h \
   src/easyconfig/config.h \
   src/easyconfig/parse.h \
+  src/rpc/function.h \
   src/fd_event.h \
   src/init.h \
   src/io_thread.h \
@@ -6404,8 +6411,6 @@ src/rpc/trance_protocol.h:
 
 src/rpc/rpc_server.h:
 
-src/rpc/function.h:
-
 src/rpc/function.cc:
 
 src/net/socket.h:
@@ -6442,12 +6447,6 @@ src/log.cc:
 
 /usr/include/c++/13/bits/stl_deque.h:
 
-/usr/include/c++/13/bits/hashtable_policy.h:
-
-/usr/include/c++/13/bits/hashtable.h:
-
-/usr/include/c++/13/bits/enable_special_members.h:
-
 /usr/include/c++/13/bits/deque.tcc:
 
 src/timer.h:
@@ -6458,7 +6457,15 @@ src/io_thread.h:
 
 src/io_thread.cc:
 
+/usr/include/c++/13/bits/hashtable_policy.h:
+
+/usr/include/c++/13/bits/hashtable.h:
+
+/usr/include/c++/13/bits/enable_special_members.h:
+
 src/init.h:
+
+src/rpc/function.h:
 
 src/init.cc:
 

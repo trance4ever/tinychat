@@ -6,6 +6,7 @@ CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o
  /home/trance/tinychat/src/log.h
  /home/trance/tinychat/src/easyconfig/config.h
  /home/trance/tinychat/src/easyconfig/parse.h
+ /home/trance/tinychat/src/rpc/function.h
  /home/trance/tinychat/src/init.h
  /home/trance/tinychat/src/fd_event.h
  /home/trance/tinychat/src/io_thread.h

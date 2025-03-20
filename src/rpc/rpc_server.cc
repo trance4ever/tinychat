@@ -89,9 +89,8 @@ namespace trance {
         /*
             调用rpc函数，计算响应体
         */
-        int result = Myadd(r.res_data);
-        std::string string_result = ToString<int>()(result);
-        Response res(1, string_result, "OK");
+        std::string result = getMap()[(Function)r.fun_code](r.res_data);
+        Response res(1, result, "OK");
         auto f = [=]() {
             OnWrite(std::make_shared<ByteArray>(), session, res);
         };

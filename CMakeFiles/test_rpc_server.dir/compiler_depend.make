@@ -5,6 +5,7 @@ CMakeFiles/test_rpc_server.dir/test/test_rpc_server.cc.o: test/test_rpc_server.c
   src/log.h \
   src/easyconfig/config.h \
   src/easyconfig/parse.h \
+  src/rpc/function.h \
   src/init.h \
   src/fd_event.h \
   src/io_thread.h \
@@ -1312,10 +1313,6 @@ src/net/socket_stream.h:
 
 /usr/include/alloca.h:
 
-/usr/include/c++/13/bits/algorithmfwd.h:
-
-/usr/local/include/boost/mpl/aux_/has_type.hpp:
-
 /usr/local/include/boost/preprocessor/arithmetic/inc.hpp:
 
 /usr/local/include/boost/mpl/aux_/static_cast.hpp:
@@ -1331,6 +1328,10 @@ src/net/socket_stream.h:
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
 
 /usr/local/include/boost/mpl/next.hpp:
+
+/usr/include/c++/13/bits/algorithmfwd.h:
+
+/usr/local/include/boost/mpl/aux_/has_type.hpp:
 
 /usr/local/include/boost/utility/identity_type.hpp:
 

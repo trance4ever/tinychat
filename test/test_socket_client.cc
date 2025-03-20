@@ -4,6 +4,7 @@
 #include "../src/net/socket_stream.h"
 #include "../src/util.h"
 #include "../src/rpc/trance_protocol.h"
+#include "../src/rpc/function.h"
 using namespace trance;
 using namespace std;
 
@@ -15,7 +16,7 @@ int main() {
     while(1) {
         sleep(1000);
         // 发送请求体
-        Request r(1, string("1234"), string("hello!"));
+        Request r(Function::__Myadd, string("1234"), string("hello!"));
         uint16_t length = r.size();
         char buf[length];
         r.serialization(buf);

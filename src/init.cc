@@ -20,5 +20,7 @@ namespace trance {
         // 添加文件日志输出地
         std::string path = g_config_ptr->getConfig<std::string>("Logger::m_fileLogAppend");
         Logger::getGlobalLogger()->addLoggerAppend(std::make_shared<FileLoggerAppend>(path));
+        // function中添加函数指针
+        // getMap()[Functoin::__Myadd] = Myadd;
     }
 }

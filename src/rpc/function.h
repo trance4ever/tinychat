@@ -7,7 +7,13 @@
 
 namespace trance {
 
-    int Myadd(std::string& data);
+    enum Function {
+        __Myadd = 1
+    };
+
+    std::string Myadd(std::string& data);
+
+    std::unordered_map<Function, std::function<std::string(std::string&)>> getMap();
 }
 
 #endif
