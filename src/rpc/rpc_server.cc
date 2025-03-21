@@ -57,7 +57,7 @@ namespace trance {
         FdEvent* clientEvent = new FdEvent(client->getSock());
         SocketStream::ptr session = std::make_shared<SocketStream>(client);
         auto f = [=]() {
-            OnRead(std::make_shared<ByteArray>(), session);
+            OnRead(std::make_shared<ByteArray>(), session, clientEvent);
         };
 
         clientEvent->listen(f, EPOLLIN);
@@ -66,11 +66,12 @@ namespace trance {
         FMT_INFO_LOG("new connected %s", client->printInfo().c_str())
     }
 
-    void RPCServer::OnRead(ByteArray::ptr ba, SocketStream::ptr session) {
+    void RPCServer::OnRead(ByteArray::ptr ba, SocketStream::ptr session, FdEvent* listenedEvent) {
         int rt = session->read(ba, 2);
         if(rt == 0) {
             FMT_INFO_LOG("client disconnect, info:%s", session->getSocket()->printInfo().c_str())
             Reactor::getCurReactor()->delEpollEvent(session->getSocket()->getSock());
+            delete listenedEvent;
             return;
         }
         uint16_t length;
@@ -80,6 +81,7 @@ namespace trance {
         if(rt == 0) {
             FMT_INFO_LOG("client disconnect, info:%s", session->getSocket()->printInfo().c_str())
             Reactor::getCurReactor()->delEpollEvent(session->getSocket()->getSock());
+            delete listenedEvent;
             return;
         }
         char buf[length];
@@ -92,21 +94,22 @@ namespace trance {
         std::string result = getMap()[(Function)r.fun_code](r.res_data);
         Response res(1, result, "OK");
         auto f = [=]() {
-            OnWrite(std::make_shared<ByteArray>(), session, res);
+            OnWrite(std::make_shared<ByteArray>(), session, res, listenedEvent);
         };
-        TimerEvent::ptr t = std::make_shared<TimerEvent>(f, 0);
-        Reactor::getCurReactor()->getTimer()->addTimerEvent(t);
-        // FdEvent* fe = new FdEvent(session->getSocket()->getSock());
-        // fe->listen(f, EPOLLOUT);
-        // Reactor::getCurReactor()->addEpollEvent(fe);
+        listenedEvent->listen(f, EPOLLOUT);
+        // TimerEvent::ptr t = std::make_shared<TimerEvent>(f, 0);
+        // Reactor::getCurReactor()->getTimer()->addTimerEvent(t);
+        Reactor::getCurReactor()->addEpollEvent(listenedEvent);
     }
 
-    void RPCServer::OnWrite(std::shared_ptr<ByteArray> ba, std::shared_ptr<SocketStream> session, Response res) {
+    void RPCServer::OnWrite(ByteArray::ptr ba, SocketStream::ptr session, Response res, FdEvent* listenedEvent) {
         uint16_t length = res.size();
         char buf[length];
         res.serialization(buf);
         ba->write(buf, length);
         session->write(ba, length);
+        listenedEvent->cancleEvent(EPOLLOUT);
+        Reactor::getCurReactor()->addEpollEvent(listenedEvent);
     }
 
 }

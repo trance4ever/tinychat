@@ -8,13 +8,17 @@ CMakeFiles/test_socket_client.dir/test/test_socket_client.cc.o
  /home/trance/tinychat/src/util.h
  /home/trance/tinychat/src/easyconfig/config.h
  /home/trance/tinychat/src/easyconfig/parse.h
- /home/trance/tinychat/src/rpc/function.h
- /home/trance/tinychat/src/init.h
- /home/trance/tinychat/src/log.h
  /home/trance/tinychat/src/net/address.h
  /home/trance/tinychat/src/net/bytearray.h
  /home/trance/tinychat/src/net/socket.h
  /home/trance/tinychat/src/net/socket_stream.h
+ /home/trance/tinychat/src/thread.h
+ /home/trance/tinychat/src/rpc/function.h
+ /home/trance/tinychat/src/init.h
+ /home/trance/tinychat/src/log.h
+ /home/trance/tinychat/src/net/socket.h
+ /home/trance/tinychat/src/net/socket_stream.h
+ /home/trance/tinychat/src/rpc/function.h
  /home/trance/tinychat/src/rpc/trance_protocol.h
  /home/trance/tinychat/src/util.h
  /usr/include/alloca.h

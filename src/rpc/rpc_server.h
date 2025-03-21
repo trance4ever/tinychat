@@ -26,10 +26,12 @@ namespace trance {
         // 处理连接请求
         void OnAccept();
         // 接收RPC请求，解析并处理请求
-        void OnRead(ByteArray::ptr ba, SocketStream::ptr session);
+        void OnRead(ByteArray::ptr ba, SocketStream::ptr session, FdEvent* listenedEvent);
         // 远程调用完毕，返回处理结果
-        void OnWrite(std::shared_ptr<ByteArray> ba, std::shared_ptr<SocketStream> session, Response res);
+        void OnWrite(ByteArray::ptr ba, SocketStream::ptr session, Response res, FdEvent* listenedEvent);
     private:
+        // 锁资源
+        Spinlock m_lock;
         // IO线程组，处理请求
         std::vector<IOThread*> m_iothreads;
         // 主线程，接收请求

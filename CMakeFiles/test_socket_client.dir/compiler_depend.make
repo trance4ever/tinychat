@@ -7,13 +7,17 @@ CMakeFiles/test_socket_client.dir/test/test_socket_client.cc.o: test/test_socket
   src/util.h \
   src/easyconfig/config.h \
   src/easyconfig/parse.h \
-  src/rpc/function.h \
-  src/init.h \
-  src/log.h \
   src/net/address.h \
   src/net/bytearray.h \
   src/net/socket.h \
   src/net/socket_stream.h \
+  src/thread.h \
+  src/rpc/function.h \
+  src/init.h \
+  src/log.h \
+  src/net/socket.h \
+  src/net/socket_stream.h \
+  src/rpc/function.h \
   src/rpc/trance_protocol.h \
   src/util.h \
   /usr/include/alloca.h \
