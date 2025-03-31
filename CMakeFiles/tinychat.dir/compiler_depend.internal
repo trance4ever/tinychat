@@ -1164,6 +1164,7 @@ CMakeFiles/tinychat.dir/src/init.cc.o
  /home/trance/tinychat/src/net/bytearray.h
  /home/trance/tinychat/src/net/socket.h
  /home/trance/tinychat/src/net/socket_stream.h
+ /home/trance/tinychat/src/rpc/trance_protocol.h
  /home/trance/tinychat/src/thread.h
  /home/trance/tinychat/src/rpc/function.h
  /home/trance/tinychat/src/init.h
@@ -4140,6 +4141,7 @@ CMakeFiles/tinychat.dir/src/rpc/function.cc.o
  /home/trance/tinychat/src/net/bytearray.h
  /home/trance/tinychat/src/net/socket.h
  /home/trance/tinychat/src/net/socket_stream.h
+ /home/trance/tinychat/src/rpc/trance_protocol.h
  /home/trance/tinychat/src/thread.h
  /home/trance/tinychat/src/util.h
  /home/trance/tinychat/src/rpc/function.h
@@ -4869,6 +4871,7 @@ CMakeFiles/tinychat.dir/src/rpc/rpc_server.cc.o
  /home/trance/tinychat/src/net/socket.h
  /home/trance/tinychat/src/net/socket_stream.h
  /home/trance/tinychat/src/reactor.h
+ /home/trance/tinychat/src/rpc/trance_protocol.h
  /home/trance/tinychat/src/thread.h
  /home/trance/tinychat/src/timer.h
  /home/trance/tinychat/src/util.h

@@ -2,6 +2,7 @@
 #define __RPC_SERVER_H__
 
 #include<vector>
+#include<unordered_map>
 #include "../io_thread.h"
 #include "../reactor.h"
 #include "../net/bytearray.h"
@@ -26,9 +27,13 @@ namespace trance {
         // 处理连接请求
         void OnAccept();
         // 接收RPC请求，解析并处理请求
-        void OnRead(ByteArray::ptr ba, SocketStream::ptr session, FdEvent* listenedEvent);
+        void OnRead(ByteArray::ptr ba, int socket, FdEvent* listenedEvent);
         // 远程调用完毕，返回处理结果
-        void OnWrite(ByteArray::ptr ba, SocketStream::ptr session, Response res, FdEvent* listenedEvent);
+        void OnWrite(ByteArray::ptr ba, int socket, Response res, FdEvent* listenedEvent);
+        // 获取会话
+        SocketStream::ptr getSession(int socket);
+        // 获得服务器对象
+        static RPCServer* getGlobalRPCServer();
     private:
         // 锁资源
         Spinlock m_lock;
@@ -40,6 +45,8 @@ namespace trance {
         Socket::ptr m_server {nullptr};
         // 轮训指针
         int threadIdx {0};
+        // 存储会话
+        std::unordered_map<int, SocketStream::ptr> m_sessions;
     };
 
 }

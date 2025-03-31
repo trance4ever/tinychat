@@ -4,7 +4,8 @@ using namespace trance;
 using namespace std;
 
 int main() {
-    RPCServer r;
-    r.start();
+    RPCServer* r = RPCServer::getGlobalRPCServer();
+    r->start();
+    // delete r;
     return 0;
 }

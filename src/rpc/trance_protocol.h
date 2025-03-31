@@ -9,7 +9,9 @@ namespace trance {
 
     enum Status {
         SUCCESS = 1,
-        FAILED = 2
+        FAILED = 2,
+        USERNAME_ERROR = 50,
+        PASSWORD_ERROR = 51
     };
 
     class Request {

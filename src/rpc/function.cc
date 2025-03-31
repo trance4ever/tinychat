@@ -11,6 +11,10 @@ namespace trance {
 
     static ChatServer* g_chatServer = nullptr;
 
+    ChatServer::ChatServer() {
+        parseUserFile();
+    }
+
     std::unordered_map<Function, std::function<std::string(std::string&)>> getMap() {
         return m_global_function_maps;
     }
@@ -29,12 +33,54 @@ namespace trance {
     }
 
     std::string Login(std::string& data) {
-        
+        ChatServer* chatServer = ChatServer::getGlobalChatServer();
+        int split_idx = data.find_first_of('/'), sock_idx = data.find_last_of('/');
+        if(split_idx == data.size()) {
+            ERROR_LOG("Login() error, data format error")
+            return "ERROR";
+        }
+        std::string username = data.substr(0, split_idx);
+        std::string password = data.substr(split_idx + 1, sock_idx - split_idx - 1);
+        std::string str_socket = data.substr(sock_idx + 1);
+        int sessionId = std::stoi(str_socket);
+        /*
+            查询数据，先用文本文档模拟数据库，后续基于MySQL实现连接池
+        */
+        Status s = chatServer->exam(username, password, sessionId);
+        if(s == SUCCESS) {
+            return "SUCCESS";
+        }
+        else {
+            return "ERROR";
+        }
     }
 
-    void ChatServer::pushSession(std::string& username, SocketStream::ptr session) {
+    void ChatServer::pushSession(std::string& username, int sessionId) {
         ScopedLock<Spinlock> lock(m_lock);
-        m_sessions[username] = session;
+        m_sessions[username] = sessionId;
+    }
+
+    void ChatServer::parseUserFile() {
+        std::ifstream ifs;
+        ifs.open("../../chat/server/users.txt");
+        std::string tmp;
+        while(ifs >> tmp) {
+            int split_idx = tmp.find_first_of(':');
+            m_userInfos[tmp.substr(0, split_idx)] = tmp.substr(split_idx + 1);
+        }
+        ifs.close();
+    }
+
+    Status ChatServer::exam(std::string& username, std::string& password, int sessionId) {
+        auto it = m_userInfos.find(username);
+        if(it == m_userInfos.end()) {
+            return Status::USERNAME_ERROR;
+        }
+        else if(password != m_userInfos[username]) {
+            return Status::PASSWORD_ERROR;
+        }
+        pushSession(username, sessionId);
+        return Status::SUCCESS;
     }
 
 }
