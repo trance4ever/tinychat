@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/trance/tinychat/src/client/chat_client.cc" "CMakeFiles/tinychat.dir/src/client/chat_client.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/client/chat_client.cc.o.d"
   "/home/trance/tinychat/src/easyconfig/config.cc" "CMakeFiles/tinychat.dir/src/easyconfig/config.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/easyconfig/config.cc.o.d"
   "/home/trance/tinychat/src/easyconfig/parse.cc" "CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.o.d"
   "/home/trance/tinychat/src/fd_event.cc" "CMakeFiles/tinychat.dir/src/fd_event.cc.o" "gcc" "CMakeFiles/tinychat.dir/src/fd_event.cc.o.d"

@@ -158,6 +158,43 @@ test_rpc_server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rpc_server.dir/build.make CMakeFiles/test_rpc_server.dir/build
 .PHONY : test_rpc_server/fast
 
+#=============================================================================
+# Target rules for targets named test_client
+
+# Build rule for target.
+test_client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_client
+.PHONY : test_client
+
+# fast build rule for target.
+test_client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_client.dir/build.make CMakeFiles/test_client.dir/build
+.PHONY : test_client/fast
+
+src/client/chat_client.o: src/client/chat_client.cc.o
+.PHONY : src/client/chat_client.o
+
+# target to build an object file
+src/client/chat_client.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/client/chat_client.cc.o
+.PHONY : src/client/chat_client.cc.o
+
+src/client/chat_client.i: src/client/chat_client.cc.i
+.PHONY : src/client/chat_client.i
+
+# target to preprocess a source file
+src/client/chat_client.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/client/chat_client.cc.i
+.PHONY : src/client/chat_client.cc.i
+
+src/client/chat_client.s: src/client/chat_client.cc.s
+.PHONY : src/client/chat_client.s
+
+# target to generate assembly for a file
+src/client/chat_client.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/client/chat_client.cc.s
+.PHONY : src/client/chat_client.cc.s
+
 src/easyconfig/config.o: src/easyconfig/config.cc.o
 .PHONY : src/easyconfig/config.o
 
@@ -566,6 +603,30 @@ src/util.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/src/util.cc.s
 .PHONY : src/util.cc.s
 
+test/test_client.o: test/test_client.cc.o
+.PHONY : test/test_client.o
+
+# target to build an object file
+test/test_client.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_client.dir/build.make CMakeFiles/test_client.dir/test/test_client.cc.o
+.PHONY : test/test_client.cc.o
+
+test/test_client.i: test/test_client.cc.i
+.PHONY : test/test_client.i
+
+# target to preprocess a source file
+test/test_client.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_client.dir/build.make CMakeFiles/test_client.dir/test/test_client.cc.i
+.PHONY : test/test_client.cc.i
+
+test/test_client.s: test/test_client.cc.s
+.PHONY : test/test_client.s
+
+# target to generate assembly for a file
+test/test_client.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_client.dir/build.make CMakeFiles/test_client.dir/test/test_client.cc.s
+.PHONY : test/test_client.cc.s
+
 test/test_rpc_server.o: test/test_rpc_server.cc.o
 .PHONY : test/test_rpc_server.o
 
@@ -622,9 +683,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test_client"
 	@echo "... test_rpc_server"
 	@echo "... test_socket_client"
 	@echo "... tinychat"
+	@echo "... src/client/chat_client.o"
+	@echo "... src/client/chat_client.i"
+	@echo "... src/client/chat_client.s"
 	@echo "... src/easyconfig/config.o"
 	@echo "... src/easyconfig/config.i"
 	@echo "... src/easyconfig/config.s"
@@ -676,6 +741,9 @@ help:
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
+	@echo "... test/test_client.o"
+	@echo "... test/test_client.i"
+	@echo "... test/test_client.s"
 	@echo "... test/test_rpc_server.o"
 	@echo "... test/test_rpc_server.i"
 	@echo "... test/test_rpc_server.s"

@@ -123,16 +123,12 @@ namespace trance {
             r.res_data.push_back('/');
             r.res_data.append(std::to_string(socket));
         }
-        ss << getMap()[(Function)r.fun_code](r.res_data) << "/" << r.size();
-        // std::string result = getMap()[(Function)r.fun_code](r.res_data);
-        // Response res(1, result, "OK");
+        ss << getMap()[(Function)r.fun_code](r.res_data);
         Response res(1, ss.str(), "OK");
         auto f = [=]() {
             OnWrite(std::make_shared<ByteArray>(), socket, res, listenedEvent);
         };
         listenedEvent->listen(f, EPOLLOUT);
-        // TimerEvent::ptr t = std::make_shared<TimerEvent>(f, 0);
-        // Reactor::getCurReactor()->getTimer()->addTimerEvent(t);
         Reactor::getCurReactor()->addEpollEvent(listenedEvent);
     }
 

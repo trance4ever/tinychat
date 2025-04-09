@@ -34,6 +34,8 @@ namespace trance {
         static ChatServer* getGlobalChatServer();
         // 放入数据
         void pushSession(std::string& username, int sessionId);
+        // 删除数据
+        void rmSession(std::string& username);
         // 解析文件
         void parseUserFile();
         // 检验用户账号名密码

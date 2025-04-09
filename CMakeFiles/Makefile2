@@ -69,6 +69,7 @@ CMAKE_BINARY_DIR = /home/trance/tinychat
 all: CMakeFiles/tinychat.dir/all
 all: CMakeFiles/test_socket_client.dir/all
 all: CMakeFiles/test_rpc_server.dir/all
+all: CMakeFiles/test_client.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -79,6 +80,7 @@ preinstall:
 clean: CMakeFiles/tinychat.dir/clean
 clean: CMakeFiles/test_socket_client.dir/clean
 clean: CMakeFiles/test_rpc_server.dir/clean
+clean: CMakeFiles/test_client.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -88,12 +90,12 @@ clean: CMakeFiles/test_rpc_server.dir/clean
 CMakeFiles/tinychat.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tinychat.dir/build.make CMakeFiles/tinychat.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 "Built target tinychat"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 "Built target tinychat"
 .PHONY : CMakeFiles/tinychat.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tinychat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 19
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tinychat.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/tinychat.dir/rule
@@ -114,12 +116,12 @@ CMakeFiles/tinychat.dir/clean:
 CMakeFiles/test_socket_client.dir/all: CMakeFiles/tinychat.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_socket_client.dir/build.make CMakeFiles/test_socket_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4 "Built target test_socket_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=5,6 "Built target test_socket_client"
 .PHONY : CMakeFiles/test_socket_client.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_socket_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_socket_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/test_socket_client.dir/rule
@@ -140,12 +142,12 @@ CMakeFiles/test_socket_client.dir/clean:
 CMakeFiles/test_rpc_server.dir/all: CMakeFiles/tinychat.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rpc_server.dir/build.make CMakeFiles/test_rpc_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rpc_server.dir/build.make CMakeFiles/test_rpc_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_rpc_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=3,4 "Built target test_rpc_server"
 .PHONY : CMakeFiles/test_rpc_server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_rpc_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_rpc_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
 .PHONY : CMakeFiles/test_rpc_server.dir/rule
@@ -158,6 +160,32 @@ test_rpc_server: CMakeFiles/test_rpc_server.dir/rule
 CMakeFiles/test_rpc_server.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_rpc_server.dir/build.make CMakeFiles/test_rpc_server.dir/clean
 .PHONY : CMakeFiles/test_rpc_server.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_client.dir
+
+# All Build rule for target.
+CMakeFiles/test_client.dir/all: CMakeFiles/tinychat.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_client.dir/build.make CMakeFiles/test_client.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_client.dir/build.make CMakeFiles/test_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/trance/tinychat/CMakeFiles --progress-num=1,2 "Built target test_client"
+.PHONY : CMakeFiles/test_client.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 21
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/trance/tinychat/CMakeFiles 0
+.PHONY : CMakeFiles/test_client.dir/rule
+
+# Convenience name for target.
+test_client: CMakeFiles/test_client.dir/rule
+.PHONY : test_client
+
+# clean rule for target.
+CMakeFiles/test_client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_client.dir/build.make CMakeFiles/test_client.dir/clean
+.PHONY : CMakeFiles/test_client.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

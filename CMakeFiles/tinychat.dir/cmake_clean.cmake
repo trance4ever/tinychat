@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/tinychat.dir/src/client/chat_client.cc.o"
+  "CMakeFiles/tinychat.dir/src/client/chat_client.cc.o.d"
   "CMakeFiles/tinychat.dir/src/easyconfig/config.cc.o"
   "CMakeFiles/tinychat.dir/src/easyconfig/config.cc.o.d"
   "CMakeFiles/tinychat.dir/src/easyconfig/parse.cc.o"

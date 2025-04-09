@@ -62,7 +62,12 @@ namespace trance {
 
     void ChatServer::parseUserFile() {
         std::ifstream ifs;
-        ifs.open("../../chat/server/users.txt");
+        ifs.open("../chat/server/users.txt");
+        if(!ifs.is_open()) {
+            ERROR_LOG("ChatServer::parseUserFile() error, file open error")
+            ifs.close();
+            return;
+        }
         std::string tmp;
         while(ifs >> tmp) {
             int split_idx = tmp.find_first_of(':');
@@ -81,6 +86,17 @@ namespace trance {
         }
         pushSession(username, sessionId);
         return Status::SUCCESS;
+    }
+
+    void ChatServer::rmSession(std::string& username) {
+        ScopedLock<Spinlock> lock(m_lock);
+        auto it = m_sessions.find(username);
+        if(it != m_sessions.end()) {
+            m_sessions.erase(it);
+        }
+        else {
+            ERROR_LOG("ChatServer::rmSession() error, username not found")
+        }
     }
 
 }

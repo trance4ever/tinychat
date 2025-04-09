@@ -8,15 +8,15 @@ namespace trance {
     static uint32_t g_buffer_size = 4096;
     
     Buffer::Buffer(uint32_t s)
-            :  size(s),
-            ptr(new char[size]),
+            :  ptr(new char[s]),
+            size(s),
             next(nullptr) {
 
     }
     
     Buffer::Buffer() 
-            : size(g_buffer_size),
-            ptr(new char[size]),
+            : ptr(new char[g_buffer_size]),
+            size(g_buffer_size),
             next(nullptr) {
 
     }
@@ -152,7 +152,7 @@ namespace trance {
 
     #define WRITE(type) \
         byteswap<type>()(val); \
-        write(&val, sizeof(val)); \ 
+        write(&val, sizeof(val)); \
     
     void ByteArray::writeInt16(int16_t val) {
         WRITE(int16_t)

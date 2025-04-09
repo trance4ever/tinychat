@@ -27,6 +27,7 @@ set(LIB_SRC
     src/rpc/trance_protocol.cc
     src/rpc/rpc_server.cc
     src/rpc/function.cc
+    src/client/chat_client.cc
 )
 
 add_library(tinychat SHARED ${LIB_SRC})
@@ -98,6 +99,11 @@ target_link_libraries(test_socket_client ${LIB_LIB})
 add_executable(test_rpc_server test/test_rpc_server.cc)
 add_dependencies(test_rpc_server tinychat)
 target_link_libraries(test_rpc_server ${LIB_LIB})
+
+# 测试聊天客户端模块
+add_executable(test_client test/test_client.cc)
+add_dependencies(test_client tinychat)
+target_link_libraries(test_client ${LIB_LIB})
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)

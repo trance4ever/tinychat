@@ -11,6 +11,7 @@ CMakeFiles/test_socket_client.dir/test/test_socket_client.cc.o: test/test_socket
   src/net/bytearray.h \
   src/net/socket.h \
   src/net/socket_stream.h \
+  src/rpc/trance_protocol.h \
   src/thread.h \
   src/rpc/function.h \
   src/init.h \
