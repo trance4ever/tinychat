@@ -27,9 +27,11 @@ namespace trance {
         // 处理连接请求
         void OnAccept();
         // 接收RPC请求，解析并处理请求
-        void OnRead(ByteArray::ptr ba, int socket, FdEvent* listenedEvent);
+        void OnRead(ByteArray::ptr ba, int socket);
         // 远程调用完毕，返回处理结果
-        void OnWrite(ByteArray::ptr ba, int socket, Response res, FdEvent* listenedEvent);
+        void OnWrite(ByteArray::ptr ba, int socket, Response res);
+        // 监听可写事件
+        void sendResponse(int socket, Response& res);
         // 获取会话
         SocketStream::ptr getSession(int socket);
         // 获得服务器对象
@@ -47,6 +49,8 @@ namespace trance {
         int threadIdx {0};
         // 存储会话
         std::unordered_map<int, SocketStream::ptr> m_sessions;
+        // 存储时间
+        std::unordered_map<int, FdEvent*> m_events;
     };
 
 }

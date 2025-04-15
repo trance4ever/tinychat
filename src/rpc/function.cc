@@ -1,12 +1,17 @@
 #include "function.h"
 #include "../easyconfig/config.h"
+#include "rpc_server.h"
 
 namespace trance {
 
     static std::unordered_map<Function, std::function<std::string(std::string&)>> 
             m_global_function_maps = {
                 {Function::__Myadd, Myadd},
-                {Function::__Login, Login}
+                {Function::__Login, Login},
+                {Function::__AddFriend, AddFriend},
+                {Function::__Sync, Sync},
+                {Function::__Agree, Agree},
+                {Function::__Refuse, Refuse}
             };
 
     static ChatServer* g_chatServer = nullptr;
@@ -55,6 +60,11 @@ namespace trance {
         }
     }
 
+    std::string Sync(std::string& data) {
+        ChatServer* chatServer = ChatServer::getGlobalChatServer();
+        return chatServer->sync(data);
+    }
+
     void ChatServer::pushSession(std::string& username, int sessionId) {
         ScopedLock<Spinlock> lock(m_lock);
         m_sessions[username] = sessionId;
@@ -97,6 +107,184 @@ namespace trance {
         else {
             ERROR_LOG("ChatServer::rmSession() error, username not found")
         }
+    }
+
+    std::string AddFriend(std::string& data) {
+        int split_idx = data.find_first_of('/');
+        std::string username = data.substr(0, split_idx);
+        std::string addedname = data.substr(split_idx + 1);
+        ChatServer* s = ChatServer::getGlobalChatServer();
+        // 交给服务层处理
+        return s->AddFriend(username, addedname);
+    }
+    
+    std::string ChatServer::AddFriend(std::string& username, std::string& addedname) {
+        // 检查是否有此id
+        auto it = m_userInfos.find(addedname);
+        int flag = 1;
+        // 没有返回错误信息
+        if(it == m_userInfos.end()) {
+            return "ERROR[do not have such user]";
+        }
+        else {
+            // 目标用户存在，查找目标用户的会话信息
+            RPCServer* rpcserver = RPCServer::getGlobalRPCServer();
+            auto it = m_sessions.find(addedname);
+            std::string info = "A?" + username;
+            if(it != m_sessions.end()) {
+                SocketStream::ptr session = rpcserver->getSession(it->second);
+                // 用户在线则发送即使消息，用户不在线，删除保存的在线用户信息，并且保存到文件
+                if(session != nullptr) {
+                    flag = 0;
+                    Response res(1, info, "OK");
+                    rpcserver->sendResponse(it->second, res);
+                }
+                else {
+                    ScopedLock<Spinlock> lock(m_lock);
+                    m_sessions.erase(it);
+                }
+            }
+        }
+        // 目标用户不在线，将消息保存到文件中，待用户登录后再发送
+        if(flag) {
+            std::string filepath = Config::getGlobalConfig()->getConfig<std::string>("ChatServer::filepath");
+            std::string filename = filepath + "tmp_" + addedname;
+            std::string info = "A?" + username;
+            append2File(filename, info);
+        }
+        return "SUCCESS";
+    }
+
+    void ChatServer::append2File(std::string& filename, std::string& str) {
+        std::ofstream ofs;
+        ofs.open(filename, std::ios::app);
+        if(!ofs.is_open()) {
+            ERROR_LOG("ChatServer::append2File() error, file open error")
+            return;
+        }
+        ScopedLock<Spinlock> lock(m_lock);
+        ofs << str << std::endl;
+        ofs.close();
+    }
+
+    void ChatServer::readFile(std::string& filename, std::stringstream& ss) {
+        ScopedLock<Spinlock> lock(m_lock);  
+        std::ifstream ifs;
+        ifs.open(filename);
+        if(!ifs.is_open()) {
+            FMT_INFO_LOG("failed to open file, filename: %s", filename.c_str())
+            ifs.close();
+            return;
+        }
+        std::string tmp;
+        while(ifs >> tmp) {
+            ss << tmp << "|";
+        }
+    }
+
+    std::string ChatServer::sync(std::string& username) {
+        // 同步数据
+        std::string filepath = Config::getGlobalConfig()->getConfig<std::string>("ChatServer::filepath");
+        std::string friendsfile = filepath + "friends_" + username;
+        std::string chatfile = filepath + "chat_" + username;
+        std::string opfile = filepath + "tmp_" + username;
+        std::stringstream ss;
+        // 依次读取好友信息、聊天信息和请求信息
+        readFile(friendsfile, ss);
+        ss << "/";
+        readFile(chatfile, ss);
+        ss << "/";
+        readFile(opfile, ss);
+        return ss.str();
+    }
+
+    std::string Agree(std::string& data) {
+        int split_idx = data.find_first_of('/');
+        std::string username = data.substr(0, split_idx);
+        std::string friendname = data.substr(split_idx + 1);
+        ChatServer* s = ChatServer::getGlobalChatServer();
+        // 交给服务层处理
+        return s->agree(username, friendname);
+    }
+
+    std::string ChatServer::agree(std::string& username, std::string& friendname) {
+        // 检查是否存在id
+        auto it = m_userInfos.find(friendname);
+        if(it == m_userInfos.end()) {
+            return "ERROR[do not have such user]";
+        }
+        // 目标用户存在，服务端做两件事情
+        // 1. 文件中追加好友信息
+        std::string filepath = Config::getGlobalConfig()->getConfig<std::string>("ChatServer::filepath");
+        std::string filename1 = filepath + "friends_" + username;
+        std::string filename2 = filepath + "friends_" + friendname;
+        append2File(filename1, friendname);
+        append2File(filename2, username);
+        // 2. 向目标用户发送同意添加好友信息
+        if(isOnlie(friendname)) {
+            // 用户在线，发送消息
+            RPCServer* rpcserver = RPCServer::getGlobalRPCServer();
+            auto it = m_sessions.find(friendname);
+            Response res(1, "P?" + username, "OK");
+            rpcserver->sendResponse(it->second, res);
+        }
+        else {
+            // 用户不在线，将消息保存到文件中
+            std::string tmp_filename = filepath + "tmp_" + friendname;
+            std::string info = "P?" + username;
+            append2File(tmp_filename, info);
+        }
+
+        return "SUCCESS";
+    }
+
+    bool ChatServer::isOnlie(std::string& username) {
+        auto it = m_sessions.find(username);
+        if(it == m_sessions.end()) {
+            return false;
+        }
+        RPCServer* rpcserver = RPCServer::getGlobalRPCServer();
+        SocketStream::ptr session = rpcserver->getSession(it->second);
+        if(session == nullptr) {
+            ScopedLock<Spinlock> lock(m_lock);
+            m_sessions.erase(it);
+            return false;
+        }
+        return true;
+    }
+
+    std::string Refuse(std::string& data) {
+        int split_idx = data.find_first_of('/');
+        std::string username = data.substr(0, split_idx);
+        std::string friendname = data.substr(split_idx + 1);
+        ChatServer* s = ChatServer::getGlobalChatServer();
+        // 交给服务层处理
+        return s->refuse(username, friendname);
+    }
+
+    std::string ChatServer::refuse(std::string& username, std::string& friendname) {
+        // 检查是否存在id
+        auto it = m_userInfos.find(friendname);
+        if(it == m_userInfos.end()) {
+            return "ERROR[do not have such user]";
+        }
+        // 向目标用户发送拒绝添加好友信息
+        if(isOnlie(friendname)) {
+            // 用户在线，发送消息
+            RPCServer* rpcserver = RPCServer::getGlobalRPCServer();
+            auto it = m_sessions.find(friendname);
+            Response res(1, "R?" + username, "OK");
+            rpcserver->sendResponse(it->second, res);
+        }
+        else {
+            // 用户不在线，将消息保存到文件中
+            std::string filepath = Config::getGlobalConfig()->getConfig<std::string>("ChatServer::filepath");
+            std::string tmp_filename = filepath + "tmp_" + friendname;
+            std::string info = "R?" + username;
+            append2File(tmp_filename, info);
+        }
+
+        return "SUCCESS";
     }
 
 }

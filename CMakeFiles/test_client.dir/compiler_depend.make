@@ -7,18 +7,19 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
   src/util.h \
   src/easyconfig/config.h \
   src/easyconfig/parse.h \
+  src/log.h \
   src/net/address.h \
   src/net/bytearray.h \
   src/net/socket.h \
   src/net/socket_stream.h \
-  src/rpc/trance_protocol.h \
-  src/thread.h \
-  src/rpc/function.h \
-  src/log.h \
+  src/init.h \
   src/net/socket_stream.h \
+  src/rpc/trance_protocol.h \
+  src/thread.h \
   src/rpc/function.h \
   src/rpc/trance_protocol.h \
   src/thread.h \
+  src/util.h \
   src/client/chat_client.h \
   src/init.h \
   src/log.h \
@@ -55,6 +56,7 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/cxxabi_init_exception.h \
+  /usr/include/c++/13/bits/deque.tcc \
   /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
   /usr/include/c++/13/bits/exception.h \
@@ -100,6 +102,7 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
+  /usr/include/c++/13/bits/stl_deque.h \
   /usr/include/c++/13/bits/stl_function.h \
   /usr/include/c++/13/bits/stl_heap.h \
   /usr/include/c++/13/bits/stl_iterator.h \
@@ -108,6 +111,7 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
   /usr/include/c++/13/bits/stl_map.h \
   /usr/include/c++/13/bits/stl_multimap.h \
   /usr/include/c++/13/bits/stl_pair.h \
+  /usr/include/c++/13/bits/stl_queue.h \
   /usr/include/c++/13/bits/stl_raw_storage_iter.h \
   /usr/include/c++/13/bits/stl_relops.h \
   /usr/include/c++/13/bits/stl_tempbuf.h \
@@ -141,6 +145,7 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
   /usr/include/c++/13/cwctype \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
+  /usr/include/c++/13/deque \
   /usr/include/c++/13/exception \
   /usr/include/c++/13/ext/aligned_buffer.h \
   /usr/include/c++/13/ext/alloc_traits.h \
@@ -163,6 +168,7 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
+  /usr/include/c++/13/queue \
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
@@ -944,6 +950,8 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
 
 /usr/local/include/boost/preprocessor/arithmetic/mod.hpp:
 
+/usr/local/include/boost/preprocessor/arithmetic/detail/is_maximum_number.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
 /usr/include/x86_64-linux-gnu/bits/time.h:
@@ -967,22 +975,6 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
 /usr/include/c++/13/map:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/local/include/boost/preprocessor/control/limits/while_256.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
-
-/usr/local/include/boost/type_traits/make_unsigned.hpp:
-
-/usr/local/include/boost/type_traits/has_minus_assign.hpp:
-
-/usr/include/c++/13/bits/requires_hosted.h:
-
-/usr/local/include/boost/mpl/bind_fwd.hpp:
-
-/usr/local/include/boost/utility/identity_type.hpp:
-
-/usr/local/include/boost/mpl/aux_/type_wrapper.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
@@ -1024,6 +1016,10 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
 
 /usr/include/c++/13/cwchar:
 
+/usr/local/include/boost/preprocessor/arithmetic/detail/maximum_number.hpp:
+
+/usr/local/include/boost/mpl/aux_/config/ttp.hpp:
+
 /usr/include/stdio.h:
 
 /usr/include/c++/13/bits/stl_iterator_base_types.h:
@@ -1041,26 +1037,6 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
 /usr/local/include/boost/preprocessor/repetition/enum_params.hpp:
 
 /usr/include/pthread.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
-
-/usr/include/c++/13/bits/enable_special_members.h:
-
-/usr/local/include/boost/type_traits/is_floating_point.hpp:
-
-/usr/local/include/boost/range/iterator_range_core.hpp:
-
-/usr/include/stdint.h:
-
-/usr/local/include/boost/preprocessor/inc.hpp:
-
-/usr/include/endian.h:
-
-/usr/local/include/boost/mpl/bind.hpp:
-
-/usr/include/linux/limits.h:
-
-/usr/include/c++/13/ratio:
 
 /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
 
@@ -1087,6 +1063,26 @@ CMakeFiles/test_client.dir/test/test_client.cc.o: test/test_client.cc \
 /usr/local/include/boost/type_traits/is_class.hpp:
 
 /usr/include/c++/13/sstream:
+
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
+
+/usr/include/c++/13/bits/enable_special_members.h:
+
+/usr/local/include/boost/type_traits/is_floating_point.hpp:
+
+/usr/local/include/boost/range/iterator_range_core.hpp:
+
+/usr/include/stdint.h:
+
+/usr/local/include/boost/preprocessor/inc.hpp:
+
+/usr/include/endian.h:
+
+/usr/local/include/boost/mpl/bind.hpp:
+
+/usr/include/linux/limits.h:
+
+/usr/include/c++/13/ratio:
 
 /usr/local/include/boost/preprocessor/comparison/less_equal.hpp:
 
@@ -1228,15 +1224,17 @@ src/net/address.h:
 
 /usr/include/c++/13/ostream:
 
-/usr/include/x86_64-linux-gnu/bits/environments.h:
+/usr/local/include/boost/utility/identity_type.hpp:
 
-src/init.h:
+/usr/local/include/boost/mpl/aux_/type_wrapper.hpp:
 
-/usr/local/include/boost/utility/base_from_member.hpp:
+/usr/include/c++/13/bits/deque.tcc:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
+/usr/local/include/boost/preprocessor/seq/limits/fold_left_256.hpp:
 
-/usr/include/c++/13/bits/invoke.h:
+/usr/include/c++/13/bits/streambuf_iterator.h:
+
+src/net/socket_stream.h:
 
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
@@ -1266,17 +1264,53 @@ src/init.h:
 
 /usr/local/include/boost/limits.hpp:
 
-/usr/local/include/boost/preprocessor/seq/limits/fold_left_256.hpp:
-
-/usr/include/c++/13/bits/streambuf_iterator.h:
-
-src/net/socket_stream.h:
-
 /usr/include/alloca.h:
+
+/usr/include/c++/13/fstream:
+
+/usr/include/c++/13/bits/nested_exception.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
+/usr/local/include/boost/numeric/conversion/sign_mixture_enum.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+
+/usr/local/include/boost/mpl/aux_/largest_int.hpp:
+
+/usr/include/c++/13/bits/allocated_ptr.h:
+
+/usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/local/include/boost/preprocessor/control/limits/while_256.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/floatn-common.h:
+
+/usr/local/include/boost/type_traits/make_unsigned.hpp:
+
+/usr/local/include/boost/type_traits/has_minus_assign.hpp:
+
+/usr/include/c++/13/bits/requires_hosted.h:
+
+/usr/local/include/boost/mpl/bind_fwd.hpp:
+
+/usr/include/c++/13/bits/stl_queue.h:
+
+src/init.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/local/include/boost/utility/base_from_member.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
 
 /usr/local/include/boost/numeric/conversion/converter.hpp:
 
 /usr/include/netinet/in.h:
+
+/usr/local/include/boost/preprocessor/arithmetic/inc.hpp:
+
+/usr/local/include/boost/mpl/aux_/static_cast.hpp:
 
 /usr/include/c++/13/bits/hashtable_policy.h:
 
@@ -1284,35 +1318,15 @@ src/net/socket_stream.h:
 
 /usr/include/c++/13/bits/std_function.h:
 
+/usr/include/c++/13/queue:
+
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
 
 /usr/local/include/boost/mpl/next.hpp:
 
-/usr/include/c++/13/bits/locale_classes.h:
-
 /usr/local/include/boost/preprocessor/empty.hpp:
 
 test/test_client.cc:
-
-/usr/include/x86_64-linux-gnu/asm/sockios.h:
-
-src/client/chat_client.h:
-
-/usr/include/c++/13/bits/locale_facets.h:
-
-/usr/local/include/boost/mpl/aux_/preprocessed/gcc/less.hpp:
-
-src/rpc/trance_protocol.h:
-
-src/thread.h:
-
-/usr/local/include/boost/preprocessor/comma_if.hpp:
-
-/usr/local/include/boost/mpl/aux_/config/forwarding.hpp:
-
-/usr/include/c++/13/backward/auto_ptr.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
 /usr/include/errno.h:
 
@@ -1366,25 +1380,35 @@ src/net/socket.h:
 
 /usr/include/c++/13/array:
 
-/usr/include/c++/13/bits/allocated_ptr.h:
+src/rpc/trance_protocol.h:
 
-/usr/local/include/boost/mpl/aux_/static_cast.hpp:
+src/thread.h:
 
-/usr/local/include/boost/preprocessor/arithmetic/inc.hpp:
+/usr/local/include/boost/preprocessor/comma_if.hpp:
 
-/usr/include/x86_64-linux-gnu/asm/errno.h:
+/usr/local/include/boost/mpl/aux_/config/forwarding.hpp:
+
+/usr/include/c++/13/backward/auto_ptr.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/local/include/boost/preprocessor/arithmetic/detail/is_minimum_number.hpp:
+
+/usr/include/assert.h:
+
+/usr/include/x86_64-linux-gnu/asm/sockios.h:
+
+src/client/chat_client.h:
+
+/usr/include/c++/13/bits/locale_facets.h:
+
+/usr/local/include/boost/mpl/aux_/preprocessed/gcc/less.hpp:
 
 /usr/local/include/boost/preprocessor/logical/bool.hpp:
 
 /usr/include/c++/13/bits/concept_check.h:
 
 /usr/include/c++/13/bits/alloc_traits.h:
-
-/usr/local/include/boost/type_traits/detail/is_function_cxx_11.hpp:
-
-/usr/include/c++/13/ext/type_traits.h:
-
-/usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/c++/13/bits/basic_ios.h:
 
@@ -1458,12 +1482,6 @@ src/rpc/function.h:
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
-/usr/include/libintl.h:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-/usr/local/include/boost/config/workaround.hpp:
-
 /usr/local/include/boost/numeric/conversion/int_float_mixture_enum.hpp:
 
 /usr/local/include/boost/mpl/aux_/has_type.hpp:
@@ -1478,9 +1496,13 @@ src/rpc/function.h:
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
+/usr/include/c++/13/bits/invoke.h:
+
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/c++/13/bits/locale_classes.h:
 
 src/easyconfig/config.h:
 
@@ -1508,10 +1530,6 @@ src/easyconfig/config.h:
 
 /usr/include/c++/13/bits/new_allocator.h:
 
-/usr/local/include/boost/mpl/aux_/config/ttp.hpp:
-
-/usr/local/include/boost/preprocessor/arithmetic/detail/maximum_number.hpp:
-
 /usr/local/include/boost/mpl/aux_/preprocessed/gcc/template_arity.hpp:
 
 /usr/include/c++/13/bits/parse_numbers.h:
@@ -1534,6 +1552,8 @@ src/log.h:
 
 /usr/include/c++/13/bits/locale_facets.tcc:
 
+/usr/include/c++/13/bits/stl_deque.h:
+
 /usr/local/include/boost/range/value_type.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
@@ -1549,6 +1569,12 @@ src/log.h:
 /usr/include/c++/13/bits/shared_ptr_atomic.h:
 
 /usr/local/include/boost/config/no_tr1/cmath.hpp:
+
+/usr/include/limits.h:
+
+/usr/include/c++/13/cstdlib:
+
+/usr/include/c++/13/cstdint:
 
 /usr/local/include/boost/preprocessor/repetition/enum_binary_params.hpp:
 
@@ -1624,6 +1650,8 @@ src/log.h:
 
 /usr/include/c++/13/ext/atomicity.h:
 
+/usr/include/c++/13/deque:
+
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
 /usr/include/asm-generic/bitsperlong.h:
@@ -1631,12 +1659,6 @@ src/log.h:
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
 /usr/include/c++/13/cctype:
-
-/usr/include/limits.h:
-
-/usr/include/c++/13/cstdlib:
-
-/usr/include/c++/13/cstdint:
 
 /usr/local/include/boost/type_traits/is_lvalue_reference.hpp:
 
@@ -1664,17 +1686,17 @@ src/easyconfig/parse.h:
 
 /usr/local/include/boost/mpl/multiplies.hpp:
 
-/usr/include/c++/13/fstream:
+/usr/include/libintl.h:
 
-/usr/include/c++/13/bits/nested_exception.h:
+/usr/local/include/boost/config/workaround.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
-/usr/local/include/boost/numeric/conversion/sign_mixture_enum.hpp:
+/usr/local/include/boost/type_traits/detail/is_function_cxx_11.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
+/usr/include/c++/13/ext/type_traits.h:
 
-/usr/local/include/boost/mpl/aux_/largest_int.hpp:
+/usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
@@ -1689,6 +1711,10 @@ src/easyconfig/parse.h:
 /usr/include/c++/13/bits/basic_string.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/local/include/boost/mpl/aux_/nested_type_wknd.hpp:
+
+/usr/local/include/boost/core/cmath.hpp:
 
 /usr/include/c++/13/istream:
 
@@ -1884,6 +1910,12 @@ src/util.h:
 
 /usr/local/include/boost/detail/lcast_precision.hpp:
 
+/usr/local/include/boost/preprocessor/arithmetic/limits/dec_256.hpp:
+
+/usr/include/c++/13/bits/localefwd.h:
+
+/usr/local/include/boost/detail/select_type.hpp:
+
 /usr/local/include/boost/range/config.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-least.h:
@@ -2066,17 +2098,7 @@ src/util.h:
 
 /usr/local/include/boost/mpl/aux_/na_spec.hpp:
 
-/usr/local/include/boost/core/cmath.hpp:
-
-/usr/local/include/boost/mpl/aux_/nested_type_wknd.hpp:
-
 /usr/local/include/boost/mpl/aux_/numeric_op.hpp:
-
-/usr/include/c++/13/bits/localefwd.h:
-
-/usr/local/include/boost/detail/select_type.hpp:
-
-/usr/local/include/boost/preprocessor/arithmetic/limits/dec_256.hpp:
 
 /usr/local/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp:
 
@@ -2172,12 +2194,6 @@ src/net/bytearray.h:
 
 /usr/local/include/boost/numeric/conversion/detail/udt_builtin_mixture.hpp:
 
-/usr/local/include/boost/preprocessor/arithmetic/detail/is_maximum_number.hpp:
-
 /usr/local/include/boost/numeric/conversion/conversion_traits.hpp:
 
 /usr/local/include/boost/preprocessor/arithmetic/add.hpp:
-
-/usr/include/assert.h:
-
-/usr/local/include/boost/preprocessor/arithmetic/detail/is_minimum_number.hpp:
