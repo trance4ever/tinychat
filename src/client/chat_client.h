@@ -4,6 +4,7 @@
 #include<string>
 #include<vector>
 #include<map>
+#include<string>
 #include<queue>
 #include "../rpc/trance_protocol.h"
 #include "../log.h"
@@ -45,6 +46,12 @@ namespace trance {
         void quiryUI(std::string& friendname);
         // 信息页面
         void printInfo(std::string& data);
+        // 检查是否为数字
+        bool isNum(std::string& choice);
+        // 好友聊天页面
+        void interface3(int idx);
+        // 好友聊天UI
+        void chatUI(int idx);
     private:
         // 存储聊天信息
         std::map<std::string, std::vector<std::string>> m_messages;
@@ -68,6 +75,8 @@ namespace trance {
         int m_interface {1};
         // 当前用户
         std::string m_username;
+        // 聊天用户id
+        int m_friendId {-1};
     };
 
 }

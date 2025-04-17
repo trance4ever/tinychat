@@ -18,7 +18,9 @@ namespace trance {
         __AddFriend = 3,
         __Sync = 4,
         __Agree = 5,
-        __Refuse = 6
+        __Refuse = 6,
+        __IsOnlie = 7,
+        __SendMessage = 8
     };
     
     std::string Myadd(std::string& data);
@@ -48,6 +50,17 @@ namespace trance {
     // 请求数据格式: username/friendname
     // 响应数据格式: SUCCESS/ERROR 发起人端: R?username
     std::string Refuse(std::string& data);
+
+    // 查询好友是否在线
+    // 请求数据格式: username
+    // 响应数据格式: SUCCESS[Y/N]
+    std::string isOnlie(std::string& data);
+
+    // 聊天
+    // 请求数据格式: sender/receiver/message
+    // 响应数据格式: SUCCESS
+    std::string sendMessage(std::string& data);
+    
 
     // 聊天应用服务端
     class ChatServer {
@@ -79,6 +92,8 @@ namespace trance {
         std::string refuse(std::string& username, std::string& friendname);
         // 查询用户是否在线
         bool isOnlie(std::string& username);
+        // 发送消息
+        std::string sendMessage(std::string& sender, std::string& receiver, std::string& message);
     private:
         // 锁资源
         Spinlock m_lock;

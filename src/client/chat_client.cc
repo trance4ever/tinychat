@@ -20,6 +20,51 @@ namespace trance {
 
     }
 
+    bool ChatClient::isNum(std::string& choice) {
+        for(int i = 0; i < choice.size(); ++i) {
+            if(choice[i] < '0' || choice[i] > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void ChatClient::chatUI(int idx) {
+        system("clear");
+        std::cout << "        [" << m_friends[idx] << "]" << std::endl;
+        std::cout << "> ----------------------------------------------------------- <" << std::endl;
+        // 解析并输出聊天信息
+        ScopedLock<Spinlock> lock(m_lock);
+        for(int i = 0; i < m_messages[m_friends[idx]].size(); ++i) {
+            // 逐条解析信息并输出
+            // 信息格式: [timeM]]info
+            std::string& message = m_messages[m_friends[idx]][i];
+            int split_idx = message.find_first_of(']');
+            std::string time = message.substr(1, split_idx);
+            std::string info = message.substr(split_idx + 1);
+            if(time[time.size() - 1] == 'M') {
+                time.pop_back();
+                std::cout << "\t\t\t\t\t" << time << std::endl;
+                int idx = 0;
+                while(idx < info.size()) {
+                    std::cout << "\t\t\t\t\t";
+                    std::cout << info.substr(idx, 32);
+                    idx += 32;
+                    std::cout << std::endl;
+                }
+            }
+            else {
+                std::cout << time << std::endl;
+                int idx = 0;
+                while(idx < info.size()) {
+                    std::cout << info.substr(idx, 32) << std::endl;
+                    idx += 32;
+                }
+            }
+        }
+
+    }
+
     void* ChatClient::Main(void* arg) {
         ChatClient* cc = (ChatClient*)arg;
         cc->m_sem.notify();
@@ -218,8 +263,6 @@ namespace trance {
     }
 
     void ChatClient::circularRecv() {
-        system("clear");
-        friendsUI();
         while(1) {
             // 接收响应体
             int rt = m_session->read(m_buffer, 2);
@@ -238,17 +281,40 @@ namespace trance {
             char buf[length];
             m_buffer->read(buf, length);
             Response res(buf);
-            ScopedLock<Spinlock> lock(m_lock);
-            m_requests.push(res.rsp_data);
-            lock.unlock();
-            if(res.rsp_data[0] == 'I') {
-
+            if(res.rsp_data[0] == 'I' && res.rsp_data[1] == '?') {
+                if(m_interface == 2) {
+                    std::cout << "new message arrived" << std::endl;
+                }
+                // 接收到信息
+                // 信息格式: I?好友名称?message
+                // 解析数据
+                int split_idx = res.rsp_data.find_first_of('?'),
+                        split_idx2 = res.rsp_data.find_last_of('?');
+                std::string friendname = res.rsp_data.substr(split_idx + 1, split_idx2 - split_idx - 1);
+                std::string message = res.rsp_data.substr(split_idx2 + 1);
+                ScopedLock<Spinlock> lock(m_lock);
+                m_messages[friendname].push_back(message);
+                lock.unlock();
+                if(m_interface == 3 && friendname == m_friends[m_friendId]) {
+                    // 当前在聊天界面，直接输出
+                    // message格式[time]info
+                    int idx = 0, idx2 = message.find_first_of(']');
+                    std::string time = message.substr(1, idx2);
+                    std::string info = message.substr(idx2 + 1);
+                    std::cout << time << std::endl;
+                    while(idx < message.size()) {
+                        std::cout << info.substr(idx, 32) << std::endl;
+                        idx += 32;
+                    }
+                }
             }
-            system("clear");
-            friendsUI();
-            std::cout << res.rsp_data << std::endl;
-            if(res.rsp_data[0] != 'I') {
-                std::cout << "new request arrive, press any anthor key to handle" << std::endl;
+            if(res.rsp_data[0] != 'I' && res.rsp_data[1] == '?') {
+                ScopedLock<Spinlock> lock(m_lock);
+                m_requests.push(res.rsp_data);
+                lock.unlock();
+                if(m_interface == 2) {
+                    std::cout << "new request arrive, press any anthor key to handle" << std::endl;
+                }
             }
         }
     }
@@ -302,6 +368,8 @@ namespace trance {
                 handleRequest(data);
             }
             lock.unlock();
+            system("clear");
+            friendsUI();
             std::cin >> choice;
             if(choice == "A") {
                 std::cout << "input username: ";
@@ -315,7 +383,51 @@ namespace trance {
 
             }
             else {
+                if(!isNum(choice)) {
+                    continue;
+                }
+                int idx = std::stoi(choice);
+                if(idx < 1 || idx > m_friends.size()) {
+                    std::cout << "invalid choice, press any key to try again" << std::endl;
+                    std::string pause;
+                    std::cin >> pause;
+                    continue;
+                }
+                m_interface = 3;
+                m_friendId = idx - 1;
+                interface3(idx - 1);
             }
+        }
+    }
+
+    void ChatClient::interface3(int idx) {
+        chatUI(idx);
+        while(1) {
+            std::string message;
+            std::cin.ignore();
+            std::getline(std::cin, message);
+            if(message == "exit") {
+                m_friendId = -1;
+                return;
+            }
+            // 发送聊天信息
+            std::stringstream ss;
+            ss << m_username << "/" << m_friends[idx] << "/" << message;
+            std::string data = ss.str();
+            std::string info = "chat";
+            sendRequest(Function::__SendMessage, data, info);
+            // 将聊天信息输出
+            std::cout << "\t\t\t\t\t" << getDateTime() << std::endl;
+            int idx = 0;
+            while(idx < message.size()) {
+                std::cout << "\t\t\t\t\t" << message.substr(idx, 32) << std::endl;
+                idx += 32;
+            }
+            // 将聊天信息保存
+            ss.str("");
+            ss.clear();
+            ss << "[" << getDateTime() << "M]" << message;
+            m_messages[m_friends[idx]].push_back(ss.str());
         }
     }
 

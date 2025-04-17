@@ -21,7 +21,16 @@ namespace trance {
 
     int SocketStream::read(ByteArray::ptr ba, size_t length) {
         char data[length];
-        int len = m_socket->recv(data, length);
+        int len = 0;
+        while(len < length) {
+            int rt = m_socket->recv(data + len, length - len);
+            if(rt <= 0) {
+                FMT_ERROR_LOG("read error, need %d byte, accept %d byte", length - len, rt)
+                return len;
+            }
+            len += rt;
+        }
+        // int len = m_socket->recv(data, length);
         ba->write(data, len);
         return len;
     }

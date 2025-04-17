@@ -1,6 +1,7 @@
 #include "function.h"
 #include "../easyconfig/config.h"
 #include "rpc_server.h"
+#include "../util.h"
 
 namespace trance {
 
@@ -11,7 +12,9 @@ namespace trance {
                 {Function::__AddFriend, AddFriend},
                 {Function::__Sync, Sync},
                 {Function::__Agree, Agree},
-                {Function::__Refuse, Refuse}
+                {Function::__Refuse, Refuse},
+                {Function::__IsOnlie, isOnlie},
+                {Function::__SendMessage, sendMessage}
             };
 
     static ChatServer* g_chatServer = nullptr;
@@ -57,6 +60,16 @@ namespace trance {
         }
         else {
             return "ERROR";
+        }
+    }
+
+    std::string isOnlie(std::string& data) {
+        ChatServer* chatServer = ChatServer::getGlobalChatServer();
+        if(chatServer->isOnlie(data)) {
+            return "SUCCESS[Y]";
+        }
+        else {
+            return "SUCCESS[N]";
         }
     }
 
@@ -281,6 +294,49 @@ namespace trance {
             std::string filepath = Config::getGlobalConfig()->getConfig<std::string>("ChatServer::filepath");
             std::string tmp_filename = filepath + "tmp_" + friendname;
             std::string info = "R?" + username;
+            append2File(tmp_filename, info);
+        }
+
+        return "SUCCESS";
+    }
+
+    // 请求数据格式: sender/receiver/message
+    // 返回消息格式: I?好友用户名?message
+    // message格式: [time]?message
+    std::string sendMessage(std::string& data) {
+        // 解析数据
+        int split_idx = data.find_first_of('/'),
+                split_idx2 = data.find_last_of('/');
+        std::string sender = data.substr(0, split_idx);
+        std::string receiver = data.substr(split_idx + 1, split_idx2 - split_idx - 1);
+        std::string message = data.substr(split_idx2 + 1);
+        
+        return ChatServer::getGlobalChatServer()->sendMessage(sender, receiver, message);
+    }
+
+    std::string ChatServer::sendMessage(std::string& sender, std::string& receiver, std::string& message) {
+        // 检查是否存在id
+        auto it = m_userInfos.find(receiver);
+        if(it == m_userInfos.end()) {
+            return "ERROR[do not have such user]";
+        }
+        // 目标用户存在，根据用户是否在线做不同操作
+        if(isOnlie(receiver)) {
+            // 用户在线，发送消息
+            RPCServer* rpcserver = RPCServer::getGlobalRPCServer();
+            auto it = m_sessions.find(receiver);
+            std::stringstream ss;
+            ss << "I?" << sender << "?[" << getDateTime() << "]" << message;
+            Response res(1, ss.str(), "OK");
+            rpcserver->sendResponse(it->second, res);
+        }
+        else {
+            // 用户不在线，将消息保存到文件中
+            std::string filepath = Config::getGlobalConfig()->getConfig<std::string>("ChatServer::filepath");
+            std::string tmp_filename = filepath + "chat_" + receiver;
+            std::stringstream ss;
+            ss << sender << "?[" << getDateTime() << "]" << message;
+            std::string info = ss.str();
             append2File(tmp_filename, info);
         }
 

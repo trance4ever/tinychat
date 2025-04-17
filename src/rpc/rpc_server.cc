@@ -74,7 +74,7 @@ namespace trance {
             m_events[client->getSock()] = clientEvent;
         }
         clientEvent->listen(f, EPOLLIN);
-        clientEvent->setEpollOneShot();
+        // clientEvent->setEpollOneShot();
         thread->getReactor()->addEpollEvent(clientEvent);
         FMT_INFO_LOG("new connected %s", client->printInfo().c_str())
     }
@@ -87,13 +87,13 @@ namespace trance {
         if(rt == 0) {
             FMT_INFO_LOG("client disconnect, info:%s", session->getSocket()->printInfo().c_str())
             Reactor::getCurReactor()->delEpollEvent(session->getSocket()->getSock());
-            delete m_events[socket];
             ScopedLock<Spinlock> lock(m_lock);
             std::unordered_map<int, SocketStream::ptr>::iterator it = m_sessions.find(socket);
             if(it != m_sessions.end()) {
                 m_sessions.erase(it);
             }
             std::unordered_map<int, FdEvent*>::iterator it2 = m_events.find(socket);
+            delete m_events[socket];
             if(it2 != m_events.end()) {
                 m_events.erase(it2);
             }
@@ -111,22 +111,23 @@ namespace trance {
         if(rt == 0) {
             FMT_INFO_LOG("client disconnect, info:%s", session->getSocket()->printInfo().c_str())
             Reactor::getCurReactor()->delEpollEvent(session->getSocket()->getSock());
-            delete m_events[socket];
             ScopedLock<Spinlock> lock(m_lock);
             std::unordered_map<int, SocketStream::ptr>::iterator it = m_sessions.find(socket);
             if(it != m_sessions.end()) {
                 m_sessions.erase(it);
             }
             std::unordered_map<int, FdEvent*>::iterator it2 = m_events.find(socket);
+            delete m_events[socket];
             if(it2 != m_events.end()) {
                 m_events.erase(it2);
             }
             lock.unlock();
             return;
         }
-        char buf[length];
-        ba->read(buf, length);
-        Request r(buf);
+        std::vector<char> buf(length);
+        //char buf[length];
+        ba->read(buf.data(), length);
+        Request r(buf.data());
         FMT_INFO_LOG("get client request, message: %s, data: %s", r.message.c_str(), r.res_data.c_str())
         /*
             调用rpc函数，计算响应体
@@ -147,22 +148,45 @@ namespace trance {
         ScopedLock<Spinlock> lock(m_lock);
         FdEvent* e = m_events[socket];
         lock.unlock();
-        e->listen(f, EPOLLOUT);
-        Reactor::getCurReactor()->addEpollEvent(e);
+
+        if(e != nullptr) {
+            e->listen(f, EPOLLOUT);
+            Reactor::getCurReactor()->addEpollEvent(e);
+        }
+        else {
+            ERROR_LOG("failed to send response, cause the FdEvent is null")
+            lock.lock();
+            m_sessions.erase(socket);
+            lock.unlock();
+            return;
+        }
+        
     }
 
     void RPCServer::OnWrite(ByteArray::ptr ba, int socket, Response res) {
         ScopedLock<Spinlock> lock(m_lock);
         SocketStream::ptr session = m_sessions[socket];
         lock.unlock();
+        if(session == nullptr) {
+            ERROR_LOG("failed to send response, cause the session is null")
+            lock.lock();
+            FdEvent* e = m_events[socket];
+            lock.unlock();
+            e->cancleEvent(EPOLLOUT);
+            Reactor::getCurReactor()->addEpollEvent(e);
+
+            return;
+        }
         uint16_t length = res.size();
         char buf[length];
         res.serialization(buf);
         ba->write(buf, length);
         session->write(ba, length);
+
         lock.lock();
         FdEvent* e = m_events[socket];
         lock.unlock();
+
         e->cancleEvent(EPOLLOUT);
         Reactor::getCurReactor()->addEpollEvent(e);
     }
