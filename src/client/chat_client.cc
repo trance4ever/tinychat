@@ -302,7 +302,7 @@ namespace trance {
                     std::string time = message.substr(1, idx2);
                     std::string info = message.substr(idx2 + 1);
                     std::cout << time << std::endl;
-                    while(idx < message.size()) {
+                    while(idx < info.size()) {
                         std::cout << info.substr(idx, 32) << std::endl;
                         idx += 32;
                     }
@@ -402,9 +402,9 @@ namespace trance {
 
     void ChatClient::interface3(int idx) {
         chatUI(idx);
+        std::cin.ignore();
         while(1) {
             std::string message;
-            std::cin.ignore();
             std::getline(std::cin, message);
             if(message == "exit") {
                 m_friendId = -1;
