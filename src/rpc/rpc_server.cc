@@ -72,6 +72,7 @@ namespace trance {
             ScopedLock<Spinlock> lock(m_lock);
             m_sessions[client->getSock()] = session;
             m_events[client->getSock()] = clientEvent;
+            m_thread_of_socket[client->getSock()] = idx;
         }
         clientEvent->listen(f, EPOLLIN);
         // clientEvent->setEpollOneShot();
@@ -97,6 +98,10 @@ namespace trance {
             if(it2 != m_events.end()) {
                 m_events.erase(it2);
             }
+            std::unordered_map<int, int>::iterator it3 = m_thread_of_socket.find(socket);
+            if(it3 != m_thread_of_socket.end()) {
+                m_thread_of_socket.erase(it3);
+            }
             lock.unlock();
             return;
         }
@@ -120,6 +125,10 @@ namespace trance {
             delete m_events[socket];
             if(it2 != m_events.end()) {
                 m_events.erase(it2);
+            }
+            std::unordered_map<int, int>::iterator it3 = m_thread_of_socket.find(socket);
+            if(it3 != m_thread_of_socket.end()) {
+                m_thread_of_socket.erase(it3);
             }
             lock.unlock();
             return;
@@ -151,7 +160,9 @@ namespace trance {
 
         if(e != nullptr) {
             e->listen(f, EPOLLOUT);
-            Reactor::getCurReactor()->addEpollEvent(e);
+            int threadIdx = m_thread_of_socket[socket];
+            m_iothreads[threadIdx]->getReactor()->addEpollEvent(e);
+            // Reactor::getCurReactor()->addEpollEvent(e);
         }
         else {
             ERROR_LOG("failed to send response, cause the FdEvent is null")

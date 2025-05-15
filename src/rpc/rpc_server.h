@@ -49,8 +49,10 @@ namespace trance {
         int threadIdx {0};
         // 存储会话
         std::unordered_map<int, SocketStream::ptr> m_sessions;
-        // 存储时间
+        // 存储事件
         std::unordered_map<int, FdEvent*> m_events;
+        // 存储线程
+        std::unordered_map<int, int> m_thread_of_socket;
     };
 
 }
